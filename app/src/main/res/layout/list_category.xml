@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="32dp"
+    android:background="@android:color/holo_blue_dark"
+    android:orientation="horizontal"
+    >
+
+    <LinearLayout
+        android:layout_width="184dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:textAlignment="center">
+
+        <TextView
+            android:id="@+id/tv_categoryname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="FILME"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/bt_filme"
+            android:layout_width="62dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/start" />
+
+        <TextView
+            android:id="@+id/tv_level"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1/50"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_category"
+        android:layout_width="99dp"
+        android:layout_height="96dp"
+        android:layout_gravity="center_horizontal"
+        app:srcCompat="@drawable/cat01" />
+
+</LinearLayout>
