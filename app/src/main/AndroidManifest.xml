@@ -23,13 +23,31 @@
         </activity>
         <activity
             android:name=".CategoriesActivity"
-             />
+            android:parentActivityName=".MainActivity"
+             >
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity">
+        </meta-data>
+        </activity>
         <activity
             android:name=".FilmeActivity"
-             />
+            android:parentActivityName=".CategoriesActivity"
+             >
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".CategoriesActivity">
+        </meta-data>
+        </activity>
         <activity
             android:name=".CheckAnswer"
-             />
+            android:parentActivityName=".MainActivity"
+             >
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity">
+        </meta-data>
+        </activity>
     </application>
 
 </manifest>

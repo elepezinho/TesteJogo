@@ -31,7 +31,7 @@ public class CategoriesActivity extends AppCompatActivity {
         //bt_filme = (ImageView) findViewById(R.id.bt_filme);
         //iv_start = (ImageView) findViewById(R.id.image_start);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("CATEGORIA");
+        toolbar.setTitle("CATEGORIAS");
         setSupportActionBar(toolbar);
 
         listas = todasCategorias();
@@ -62,9 +62,10 @@ public class CategoriesActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent intent = new Intent(CategoriesActivity.this, FilmeActivity.class);
-
-                startActivity(intent);
+                if(position == 0) {
+                    Intent intent = new Intent(CategoriesActivity.this, FilmeActivity.class);
+                    startActivity(intent);
+                }
             }
         });
     }

@@ -38,7 +38,7 @@ public class CategoryAdapter extends BaseAdapter {
         Category category = list_category.get(position);
 
         TextView name = (TextView) view.findViewById(R.id.tv_name_category);
-        ImageView image = (ImageView) view.findViewById(R.id.img_categoriy);
+        ImageView image = (ImageView) view.findViewById(R.id.img_category);
 
         name.setText(category.getName());
 

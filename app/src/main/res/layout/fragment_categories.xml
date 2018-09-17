@@ -2,40 +2,46 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
-    >
+    android:layout_height="130dp"
+    android:padding="3dp">
 
     <android.support.v7.widget.AppCompatImageView
-        android:id="@+id/img_categoriy"
+        android:id="@+id/img_category"
         android:layout_width="100dp"
-        android:layout_height="match_parent"
-        android:background="@drawable/cat01" />
+        android:layout_height="match_parent" />
 
     <LinearLayout
+        android:id="@+id/item_category"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:id="@+id/item_category">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/tv_name_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="FILME"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
             android:textSize="30dp" />
 
         <ImageView
-            android:id="@+id/image_start"
+            android:id="@+id/img_start"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/start" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:padding="8dp"
+        android:text="1/10"
+        android:textAlignment="center"
+        android:textColor="@android:color/black" />
 
 </LinearLayout>
