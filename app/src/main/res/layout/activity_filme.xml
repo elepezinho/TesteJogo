@@ -185,7 +185,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="60dp" />
+        app:layout_constraintGuide_end="324dp" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline6"
@@ -299,8 +299,8 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="56dp" />
 
-    <ImageView
-        android:id="@+id/imageView6"
+    <Button
+        android:id="@+id/bagcoin"
         android:layout_width="45dp"
         android:layout_height="55dp"
         android:layout_marginBottom="8dp"
@@ -311,7 +311,8 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline9"
-        app:srcCompat="@drawable/bagmoney" />
+        android:background="@drawable/bagmoney"
+        android:onClick="startVideoAd"/>
 
     <ImageView
         android:id="@+id/imageView7"
@@ -323,6 +324,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline9"
         app:srcCompat="@drawable/moneyletter" />
 
+
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="45dp"
@@ -332,5 +334,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:srcCompat="@drawable/keyletter" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="35dp"
+        android:layout_height="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.307"
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
+        app:srcCompat="@drawable/coin"
+        tools:layout_editor_absoluteY="56dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00"
+        android:textColor="#FFF"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.472"
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
+        tools:layout_editor_absoluteY="62dp"/>
 
 </android.support.constraint.ConstraintLayout>
