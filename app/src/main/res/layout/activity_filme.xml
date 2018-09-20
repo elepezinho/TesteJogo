@@ -42,23 +42,26 @@
         android:id="@+id/bt_a"
         android:layout_width="43dp"
         android:layout_height="51dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/baseletra"
         android:text="A"
         android:textColor="@android:color/white"
-        app:layout_constraintStart_toStartOf="@+id/guideline5"
+        app:layout_constraintEnd_toStartOf="@+id/bt_b"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
     <Button
         android:id="@+id/bt_b"
         android:layout_width="43dp"
         android:layout_height="51dp"
-        android:layout_marginStart="19dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/baseletra"
         android:text="B"
         android:textColor="@android:color/white"
+        app:layout_constraintEnd_toStartOf="@+id/bt_t"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/bt_a"
         app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
@@ -66,11 +69,12 @@
         android:id="@+id/bt_t"
         android:layout_width="43dp"
         android:layout_height="51dp"
-        android:layout_marginStart="19dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/baseletra"
         android:text="T"
         android:textColor="@android:color/white"
+        app:layout_constraintEnd_toStartOf="@+id/bt_m"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/bt_b"
         app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
@@ -83,7 +87,7 @@
         android:background="@drawable/baseletra"
         android:text="M"
         android:textColor="@android:color/white"
-        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/bt_t"
         app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
@@ -92,24 +96,31 @@
         android:layout_width="43dp"
         android:layout_height="51dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/baseletra"
         android:text="A"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintStart_toStartOf="@+id/guideline5" />
+        app:layout_constraintEnd_toStartOf="@+id/bt_n"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_a" />
 
     <Button
         android:id="@+id/bt_n"
         android:layout_width="43dp"
         android:layout_height="51dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="19dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/baseletra"
         android:text="N"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintStart_toEndOf="@+id/bt_ba" />
+        app:layout_constraintEnd_toStartOf="@+id/bt_d"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/bt_ba"
+        app:layout_constraintTop_toBottomOf="@+id/bt_b" />
 
     <Button
         android:id="@+id/bt_l"
@@ -117,33 +128,42 @@
         android:layout_height="51dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/baseletra"
         android:text="L"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintEnd_toStartOf="@+id/guideline6"
-        app:layout_constraintStart_toEndOf="@+id/bt_d" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bt_d"
+        app:layout_constraintTop_toBottomOf="@+id/bt_m" />
 
     <Button
         android:id="@+id/bt_d"
         android:layout_width="43dp"
         android:layout_height="51dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="19dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/baseletra"
         android:text="D"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintStart_toEndOf="@+id/bt_n" />
+        app:layout_constraintEnd_toStartOf="@+id/bt_l"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/bt_n"
+        app:layout_constraintTop_toBottomOf="@+id/bt_t" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:adjustViewBounds="true"
         android:cropToPadding="false"
         android:scaleType="fitEnd"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/down" />
 
     <android.support.constraint.Guideline
