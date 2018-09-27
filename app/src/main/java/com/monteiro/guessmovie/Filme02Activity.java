@@ -14,7 +14,7 @@ import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 
-public class FilmeActivity extends AppCompatActivity implements RewardedVideoAdListener {
+public class Filme02Activity extends AppCompatActivity implements RewardedVideoAdListener {
 
     //botões da letra escolhida pelo usuário
     private Button bt_lt1;
@@ -53,7 +53,7 @@ public class FilmeActivity extends AppCompatActivity implements RewardedVideoAdL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_filme);
+        setContentView(R.layout.activity_filme02);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("FILMES");
@@ -62,22 +62,22 @@ public class FilmeActivity extends AppCompatActivity implements RewardedVideoAdL
         resposta = new String[6];
 
         //botões de escolha do usuário
-        bt_lt1 = (Button) findViewById(R.id.bt_lt1);
-        bt_lt2 = (Button) findViewById(R.id.bt_lt2);
-        bt_lt3 = (Button) findViewById(R.id.bt_lt3);
-        bt_lt4 = (Button) findViewById(R.id.bt_lt4);
-        bt_lt5 = (Button) findViewById(R.id.bt_lt5);
-        bt_lt6 = (Button) findViewById(R.id.bt_lt6);
+        bt_lt1 = (Button) findViewById(R.id.bt_opc_1);
+        bt_lt2 = (Button) findViewById(R.id.bt_opc_2);
+        bt_lt3 = (Button) findViewById(R.id.bt_opc_3);
+        bt_lt4 = (Button) findViewById(R.id.bt_opc_4);
+        bt_lt5 = (Button) findViewById(R.id.bt_opc_5);
+        bt_lt6 = (Button) findViewById(R.id.bt_opc_6);
 
         //botões das letras
-        bt_letterb = (Button) findViewById(R.id.bt_b);
-        bt_lettera = (Button) findViewById(R.id.bt_a);
-        bt_lettera1 = (Button) findViewById(R.id.bt_ba);
-        bt_lettert = (Button) findViewById(R.id.bt_t);
-        bt_letterm = (Button) findViewById(R.id.bt_m);
-        bt_lettern = (Button) findViewById(R.id.bt_n);
-        bt_letterd = (Button) findViewById(R.id.bt_d);
-        bt_letterl = (Button) findViewById(R.id.bt_l);
+        bt_letterb = (Button) findViewById(R.id.bt_lt_3);
+        bt_lettera = (Button) findViewById(R.id.bt_lt_1);
+        bt_lettera1 = (Button) findViewById(R.id.bt_lt_9);
+        bt_lettert = (Button) findViewById(R.id.bt_lt_5);
+        bt_letterm = (Button) findViewById(R.id.bt_lt_7);
+        bt_lettern = (Button) findViewById(R.id.bt_lt_11);
+        bt_letterd = (Button) findViewById(R.id.bt_lt_13);
+        bt_letterl = (Button) findViewById(R.id.bt_lt_15);
 
         bt_lettern.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -295,8 +295,15 @@ public class FilmeActivity extends AppCompatActivity implements RewardedVideoAdL
                 resposta[4] == "A" &&
                 resposta[5] == "N"){
 
+            String resp = "";
+
+            for(String letra: resposta) {
+                resp = resp + letra;
+            }
+
             Intent intent;
-            intent = new Intent(FilmeActivity.this, CheckAnswer.class);
+            intent = new Intent(Filme02Activity.this, CheckAnswer.class);
+            intent.putExtra("resposta", resp);
             startActivity( intent );
         }
     }
@@ -359,7 +366,7 @@ public class FilmeActivity extends AppCompatActivity implements RewardedVideoAdL
     public void onRewarded(RewardItem rewardItem) {
 
         //moeda = 0;
-        mText.setText(("0"+(moeda += 15)));
+        mText.setText((moeda += 15));
 
     }
 

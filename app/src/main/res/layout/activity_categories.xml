@@ -4,9 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_light"
+    android:background="@drawable/background"
     tools:context=".CategoriesActivity"
     tools:layout_editor_absoluteY="25dp">
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="35dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline9"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/coin" />
+
+    <TextView
+        android:id="@+id/txv_coins2"
+        android:layout_width="56dp"
+        android:layout_height="32dp"
+        android:text="5000"
+        android:textColor="#FFF"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <include
         android:id="@+id/toolbar"
@@ -19,5 +43,7 @@
         android:layout_below="@id/toolbar"
         android:textAlignment="center"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+
 
 </android.support.constraint.ConstraintLayout>

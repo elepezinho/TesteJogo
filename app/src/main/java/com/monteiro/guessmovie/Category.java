@@ -3,15 +3,18 @@ package com.monteiro.guessmovie;
 public class Category {
 
     private String name;
-    private String amount;
+    private int level;
+    private int total;
     private int image;
 
     public Category() {
     }
 
-    public Category(String name, int image) {
+    public Category(String name, int image, int level, int total) {
         this.name = name;
         this.image = image;
+        this.level = level;
+        this.total = total;
     }
 
     public String getName() {
@@ -22,12 +25,20 @@ public class Category {
         this.name = name;
     }
 
-    public String getAmount() {
-        return amount;
+    public int getLevel() {
+        return level;
     }
 
-    public void setAmount(String amount) {
-        this.amount = amount;
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
     }
 
     public int getImage() {
