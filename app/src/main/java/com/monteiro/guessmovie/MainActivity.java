@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private Button bt_start;
     private ImageView img_sound;
+    private ImageView img_info;
 
     //Usar para reiniciar as preferencias do app
     SharedPreferences.Editor editor;
@@ -27,18 +28,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //usar para reiniciar as preferencias do app
-        //editor = getSharedPreferences("pref", MODE_PRIVATE).edit();
-        //editor.putInt("qt_moedas", 500);
-        //editor.putInt("nvl_filme", 01);
-        //editor.putInt("nvl_anime", 01);
-        //editor.commit();
-
         pref = getSharedPreferences("pref", MODE_PRIVATE);
         jaAcessou = pref.getBoolean("ja_acessou", false);
 
         bt_start = (Button) findViewById(R.id.bt_start);
         img_sound = (ImageView) findViewById(R.id.img_sound);
+        img_info = (ImageView) findViewById(R.id.img_info);
 
         bt_start.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +48,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+            }
+        });
+
+        img_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //usar para reiniciar as preferencias do app
+                editor = getSharedPreferences("pref", MODE_PRIVATE).edit();
+                editor.putInt("qt_moedas", 500);
+                editor.putInt("nvl_filme", 01);
+                editor.putInt("nvl_serie", 01);
+                editor.putInt("nvl_anime", 01);
+                editor.commit();
             }
         });
     }

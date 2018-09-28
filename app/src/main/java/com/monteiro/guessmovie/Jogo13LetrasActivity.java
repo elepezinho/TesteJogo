@@ -460,7 +460,7 @@ public class Jogo13LetrasActivity extends AppCompatActivity implements RewardedV
         bt_opc_9 = (Button) findViewById(R.id.bt_opc_9);
         bt_opc_10 = (Button) findViewById(R.id.bt_opc_10);
         bt_opc_11 = (Button) findViewById(R.id.bt_opc_11);
-        bt_opc_12 = (Button) findViewById(R.id.bt_opc_7);
+        bt_opc_12 = (Button) findViewById(R.id.bt_opc_12);
         bt_opc_13 = (Button) findViewById(R.id.bt_opc_13);
     }
 
