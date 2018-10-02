@@ -2,21 +2,30 @@ package com.monteiro.guessmovie;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
+import com.monteiro.guessmovie.screenshot.ScreenshotType;
+import com.monteiro.guessmovie.screenshot.ScreenshotUtils;
 
-public class Jogo13LetrasActivity extends AppCompatActivity implements RewardedVideoAdListener {
+import java.io.File;
+
+public class Jogo13LetrasActivity extends AppCompatActivity implements RewardedVideoAdListener, View.OnClickListener {
 
     //imagem da rodada
     private ImageView im_principal;
@@ -83,6 +92,10 @@ public class Jogo13LetrasActivity extends AppCompatActivity implements RewardedV
     private int nvlSerie;
     private int nvlAnime;
     private String jogando;
+    private AdView mAdview;
+    private Button fullPageScreenshot;
+    private ImageView imageView;
+    private ConstraintLayout rootContent;
 
     SharedPreferences pref;
 
@@ -90,6 +103,10 @@ public class Jogo13LetrasActivity extends AppCompatActivity implements RewardedV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jogo_13_letras);
+
+        //implementação de onclick para o screenshoot
+        findViews();
+        implementClickEvents();
 
         //recuperando dados de preferencia do usuario
         pref = getSharedPreferences("pref", MODE_PRIVATE);
@@ -399,6 +416,13 @@ public class Jogo13LetrasActivity extends AppCompatActivity implements RewardedV
             }
         });
 
+        //banner
+        MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");
+        mAdview = (AdView)findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        //AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+        mAdview.loadAd(adRequest);
+
         MobileAds.initialize(getApplicationContext(),"ca-app-pub-3940256099942544~3347511713");
 
         mAd = MobileAds.getRewardedVideoAdInstance(this);
@@ -695,6 +719,63 @@ public class Jogo13LetrasActivity extends AppCompatActivity implements RewardedV
             return true;
         }
         return false;
+    }
+
+    //screenshoot
+    private void findViews() {
+        fullPageScreenshot = (Button) findViewById(R.id.helpfriends);
+
+        imageView = (ImageView) findViewById(R.id.image_view);
+
+        rootContent = (ConstraintLayout) findViewById(R.id.root_content);
+
+    }
+
+    private void implementClickEvents() {
+        fullPageScreenshot.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.helpfriends:
+                takeScreenshot(ScreenshotType.FULL);
+                break;
+        }
+    }
+
+    private void takeScreenshot(ScreenshotType screenshotType) {
+        Bitmap b = null;
+        switch (screenshotType) {
+            case FULL:
+                b = ScreenshotUtils.getScreenShot(rootContent);
+                break;
+        }
+
+        if (b != null) {
+            showScreenShotImage(b);
+
+            File saveFile = ScreenshotUtils.getMainDirectoryName(this);
+            File file = ScreenshotUtils.store(b, "screenshot" + screenshotType + ".jpg", saveFile);
+            shareScreenshot(file);
+        } else
+            Toast.makeText(this, R.string.screenshot_take_failed, Toast.LENGTH_SHORT).show();
+
+    }
+
+    private void showScreenShotImage(Bitmap b) {
+        imageView.setImageBitmap(b);
+    }
+
+    private void shareScreenshot(File file) {
+        Uri uri = Uri.fromFile(file);
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.setType("image/*");
+        intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "");
+        intent.putExtra(android.content.Intent.EXTRA_TEXT, getString(R.string.sharing_text));
+        intent.putExtra(Intent.EXTRA_STREAM, uri);
+        startActivity(Intent.createChooser(intent, getString(R.string.share_title)));
     }
 
     private void  loadRewardVideoAd()

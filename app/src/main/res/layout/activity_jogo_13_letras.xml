@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/root_content"
     android:layout_height="match_parent"
     android:background="@drawable/background"
     tools:layout_editor_absoluteY="25dp">
@@ -237,19 +238,20 @@
         app:layout_constraintStart_toEndOf="@+id/bt_lt_13"
         app:layout_constraintTop_toBottomOf="@+id/bt_lt_6" />
 
-    <ImageView
-        android:id="@+id/imageView"
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
         android:layout_width="wrap_content"
-        android:layout_height="92dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:adjustViewBounds="true"
         android:cropToPadding="false"
         android:scaleType="fitEnd"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/down" />
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        android:layout_height="wrap_content">
+    </com.google.android.gms.ads.AdView>
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline3"
@@ -475,8 +477,31 @@
         android:onClick="startVideoAd"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline9" />
+        app:layout_constraintTop_toTopOf="@+id/guideline9"
+        app:layout_constraintVertical_bias="0.226" />
+
+    <Button
+        android:id="@+id/helpfriends"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/helpfriends"
+        app:layout_constraintBottom_toTopOf="@+id/guideline7"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline9"
+        app:layout_constraintVertical_bias="0.929" />
+
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/ic_launcher" />
 
     <ImageView
         android:id="@+id/imageView7"

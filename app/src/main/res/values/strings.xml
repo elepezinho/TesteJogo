@@ -2,4 +2,22 @@
     <string name="app_name">GuessMovie</string>
     <string name="espaco">24dp</string>
     <string name="sem_espaco">0dp</string>
+    <string name="sharing_text">Você pode me ajudar com essa fase? Baixe o Filmes em Emoji e Jogue Também: https://www.google.com.br/</string>
+    <string name="share_title">Peça Ajuda a Seus Amigos!</string>
+    <string name="screenshot_take_failed">Falha ao compartilhar!!</string>
+    <string name="wait">Espere um minuto…</string>
+    <string name="full_page_screenshot">Full Page Screenshot</string>
+    <string name="hidden_text">Hidden Text</string>
+    <string name="custom_page_screenshot">Next Level</string>
+    <string name="interstitial_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="titulo_01">O Jogo</string>
+    <string name="titulo_02">Achou a fase difícil?</string>
+    <string name="titulo_03">Elimine letras!</string>
+    <string name="titulo_04">Travou?</string>
+    <string name="titulo_05">Acabou o dinheiro?</string>
+    <string name="description_01">Descubra o nome de Filmes, Animes, Séries e Jogos através de emojis que estão dentro do quadrado!</string>
+    <string name="description_02">Compre uma letra para te ajudar!</string>
+    <string name="description_03">Não consegue desembaralhar as letras? Elimine as que estão sobrando.</string>
+    <string name="description_04">Peça ajuda a seus amigos em todas as redes sociais instaladas no seu celular!</string>
+    <string name="description_05">Assista uma propaganda e fique rico novamente!</string>
 </resources>

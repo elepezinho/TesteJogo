@@ -9,6 +9,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+
 public class CheckAnswer extends AppCompatActivity {
 
     private Button bt_inicio;
@@ -23,6 +29,8 @@ public class CheckAnswer extends AppCompatActivity {
     private int totalFilme;
     private int totalSerie;
     private int totalAnime;
+    private AdView mAdview;
+    private InterstitialAd interstitial;
 
     SharedPreferences pref;
 
@@ -127,6 +135,18 @@ public class CheckAnswer extends AppCompatActivity {
                             Intent intent = new Intent(CheckAnswer.this, Jogo5LetrasActivity.class);
                             jogando = "serie";
                             intent.putExtra("jogando", jogando);
+                            //propaganda interticial
+                            AdRequest adRequest = new AdRequest.Builder().build();
+                            interstitial = new InterstitialAd(CheckAnswer.this);
+                            interstitial.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
+                            interstitial.loadAd(adRequest);
+                            interstitial.setAdListener(new AdListener() {
+                                @Override
+                                public void onAdLoaded() {
+                                    displayInterstitial();
+                                }
+                            });
+
                             startActivity(intent);
                         }
                     }
@@ -167,6 +187,13 @@ public class CheckAnswer extends AppCompatActivity {
                 }
             }
         });
+
+        //banner
+        MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");
+        mAdview = (AdView)findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        //AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+        mAdview.loadAd(adRequest);
     }
 
     private boolean verificarAcertosFilme() {
@@ -182,5 +209,12 @@ public class CheckAnswer extends AppCompatActivity {
     private boolean verificarAcertosAnime() {
         if (nvlAnime <= totalAnime) return true;
         else return false;
+    }
+
+    private void displayInterstitial() {
+        if (interstitial.isLoaded()) {
+            interstitial.show();
+
+        }
     }
 }

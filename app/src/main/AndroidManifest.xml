@@ -15,8 +15,14 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"></activity>
+
         <activity
             android:name=".SplashScreenActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AlertDialog.AppCompat.FullScreen"></activity>
+
+        <activity
+            android:name=".slider.WelcomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AlertDialog.AppCompat.FullScreen">
             <intent-filter>
@@ -24,6 +30,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".CategoriesActivity"
             android:screenOrientation="portrait"
