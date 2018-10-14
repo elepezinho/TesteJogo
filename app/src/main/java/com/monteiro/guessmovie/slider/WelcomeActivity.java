@@ -28,12 +28,19 @@ public class WelcomeActivity extends AppCompatActivity {
     private Button btnSkip;
     private Button btnNext;
     private MyPagerAdapter pagerAdapter;
+    private Boolean jaAcessou;
+
+    SharedPreferences.Editor editor;
+    SharedPreferences pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if(!isFirstTimeStartApp()) {
+        pref = getSharedPreferences("pref", MODE_PRIVATE);
+        jaAcessou = pref.getBoolean("ja_acessou", false);
+
+        if(jaAcessou) {
             startMainActivity();
             finish();
         }
@@ -51,7 +58,6 @@ public class WelcomeActivity extends AppCompatActivity {
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 startMainActivity();
             }
         });
@@ -82,10 +88,10 @@ public class WelcomeActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 if(position == layouts.length-1){
                    //LAST PAGE
-                    btnNext.setText("START");
+                    btnNext.setText("JOGAR");
                     btnSkip.setVisibility(View.GONE);
                 }else {
-                    btnNext.setText("NEXT");
+                    btnNext.setText("PRÓXIMO");
                     btnSkip.setVisibility(View.VISIBLE);
                 }
                 setDotStatus(position);
@@ -129,6 +135,9 @@ public class WelcomeActivity extends AppCompatActivity {
     private void startMainActivity(){
         setFirstTimeStartStatus(false);
         startActivity(new Intent(WelcomeActivity.this, SplashScreenActivity.class));
+        editor = getSharedPreferences("pref", MODE_PRIVATE).edit();
+        editor.putBoolean("ja_acessou", true);
+        editor.commit();
         finish();
     }
     private void setStatusBarTransparent(){

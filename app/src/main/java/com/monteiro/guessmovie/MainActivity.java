@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.monteiro.guessmovie.about.AboutActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
@@ -41,27 +43,25 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent;
                 intent = new Intent(MainActivity.this, CategoriesActivity.class);
                 startActivity(intent);
-            }
-        });
-
-        img_sound.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
+                overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
             }
         });
 
         img_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //usar para reiniciar as preferencias do app
-                editor = getSharedPreferences("pref", MODE_PRIVATE).edit();
-                editor.putInt("qt_moedas", 500);
-                editor.putInt("nvl_filme", 01);
-                editor.putInt("nvl_serie", 01);
-                editor.putInt("nvl_anime", 01);
-                editor.commit();
+                Intent intent;
+                intent = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        // finish() is called in super: we only override method to be able to override transition
+        super.onBackPressed();
+        overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
     }
 }

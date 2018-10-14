@@ -131,6 +131,7 @@ public class CheckAnswer extends AppCompatActivity {
                             jogando = "serie";
                             intent.putExtra("jogando", jogando);
                             startActivity(intent);
+                            overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                         } else if (nvlSerie == 03) {
                             Intent intent = new Intent(CheckAnswer.this, Jogo5LetrasActivity.class);
                             jogando = "serie";
@@ -170,6 +171,7 @@ public class CheckAnswer extends AppCompatActivity {
                             jogando = "anime";
                             intent.putExtra("jogando", jogando);
                             startActivity(intent);
+                            overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                         } else if (nvlAnime == 03) {
                             Intent intent = new Intent(CheckAnswer.this, Jogo8LetrasActivity.class);
                             jogando = "anime";
@@ -216,5 +218,12 @@ public class CheckAnswer extends AppCompatActivity {
             interstitial.show();
 
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        // finish() is called in super: we only override method to be able to override transition
+        super.onBackPressed();
+        overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
     }
 }

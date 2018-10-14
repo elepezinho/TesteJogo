@@ -559,7 +559,7 @@ public class Jogo5LetrasActivity extends AppCompatActivity implements RewardedVi
 
     //screenshoot
     private void findViews() {
-        fullPageScreenshot = (Button) findViewById(R.id.helpfriends);
+        fullPageScreenshot = (Button) findViewById(R.id.bt_help_friends);
 
         imageView = (ImageView) findViewById(R.id.image_view);
 
@@ -574,7 +574,7 @@ public class Jogo5LetrasActivity extends AppCompatActivity implements RewardedVi
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.helpfriends:
+            case R.id.bt_help_friends:
                 takeScreenshot(ScreenshotType.FULL);
                 break;
         }

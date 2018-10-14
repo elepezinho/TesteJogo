@@ -48,7 +48,7 @@ public class CategoriesActivity extends AppCompatActivity {
         totalFilme = pref.getInt("total_filme", 03);
         totalSerie = pref.getInt("total_serie", 03);
         totalAnime = pref.getInt("total_anime", 03);
-        moeda = pref.getInt("qt_moedas", 500);
+        moeda = pref.getInt("qt_moedas", 100);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("CATEGORIAS");
@@ -60,24 +60,6 @@ public class CategoriesActivity extends AppCompatActivity {
         adapter = new CategoryAdapter(listas, this);
         lista.setAdapter(adapter);
 
-        /*bt_filme.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent;
-                intent = new Intent(CategoriesActivity.this, Filme02Activity.class);
-                startActivity( intent );
-            }
-        });*/
-
-        /*iv_start.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent;
-                intent = new Intent(CategoriesActivity.this, Filme02Activity.class);
-                startActivity( intent );
-            }
-        });*/
-
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -85,7 +67,7 @@ public class CategoriesActivity extends AppCompatActivity {
                 if(position == 0) {
                     if (verificarAcertosFilme()) {
                         if (nvlFilme == 01 || nvlFilme == 03) {
-                            Intent intent = new Intent(CategoriesActivity.this, Jogo7LetrasActivity.class);
+                            Intent intent = new Intent(CategoriesActivity.this, JogoParActivity.class);
                             jogando = "filme";
                             intent.putExtra("jogando", jogando);
                             startActivity(intent);
@@ -107,10 +89,12 @@ public class CategoriesActivity extends AppCompatActivity {
                 else if(position == 1) {
                     if (verificarAcertosSerie()) {
                         if (nvlSerie == 01) {
-                            Intent intent = new Intent(CategoriesActivity.this, Jogo4LetrasActivity.class);
+                            Intent intent = new Intent(CategoriesActivity.this, JogoParActivity.class);
                             jogando = "serie";
                             intent.putExtra("jogando", jogando);
                             startActivity(intent);
+                            overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
+                            onPause();
                         } else if (nvlSerie == 02) {
                             Intent intent = new Intent(CategoriesActivity.this, Jogo13LetrasActivity.class);
                             jogando = "serie";
@@ -133,10 +117,11 @@ public class CategoriesActivity extends AppCompatActivity {
                 else if(position == 2) {
                     if (verificarAcertosAnime()) {
                         if (nvlAnime == 01) {
-                            Intent intent = new Intent(CategoriesActivity.this, Jogo10LetrasActivity.class);
+                            Intent intent = new Intent(CategoriesActivity.this, JogoParActivity.class);
                             jogando = "anime";
                             intent.putExtra("jogando", jogando);
                             startActivity(intent);
+                            overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                         } else if (nvlAnime == 02) {
                             Intent intent = new Intent(CategoriesActivity.this, Jogo6LetrasActivity.class);
                             jogando = "anime";
@@ -158,6 +143,13 @@ public class CategoriesActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        // finish() is called in super: we only override method to be able to override transition
+        super.onBackPressed();
+        overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
     }
 
     private boolean verificarAcertosFilme() {

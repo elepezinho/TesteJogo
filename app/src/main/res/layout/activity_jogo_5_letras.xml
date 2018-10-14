@@ -393,7 +393,7 @@
         app:layout_constraintVertical_bias="0.226" />
 
     <Button
-        android:id="@+id/helpfriends"
+        android:id="@+id/bt_help_friends"
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_marginBottom="8dp"

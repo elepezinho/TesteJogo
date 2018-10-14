@@ -14,12 +14,14 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+        </activity>
 
         <activity
             android:name=".SplashScreenActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AlertDialog.AppCompat.FullScreen"></activity>
+            android:theme="@style/AlertDialog.AppCompat.FullScreen">
+        </activity>
 
         <activity
             android:name=".slider.WelcomeActivity"
@@ -41,6 +43,7 @@
             android:value=".MainActivity">
         </meta-data>
         </activity>
+
         <activity
         android:name=".Jogo4LetrasActivity"
         android:screenOrientation="portrait"
@@ -51,6 +54,7 @@
             android:value=".CategoriesActivity">
         </meta-data>
         </activity>
+
         <activity
             android:name=".Jogo5LetrasActivity"
             android:screenOrientation="portrait"
@@ -61,6 +65,7 @@
                 android:value=".CategoriesActivity">
             </meta-data>
         </activity>
+
         <activity
             android:name=".Jogo6LetrasActivity"
             android:screenOrientation="portrait"
@@ -71,6 +76,7 @@
                 android:value=".CategoriesActivity">
             </meta-data>
         </activity>
+
         <activity
             android:name=".Jogo7LetrasActivity"
             android:screenOrientation="portrait"
@@ -81,6 +87,7 @@
                 android:value=".CategoriesActivity">
             </meta-data>
         </activity>
+
         <activity
             android:name=".Jogo8LetrasActivity"
             android:screenOrientation="portrait"
@@ -91,6 +98,7 @@
                 android:value=".CategoriesActivity">
             </meta-data>
         </activity>
+
         <activity
             android:name=".Jogo10LetrasActivity"
             android:screenOrientation="portrait"
@@ -101,6 +109,7 @@
                 android:value=".CategoriesActivity">
             </meta-data>
         </activity>
+
         <activity
             android:name=".Jogo13LetrasActivity"
             android:screenOrientation="portrait"
@@ -111,6 +120,18 @@
                 android:value=".CategoriesActivity">
             </meta-data>
         </activity>
+
+        <activity
+            android:name=".JogoParActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".CategoriesActivity"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CategoriesActivity">
+            </meta-data>
+        </activity>
+
         <activity
             android:name=".CheckAnswer"
             android:screenOrientation="portrait"
@@ -120,6 +141,17 @@
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".MainActivity">
         </meta-data>
+        </activity>
+
+        <activity
+            android:name=".about.AboutActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity">
+            </meta-data>
         </activity>
     </application>
 </manifest>
