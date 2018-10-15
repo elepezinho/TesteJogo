@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GuessMovie</string>
+    <string name="app_name">Emoji em Filmes</string>
     <string name="espaco">24dp</string>
     <string name="sem_espaco">0dp</string>
     <string name="sharing_text">Você pode me ajudar com essa fase? Baixe o Filmes em Emoji e Jogue Também: https://www.google.com.br/</string>

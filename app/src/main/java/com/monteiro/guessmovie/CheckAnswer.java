@@ -99,17 +99,14 @@ public class CheckAnswer extends AppCompatActivity {
             public void onClick(View view) {
                 if(jogando.equals("filme")) {
                     if (verificarAcertosFilme()) {
-                        if (nvlFilme == 01 || nvlFilme == 03) {
-                            Intent intent = new Intent(CheckAnswer.this, Jogo7LetrasActivity.class);
+                        //if (nvlFilme == 01 || nvlFilme == 03 || nvlFilme ==  02) {
+                            Intent intent = new Intent(CheckAnswer.this, JogoParActivity.class);
                             jogando = "filme";
                             intent.putExtra("jogando", jogando);
                             startActivity(intent);
-                        } else if (nvlFilme == 02) {
-                            Intent intent = new Intent(CheckAnswer.this, Jogo6LetrasActivity.class);
-                            jogando = "filme";
-                            intent.putExtra("jogando", jogando);
-                            startActivity(intent);
-                        }
+                            overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
+                            finish();
+                        //}
                     }
                     else{
                         Toast.makeText(
@@ -121,35 +118,14 @@ public class CheckAnswer extends AppCompatActivity {
                 }
                 else if(jogando.equals("serie")) {
                     if (verificarAcertosSerie()) {
-                        if (nvlSerie == 01) {
-                            Intent intent = new Intent(CheckAnswer.this, Jogo7LetrasActivity.class);
-                            jogando = "serie";
-                            intent.putExtra("jogando", jogando);
-                            startActivity(intent);
-                        } else if (nvlSerie == 02) {
-                            Intent intent = new Intent(CheckAnswer.this, Jogo13LetrasActivity.class);
+                        //if (nvlSerie == 01 || nvlSerie == 02 || nvlSerie == 03) {
+                            Intent intent = new Intent(CheckAnswer.this, JogoParActivity.class);
                             jogando = "serie";
                             intent.putExtra("jogando", jogando);
                             startActivity(intent);
                             overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
-                        } else if (nvlSerie == 03) {
-                            Intent intent = new Intent(CheckAnswer.this, Jogo5LetrasActivity.class);
-                            jogando = "serie";
-                            intent.putExtra("jogando", jogando);
-                            //propaganda interticial
-                            AdRequest adRequest = new AdRequest.Builder().build();
-                            interstitial = new InterstitialAd(CheckAnswer.this);
-                            interstitial.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
-                            interstitial.loadAd(adRequest);
-                            interstitial.setAdListener(new AdListener() {
-                                @Override
-                                public void onAdLoaded() {
-                                    displayInterstitial();
-                                }
-                            });
-
-                            startActivity(intent);
-                        }
+                            finish();
+                        //}
                     }
                     else{
                         Toast.makeText(
@@ -161,23 +137,14 @@ public class CheckAnswer extends AppCompatActivity {
                 }
                 else if(jogando.equals("anime")) {
                     if (verificarAcertosAnime()) {
-                        if (nvlAnime == 01) {
-                            Intent intent = new Intent(CheckAnswer.this, Jogo10LetrasActivity.class);
-                            jogando = "anime";
-                            intent.putExtra("jogando", jogando);
-                            startActivity(intent);
-                        } else if (nvlAnime == 02) {
-                            Intent intent = new Intent(CheckAnswer.this, Jogo6LetrasActivity.class);
+                        //if (nvlAnime == 01) {
+                            Intent intent = new Intent(CheckAnswer.this, JogoParActivity.class);
                             jogando = "anime";
                             intent.putExtra("jogando", jogando);
                             startActivity(intent);
                             overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
-                        } else if (nvlAnime == 03) {
-                            Intent intent = new Intent(CheckAnswer.this, Jogo8LetrasActivity.class);
-                            jogando = "anime";
-                            intent.putExtra("jogando", jogando);
-                            startActivity(intent);
-                        }
+                            finish();
+                        //}
                     }
                     else{
                         Toast.makeText(
@@ -198,17 +165,40 @@ public class CheckAnswer extends AppCompatActivity {
         mAdview.loadAd(adRequest);
     }
 
+    private void exibirPropaganda(){
+        //propaganda interticial
+        AdRequest adRequest = new AdRequest.Builder().build();
+        interstitial = new InterstitialAd(CheckAnswer.this);
+        interstitial.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
+        interstitial.loadAd(adRequest);
+        interstitial.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                displayInterstitial();
+            }
+        });
+    }
+
     private boolean verificarAcertosFilme() {
+        if(nvlFilme%2==0){
+            exibirPropaganda();
+        }
         if (nvlFilme <= totalFilme) return true;
         else return false;
     }
 
     private boolean verificarAcertosSerie() {
+        if(nvlSerie%3==0){
+            exibirPropaganda();
+        }
         if (nvlSerie <= totalSerie) return true;
         else return false;
     }
 
     private boolean verificarAcertosAnime() {
+        if(nvlAnime%3==0){
+            exibirPropaganda();
+        }
         if (nvlAnime <= totalAnime) return true;
         else return false;
     }
@@ -216,7 +206,6 @@ public class CheckAnswer extends AppCompatActivity {
     private void displayInterstitial() {
         if (interstitial.isLoaded()) {
             interstitial.show();
-
         }
     }
 

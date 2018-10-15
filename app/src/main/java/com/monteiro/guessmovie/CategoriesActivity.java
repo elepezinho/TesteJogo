@@ -66,17 +66,14 @@ public class CategoriesActivity extends AppCompatActivity {
 
                 if(position == 0) {
                     if (verificarAcertosFilme()) {
-                        if (nvlFilme == 01 || nvlFilme == 03) {
+                        //if (nvlFilme == 01 || nvlFilme == 03) {
                             Intent intent = new Intent(CategoriesActivity.this, JogoParActivity.class);
                             jogando = "filme";
                             intent.putExtra("jogando", jogando);
                             startActivity(intent);
-                        } else if (nvlFilme == 02) {
-                            Intent intent = new Intent(CategoriesActivity.this, Jogo6LetrasActivity.class);
-                            jogando = "filme";
-                            intent.putExtra("jogando", jogando);
-                            startActivity(intent);
-                        }
+                            overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
+                            onPause();
+                        //}
                     }
                     else{
                         Toast.makeText(
@@ -88,24 +85,14 @@ public class CategoriesActivity extends AppCompatActivity {
                 }
                 else if(position == 1) {
                     if (verificarAcertosSerie()) {
-                        if (nvlSerie == 01) {
+                        //if (nvlSerie == 01) {
                             Intent intent = new Intent(CategoriesActivity.this, JogoParActivity.class);
                             jogando = "serie";
                             intent.putExtra("jogando", jogando);
                             startActivity(intent);
                             overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                             onPause();
-                        } else if (nvlSerie == 02) {
-                            Intent intent = new Intent(CategoriesActivity.this, Jogo13LetrasActivity.class);
-                            jogando = "serie";
-                            intent.putExtra("jogando", jogando);
-                            startActivity(intent);
-                        } else if (nvlSerie == 03) {
-                            Intent intent = new Intent(CategoriesActivity.this, Jogo5LetrasActivity.class);
-                            jogando = "serie";
-                            intent.putExtra("jogando", jogando);
-                            startActivity(intent);
-                        }
+                        //}
                     } else {
                             Toast.makeText(
                                     CategoriesActivity.this,
@@ -116,23 +103,14 @@ public class CategoriesActivity extends AppCompatActivity {
                 }
                 else if(position == 2) {
                     if (verificarAcertosAnime()) {
-                        if (nvlAnime == 01) {
+                        //if (nvlAnime == 01) {
                             Intent intent = new Intent(CategoriesActivity.this, JogoParActivity.class);
                             jogando = "anime";
                             intent.putExtra("jogando", jogando);
                             startActivity(intent);
                             overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
-                        } else if (nvlAnime == 02) {
-                            Intent intent = new Intent(CategoriesActivity.this, Jogo6LetrasActivity.class);
-                            jogando = "anime";
-                            intent.putExtra("jogando", jogando);
-                            startActivity(intent);
-                        } else if (nvlAnime == 03) {
-                            Intent intent = new Intent(CategoriesActivity.this, Jogo8LetrasActivity.class);
-                            jogando = "anime";
-                            intent.putExtra("jogando", jogando);
-                            startActivity(intent);
-                        }
+                            onPause();
+                        //}
                     } else {
                         Toast.makeText(
                                 CategoriesActivity.this,
@@ -143,6 +121,21 @@ public class CategoriesActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+
+        pref = getSharedPreferences("pref", MODE_PRIVATE);
+        nvlFilme = pref.getInt("nvl_filme", 01);
+        nvlSerie = pref.getInt("nvl_serie", 01);
+        nvlAnime = pref.getInt("nvl_anime", 01);
+
+        listas = todasCategorias();
+        lista = (ListView) findViewById(R.id.list_categories);
+        adapter = new CategoryAdapter(listas, this);
+        lista.setAdapter(adapter);
     }
 
     @Override
