@@ -5,13 +5,16 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -122,6 +125,7 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
     private Button btRemoveLetters;
     private ImageView imageView;
     private ConstraintLayout rootContent;
+    private ProgressBar pb;
 
     SharedPreferences pref;
 
@@ -129,74 +133,10 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jogo_par);
+        pb = (ProgressBar) findViewById(R.id.progressBarJogoPar);
+        pb.setVisibility(View.VISIBLE);
 
-        //recuperando dados de preferencia do usuario
-        pref = getSharedPreferences("pref", MODE_PRIVATE);
-        moeda = pref.getInt("qt_moedas", 100);
-        nvlFilme = pref.getInt("nvl_filme", 01);
-        nvlSerie = pref.getInt("nvl_serie", 01);
-        nvlAnime = pref.getInt("nvl_anime", 01);
-        removeuFilme = pref.getInt("removeu_filme", 00);
-        removeuSerie = pref.getInt("removeu_serie", 00);
-        removeuAnime = pref.getInt("removeu_anime", 00);
-
-        //inserir qt moedas do usuario na tela
-        txv_coins = (TextView)findViewById(R.id.txv_coins_par);
-        txv_coins.setText(""+moeda);
-        btAddLetter = (Button) findViewById(R.id.bt_add_letter);
-        btRemoveLetters = (Button) findViewById(R.id.btn_remove_letters);
-
-        //recuperando tipo de categoria que o usuario selecionou
-        Bundle extra = getIntent().getExtras();
-        if(extra != null){
-            jogando = extra.getString("jogando");
-        }
-        toolbar = (Toolbar) findViewById(R.id.toolbar_par);
-
-        //verificando a categoria e criando a fase de acordo com o nvl do usuario na categoria
-        if(jogando.equals("filme")) {
-            toolbar.setTitle("FILME");
-            criarJogo(nvlFilme);
-        }
-        else if(jogando.equals("serie")) {
-            toolbar.setTitle("SÉRIE");
-            criarJogo(nvlSerie);
-        }
-        else if(jogando.equals("anime")) {
-            toolbar.setTitle("ANIME");
-            criarJogo(nvlAnime);
-        }
-        setSupportActionBar(toolbar);
-
-        //inserir imagem da jogada na tela
-        im_principal = (ImageView) findViewById(R.id.im_principal_par);
-        im_principal.setImageResource(img);
-
-        //Remover os botões que não irão aparecer na resposta
-        prepararBotaoOpc();
-
-        //ação ao clicar no botão de remover letras
-        btRemoveLetters.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                apagarLetras(jogando);
-            }
-        });
-
-        //ação ao clicar no botão de ganhar uma letra
-        btAddLetter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                resolverFase();
-            }
-        });
-
-        //verificar se o usuario já removeu letras
-        if (( jogando.equals("filme") && removeuFilme==1) ||
-                (jogando.equals("serie") && removeuSerie==1) ||
-                (jogando.equals("anime") && removeuAnime==1) ) {
-            jaApagouLetras();
-        }
+        new CriarFase().execute();
 
         //banner
         MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");
@@ -215,6 +155,90 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
         //implementação de onclick para o screenshoot
         findViews();
         implementClickEvents();
+    }
+
+    private class CriarFase extends AsyncTask<Void, Void, String> {
+
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        protected String doInBackground(Void... params) {
+            //recuperando dados de preferencia do usuario
+            pref = getSharedPreferences("pref", MODE_PRIVATE);
+            moeda = pref.getInt("qt_moedas", 100);
+            nvlFilme = pref.getInt("nvl_filme", 01);
+            nvlSerie = pref.getInt("nvl_serie", 01);
+            nvlAnime = pref.getInt("nvl_anime", 01);
+            removeuFilme = pref.getInt("removeu_filme", 00);
+            removeuSerie = pref.getInt("removeu_serie", 00);
+            removeuAnime = pref.getInt("removeu_anime", 00);
+
+            //inserir qt moedas do usuario na tela
+            txv_coins = (TextView)findViewById(R.id.txv_coins_par);
+            txv_coins.setText(""+moeda);
+            btAddLetter = (Button) findViewById(R.id.bt_add_letter);
+            btRemoveLetters = (Button) findViewById(R.id.btn_remove_letters);
+
+            //recuperando tipo de categoria que o usuario selecionou
+            Bundle extra = getIntent().getExtras();
+            if(extra != null){
+                jogando = extra.getString("jogando");
+            }
+            toolbar = (Toolbar) findViewById(R.id.toolbar_par);
+
+            //verificando a categoria e criando a fase de acordo com o nvl do usuario na categoria
+            if(jogando.equals("filme")) {
+                toolbar.setTitle("FILME");
+                criarJogo(nvlFilme);
+            }
+            else if(jogando.equals("serie")) {
+                toolbar.setTitle("SÉRIE");
+                criarJogo(nvlSerie);
+            }
+            else if(jogando.equals("anime")) {
+                toolbar.setTitle("ANIME");
+                criarJogo(nvlAnime);
+            }
+            setSupportActionBar(toolbar);
+
+            //inserir imagem da jogada na tela
+            im_principal = (ImageView) findViewById(R.id.im_principal_par);
+            im_principal.setImageResource(img);
+
+            //Remover os botões que não irão aparecer na resposta
+            prepararBotaoOpc();
+
+            //ação ao clicar no botão de remover letras
+            btRemoveLetters.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    apagarLetras(jogando);
+                }
+            });
+
+            //ação ao clicar no botão de ganhar uma letra
+            btAddLetter.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    resolverFase();
+                }
+            });
+
+            //verificar se o usuario já removeu letras
+            if (( jogando.equals("filme") && removeuFilme==1) ||
+                    (jogando.equals("serie") && removeuSerie==1) ||
+                    (jogando.equals("anime") && removeuAnime==1) ) {
+                jaApagouLetras();
+            }
+
+            return  "";
+        }
+
+        protected void onPostExecute(String string) {
+            super.onPostExecute(string);
+            pb.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override
@@ -983,7 +1007,7 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
         letras[15] = "M";
         letras[16] = "S";
         letras[17] = "H";
-        letras[18] = "T";
+        letras[18] = "U";
         letras[19] = "E";
 
         //inserir letras nos botões
@@ -1005,6 +1029,7 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
         letrasErradas[9] = "D";
         letrasErradas[10] = "I";
         letrasErradas[11] = "O";
+        letrasErradas[12] = "U";
     }
 
     private void criarSerie02() {
@@ -1035,7 +1060,7 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
         //iniciando o vetor com as 20 letras embaralhadas
         letras[0] = "O";
         letras[1] = "E";
-        letras[2] = "T";
+        letras[2] = "B";
         letras[3] = "E";
         letras[4] = "H";
         letras[5] = "I";
@@ -1134,6 +1159,7 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
         letrasErradas[8] = "G";
         letrasErradas[9] = "D";
         letrasErradas[10] = "I";
+        letrasErradas[11] = "M";
     }
 
     private void criarFilme03(){
@@ -2086,7 +2112,8 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
     }
 
     private void shareScreenshot(File file) {
-        Uri uri = Uri.fromFile(file);
+        //modificado para android oreo
+        Uri uri = FileProvider.getUriForFile(JogoParActivity.this, BuildConfig.APPLICATION_ID + ".provider",file);
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_SEND);
         intent.setType("image/*");

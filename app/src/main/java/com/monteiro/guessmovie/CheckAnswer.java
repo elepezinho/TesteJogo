@@ -53,7 +53,7 @@ public class CheckAnswer extends AppCompatActivity {
         }
 
         //pegando a preferencia moeda e somando +15
-        moeda = pref.getInt("qt_moedas", 500);
+        moeda = pref.getInt("qt_moedas", 100);
         moeda += 15;
 
         //pegando as preferencias nvl de jogo
