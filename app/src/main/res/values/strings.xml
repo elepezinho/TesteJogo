@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Emoji em Filmes</string>
+    <string name="app_name">Filmes Em Emoji</string>
     <string name="espaco">24dp</string>
     <string name="sem_espaco">0dp</string>
     <string name="sharing_text">Você pode me ajudar com essa fase? Baixe o Filmes em Emoji e Jogue Também: https://www.google.com.br/</string>
@@ -21,7 +21,7 @@
     <string name="description_04">Peça ajuda a seus amigos através de suas redes sociais!</string>
     <string name="description_05">Assista a vídeos e fique rico novamente!</string>
     <string name="informacoes">INFORMAÇÕES</string>
-    <string name="tutorial">Tutorial de como jogar</string>
-    <string name="questionario">Nos envie o seu feedback sobre o jogo</string>
-    <string name="versao">Versão 1.0.0</string>
+    <string name="tutorial">Tutorial de Como Jogar</string>
+    <string name="questionario">Nos Envie o Seu Feedback Sobre o Jogo</string>
+    <string name="versao">Versão Beta</string>
 </resources>

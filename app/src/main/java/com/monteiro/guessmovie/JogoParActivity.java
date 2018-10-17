@@ -762,6 +762,8 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
             criarSerie03();
         } else if (nvl == 03 && jogando.equals("anime")) {
             criarAnime03();
+        } else if (nvl == 04 && jogando.equals("filme")) {
+            criarFilme04();
         }
     }
 
@@ -1359,6 +1361,72 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
         letrasErradas[6] = "L";
         letrasErradas[7] = "D";
         letrasErradas[8] = "G";
+    }
+
+    private void criarFilme04() {
+        //inserindo o caminho da imagem
+        img = R.drawable.filme04;
+        //Iniciando o vetor da resposta correta
+        resposta[0] = "*";
+        resposta[1] = "*";
+        resposta[2] = "*";
+        resposta[3] = "H";
+        resposta[4] = "O";
+        resposta[5] = "M";
+        resposta[6] = "E";
+        resposta[7] = "M";
+        resposta[8] = "*";
+        resposta[9] = "*";
+        resposta[10] = "*";
+        resposta[11] = "*";
+        resposta[12] = "A";
+        resposta[13] = "R";
+        resposta[14] = "A";
+        resposta[15] = "N";
+        resposta[16] = "H";
+        resposta[17] = "A";
+        resposta[18] = "*";
+        resposta[19] = "*";
+
+        //iniciando o vetor com as 20 letras embaralhadas
+        letras[0] = "O";
+        letras[1] = "O";
+        letras[2] = "T";
+        letras[3] = "M";
+        letras[4] = "U";
+        letras[5] = "H";
+        letras[6] = "S";
+        letras[7] = "C";
+        letras[8] = "T";
+        letras[9] = "B";
+        letras[10] = "H";
+        letras[11] = "A";
+        letras[12] = "E";
+        letras[13] = "A";
+        letras[14] = "R";
+        letras[15] = "M";
+        letras[16] = "M";
+        letras[17] = "H";
+        letras[18] = "A";
+        letras[19] = "N";
+
+        //inserir letras nos botões
+        inserirLetrasBotoes();
+
+        //String com a resposta final
+        respostaFinal = "Homem Aranha";
+
+        //vetor com as letras erradas
+        letrasErradas[0] = "O";
+        letrasErradas[1] = "T";
+        letrasErradas[2] = "U";
+        letrasErradas[3] = "H";
+        letrasErradas[4] = "S";
+        letrasErradas[5] = "C";
+        letrasErradas[6] = "T";
+        letrasErradas[7] = "B";
+        letrasErradas[8] = "E";
+        letrasErradas[9] = "M";
     }
 
     public void inserirLetra(String letra, String lt_resposta){
@@ -2123,7 +2191,7 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
         startActivity(Intent.createChooser(intent, getString(R.string.share_title)));
     }
 
-    private void loadRewardVideoAd()
+    private void  loadRewardVideoAd()
     {
         if(!mAd.isLoaded())
         {
@@ -2164,7 +2232,7 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
     @Override
     public void onRewarded(RewardItem rewardItem) {
         //moeda = 0;
-        txv_coins.setText(""+(moeda += 10));
+        txv_coins.setText(""+(moeda += 15));
         SharedPreferences.Editor editor = pref.edit();
         editor.putInt("qt_moedas", moeda);
         editor.commit();

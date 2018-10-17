@@ -60,7 +60,7 @@ public class CheckAnswer extends AppCompatActivity {
         nvlFilme = pref.getInt("nvl_filme", 01);
         nvlSerie = pref.getInt("nvl_serie", 01);
         nvlAnime = pref.getInt("nvl_anime", 01);
-        totalFilme = pref.getInt("total_filme", 3);
+        totalFilme = pref.getInt("total_filme", 4);
         totalSerie = pref.getInt("total_serie", 3);
         totalAnime = pref.getInt("total_anime", 3);
 

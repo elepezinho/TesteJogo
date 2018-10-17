@@ -45,7 +45,7 @@ public class CategoriesActivity extends AppCompatActivity {
         nvlFilme = pref.getInt("nvl_filme", 01);
         nvlSerie = pref.getInt("nvl_serie", 01);
         nvlAnime = pref.getInt("nvl_anime", 01);
-        totalFilme = pref.getInt("total_filme", 03);
+        totalFilme = pref.getInt("total_filme", 04);
         totalSerie = pref.getInt("total_serie", 03);
         totalAnime = pref.getInt("total_anime", 03);
         moeda = pref.getInt("qt_moedas", 100);

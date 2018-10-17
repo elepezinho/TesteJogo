@@ -15,7 +15,7 @@
         android:layout_marginStart="8dp"
         android:text="@string/informacoes"
         android:textColor="@android:color/white"
-        android:textSize="24sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/txv_tutorial"
         app:layout_constraintEnd_toEndOf="parent"
