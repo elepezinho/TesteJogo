@@ -27,7 +27,7 @@
             android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/img_start"
+            android:id="@+id/img_star"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/start" />

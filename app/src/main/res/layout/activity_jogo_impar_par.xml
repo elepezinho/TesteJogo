@@ -10,10 +10,9 @@
 
     <Button
         android:id="@+id/bt_lt_19"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
         android:background="@drawable/baseletra"
         android:text="F"
         android:textColor="@android:color/white"
@@ -21,15 +20,97 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toStartOf="@+id/bt_lt_20"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/bt_lt_18"
-        app:layout_constraintTop_toBottomOf="@+id/bt_lt_9" />
+        app:layout_constraintStart_toEndOf="@+id/bt_lt_18" />
 
     <Button
         android:id="@+id/bt_lt_20"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
+        android:background="@drawable/baseletra"
+        android:text="F"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toStartOf="@+id/bt_lt_21"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/bt_lt_19" />
+
+    <Button
+        android:id="@+id/bt_lt_21"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/baseletra"
+        android:text="F"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toStartOf="@+id/bt_lt_22"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/bt_lt_20" />
+
+    <Button
+        android:id="@+id/bt_lt_22"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/baseletra"
+        android:text="F"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toStartOf="@+id/bt_lt_23"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/bt_lt_21" />
+
+    <Button
+        android:id="@+id/bt_lt_23"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/baseletra"
+        android:text="F"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toStartOf="@+id/bt_lt_24"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/bt_lt_22" />
+
+    <Button
+        android:id="@+id/bt_lt_24"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/baseletra"
+        android:text="F"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toStartOf="@+id/bt_lt_25"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/bt_lt_23" />
+
+    <Button
+        android:id="@+id/bt_lt_25"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/baseletra"
+        android:text="F"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toStartOf="@+id/bt_lt_26"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/bt_lt_24" />
+
+    <Button
+        android:id="@+id/bt_lt_26"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/baseletra"
         android:text="F"
         android:textColor="@android:color/white"
@@ -37,15 +118,13 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/bt_lt_19"
-        app:layout_constraintTop_toBottomOf="@+id/bt_lt_10" />
+        app:layout_constraintStart_toEndOf="@+id/bt_lt_25" />
 
     <Button
         android:id="@+id/bt_lt_18"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
         android:background="@drawable/baseletra"
         android:text="F"
         android:textColor="@android:color/white"
@@ -53,8 +132,7 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toStartOf="@+id/bt_lt_19"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/bt_lt_17"
-        app:layout_constraintTop_toBottomOf="@+id/bt_lt_8" />
+        app:layout_constraintStart_toEndOf="@+id/bt_lt_17" />
 
     <include
         android:id="@+id/toolbar_par"
@@ -72,13 +150,15 @@
 
     <Button
         android:id="@+id/bt_lt_1"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/baseletra"
         android:text="A"
         android:textColor="@android:color/white"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/bt_lt_14"
         app:layout_constraintEnd_toStartOf="@+id/bt_lt_2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,13 +166,15 @@
 
     <Button
         android:id="@+id/bt_lt_3"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/baseletra"
         android:text="B"
         android:textColor="@android:color/white"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/bt_lt_16"
         app:layout_constraintEnd_toStartOf="@+id/bt_lt_4"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/bt_lt_2"
@@ -100,13 +182,15 @@
 
     <Button
         android:id="@+id/bt_lt_5"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/baseletra"
         android:text="T"
         android:textColor="@android:color/white"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/bt_lt_18"
         app:layout_constraintEnd_toStartOf="@+id/bt_lt_6"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/bt_lt_4"
@@ -114,13 +198,15 @@
 
     <Button
         android:id="@+id/bt_lt_7"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/baseletra"
         android:text="M"
         android:textColor="@android:color/white"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/bt_lt_20"
         app:layout_constraintEnd_toStartOf="@+id/bt_lt_8"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/bt_lt_6"
@@ -128,13 +214,15 @@
 
     <Button
         android:id="@+id/bt_lt_9"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/baseletra"
         android:text="A"
         android:textColor="@android:color/white"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/bt_lt_22"
         app:layout_constraintEnd_toStartOf="@+id/bt_lt_10"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/bt_lt_8"
@@ -142,26 +230,25 @@
 
     <Button
         android:id="@+id/bt_lt_11"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/baseletra"
         android:text="N"
         android:textColor="@android:color/white"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintBottom_toTopOf="@+id/bt_lt_24"
         app:layout_constraintEnd_toStartOf="@+id/bt_lt_12"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_lt_1" />
+        app:layout_constraintStart_toEndOf="@+id/bt_lt_10"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
     <Button
         android:id="@+id/bt_lt_15"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
         android:background="@drawable/baseletra"
         android:text="L"
         android:textColor="@android:color/white"
@@ -169,31 +256,29 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toStartOf="@+id/bt_lt_16"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/bt_lt_14"
-        app:layout_constraintTop_toBottomOf="@+id/bt_lt_5" />
+        app:layout_constraintStart_toEndOf="@+id/bt_lt_14" />
 
     <Button
         android:id="@+id/bt_lt_13"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/baseletra"
         android:text="D"
         android:textColor="@android:color/white"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintEnd_toStartOf="@+id/bt_lt_14"
+        app:layout_constraintBottom_toTopOf="@+id/bt_lt_26"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/bt_lt_12"
-        app:layout_constraintTop_toBottomOf="@+id/bt_lt_3" />
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
     <Button
         android:id="@+id/bt_lt_16"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
         android:background="@drawable/baseletra"
         android:text="F"
         android:textColor="@android:color/white"
@@ -201,15 +286,13 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toStartOf="@+id/bt_lt_17"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/bt_lt_15"
-        app:layout_constraintTop_toBottomOf="@+id/bt_lt_6" />
+        app:layout_constraintStart_toEndOf="@+id/bt_lt_15" />
 
     <Button
         android:id="@+id/bt_lt_17"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
         android:background="@drawable/baseletra"
         android:text="F"
         android:textColor="@android:color/white"
@@ -217,18 +300,19 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toStartOf="@+id/bt_lt_18"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/bt_lt_16"
-        app:layout_constraintTop_toBottomOf="@+id/bt_lt_7" />
+        app:layout_constraintStart_toEndOf="@+id/bt_lt_16" />
 
     <Button
         android:id="@+id/bt_lt_8"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/baseletra"
         android:text="S"
         android:textColor="@android:color/white"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/bt_lt_21"
         app:layout_constraintEnd_toStartOf="@+id/bt_lt_9"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/bt_lt_7"
@@ -236,13 +320,15 @@
 
     <Button
         android:id="@+id/bt_lt_6"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/baseletra"
         android:text="P"
         android:textColor="@android:color/white"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/bt_lt_19"
         app:layout_constraintEnd_toStartOf="@+id/bt_lt_7"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/bt_lt_5"
@@ -250,13 +336,15 @@
 
     <Button
         android:id="@+id/bt_lt_4"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/baseletra"
         android:text="O"
         android:textColor="@android:color/white"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/bt_lt_17"
         app:layout_constraintEnd_toStartOf="@+id/bt_lt_5"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/bt_lt_3"
@@ -264,13 +352,15 @@
 
     <Button
         android:id="@+id/bt_lt_2"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/baseletra"
         android:text="C"
         android:textColor="@android:color/white"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/bt_lt_15"
         app:layout_constraintEnd_toStartOf="@+id/bt_lt_3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/bt_lt_1"
@@ -278,40 +368,41 @@
 
     <Button
         android:id="@+id/bt_lt_10"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/baseletra"
         android:text="R"
         android:textColor="@android:color/white"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bt_lt_23"
+        app:layout_constraintEnd_toStartOf="@+id/bt_lt_11"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/bt_lt_9"
         app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
     <Button
         android:id="@+id/bt_lt_12"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/baseletra"
         android:text="U"
         android:textColor="@android:color/white"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintBottom_toTopOf="@+id/bt_lt_25"
         app:layout_constraintEnd_toStartOf="@+id/bt_lt_13"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/bt_lt_11"
-        app:layout_constraintTop_toBottomOf="@+id/bt_lt_2" />
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
     <Button
         android:id="@+id/bt_lt_14"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
         android:background="@drawable/baseletra"
         android:text="G"
         android:textColor="@android:color/white"
@@ -319,8 +410,7 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toStartOf="@+id/bt_lt_15"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/bt_lt_13"
-        app:layout_constraintTop_toBottomOf="@+id/bt_lt_4" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView"
@@ -368,11 +458,79 @@
 
     <Button
         android:id="@+id/bt_opc_20"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
+        android:background="@color/fundoletrajogo"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        app:layout_constraintEnd_toStartOf="@+id/bt_opc_21"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/bt_opc_19" />
+
+    <Button
+        android:id="@+id/bt_opc_21"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
+        android:background="@color/fundoletrajogo"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        app:layout_constraintEnd_toStartOf="@+id/bt_opc_22"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/bt_opc_20" />
+
+    <Button
+        android:id="@+id/bt_opc_22"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
+        android:background="@color/fundoletrajogo"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        app:layout_constraintEnd_toStartOf="@+id/bt_opc_23"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/bt_opc_21" />
+
+    <Button
+        android:id="@+id/bt_opc_23"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
+        android:background="@color/fundoletrajogo"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        app:layout_constraintEnd_toStartOf="@+id/bt_opc_24"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/bt_opc_22" />
+
+    <Button
+        android:id="@+id/bt_opc_24"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
+        android:background="@color/fundoletrajogo"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        app:layout_constraintEnd_toStartOf="@+id/bt_opc_25"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/bt_opc_23" />
+
+    <Button
+        android:id="@+id/bt_opc_25"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
         android:background="@color/fundoletrajogo"
         android:textColor="@android:color/white"
         android:textSize="18sp"
@@ -380,15 +538,13 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/bt_opc_19"
-        app:layout_constraintTop_toBottomOf="@+id/bt_opc_10" />
+        app:layout_constraintStart_toEndOf="@+id/bt_opc_24" />
 
     <Button
         android:id="@+id/bt_opc_19"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
         android:background="@color/fundoletrajogo"
         android:textColor="@android:color/white"
         android:textSize="18sp"
@@ -396,15 +552,13 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintEnd_toStartOf="@+id/bt_opc_20"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/bt_opc_18"
-        app:layout_constraintTop_toBottomOf="@+id/bt_opc_9" />
+        app:layout_constraintStart_toEndOf="@+id/bt_opc_18" />
 
     <Button
         android:id="@+id/bt_opc_18"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
         android:background="@color/fundoletrajogo"
         android:textColor="@android:color/white"
         android:textSize="18sp"
@@ -412,15 +566,13 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintEnd_toStartOf="@+id/bt_opc_19"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/bt_opc_17"
-        app:layout_constraintTop_toBottomOf="@+id/bt_opc_8" />
+        app:layout_constraintStart_toEndOf="@+id/bt_opc_17" />
 
     <Button
         android:id="@+id/bt_opc_17"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
         android:background="@color/fundoletrajogo"
         android:textColor="@android:color/white"
         android:textSize="18sp"
@@ -428,15 +580,13 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintEnd_toStartOf="@+id/bt_opc_18"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/bt_opc_16"
-        app:layout_constraintTop_toBottomOf="@+id/bt_opc_7" />
+        app:layout_constraintStart_toEndOf="@+id/bt_opc_16" />
 
     <Button
         android:id="@+id/bt_opc_16"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
         android:background="@color/fundoletrajogo"
         android:textColor="@android:color/white"
         android:textSize="18sp"
@@ -444,15 +594,13 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintEnd_toStartOf="@+id/bt_opc_17"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/bt_opc_15"
-        app:layout_constraintTop_toBottomOf="@+id/bt_opc_6" />
+        app:layout_constraintStart_toEndOf="@+id/bt_opc_15" />
 
     <Button
         android:id="@+id/bt_opc_15"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
         android:background="@color/fundoletrajogo"
         android:textColor="@android:color/white"
         android:textSize="18sp"
@@ -460,98 +608,96 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintEnd_toStartOf="@+id/bt_opc_16"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/bt_opc_14"
-        app:layout_constraintTop_toBottomOf="@+id/bt_opc_5" />
+        app:layout_constraintStart_toEndOf="@+id/bt_opc_14" />
 
     <Button
         android:id="@+id/bt_opc_14"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
         android:background="@color/fundoletrajogo"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline8"
-        app:layout_constraintEnd_toStartOf="@+id/bt_opc_15"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/bt_opc_13"
-        app:layout_constraintTop_toBottomOf="@+id/bt_opc_4" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/bt_opc_13"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:background="@color/fundoletrajogo"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/guideline8"
-        app:layout_constraintEnd_toStartOf="@+id/bt_opc_14"
+        app:layout_constraintBottom_toTopOf="@+id/bt_opc_25"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/bt_opc_12"
-        app:layout_constraintTop_toBottomOf="@+id/bt_opc_3" />
+        app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
     <Button
         android:id="@+id/bt_opc_12"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:background="@color/fundoletrajogo"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        app:layout_constraintBottom_toTopOf="@+id/bt_opc_24"
         app:layout_constraintEnd_toStartOf="@+id/bt_opc_13"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/bt_opc_11"
-        app:layout_constraintTop_toBottomOf="@+id/bt_opc_2" />
+        app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
     <Button
         android:id="@+id/bt_opc_11"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@color/fundoletrajogo"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        app:layout_constraintBottom_toTopOf="@+id/bt_opc_24"
         app:layout_constraintEnd_toStartOf="@+id/bt_opc_12"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_opc_1" />
+        app:layout_constraintStart_toEndOf="@+id/bt_opc_10"
+        app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
     <Button
         android:id="@+id/bt_opc_10"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
-        android:layout_marginEnd="16dp"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:background="@color/fundoletrajogo"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bt_opc_23"
+        app:layout_constraintEnd_toStartOf="@+id/bt_opc_11"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/bt_opc_9"
         app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
     <Button
         android:id="@+id/bt_opc_9"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:background="@color/fundoletrajogo"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/bt_opc_22"
         app:layout_constraintEnd_toStartOf="@+id/bt_opc_10"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/bt_opc_8"
@@ -559,13 +705,15 @@
 
     <Button
         android:id="@+id/bt_opc_8"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:background="@color/fundoletrajogo"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/bt_opc_21"
         app:layout_constraintEnd_toStartOf="@+id/bt_opc_9"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/bt_opc_7"
@@ -573,13 +721,15 @@
 
     <Button
         android:id="@+id/bt_opc_7"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:background="@color/fundoletrajogo"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/bt_opc_20"
         app:layout_constraintEnd_toStartOf="@+id/bt_opc_8"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/bt_opc_6"
@@ -587,13 +737,15 @@
 
     <Button
         android:id="@+id/bt_opc_6"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:background="@color/fundoletrajogo"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/bt_opc_19"
         app:layout_constraintEnd_toStartOf="@+id/bt_opc_7"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/bt_opc_5"
@@ -601,13 +753,15 @@
 
     <Button
         android:id="@+id/bt_opc_5"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:background="@color/fundoletrajogo"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/bt_opc_18"
         app:layout_constraintEnd_toStartOf="@+id/bt_opc_6"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/bt_opc_4"
@@ -615,13 +769,15 @@
 
     <Button
         android:id="@+id/bt_opc_4"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:background="@color/fundoletrajogo"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/bt_opc_17"
         app:layout_constraintEnd_toStartOf="@+id/bt_opc_5"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/bt_opc_3"
@@ -629,13 +785,15 @@
 
     <Button
         android:id="@+id/bt_opc_3"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:background="@color/fundoletrajogo"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/bt_opc_15"
         app:layout_constraintEnd_toStartOf="@+id/bt_opc_4"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/bt_opc_2"
@@ -643,13 +801,15 @@
 
     <Button
         android:id="@+id/bt_opc_2"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:background="@color/fundoletrajogo"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/bt_opc_14"
         app:layout_constraintEnd_toStartOf="@+id/bt_opc_3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/bt_opc_1"
@@ -657,17 +817,16 @@
 
     <Button
         android:id="@+id/bt_opc_1"
-        android:layout_width="@dimen/lt_opc_width"
-        android:layout_height="@dimen/lt_opc_height"
-        android:layout_marginStart="16dp"
+        android:layout_width="@dimen/lt_opc_width1"
+        android:layout_height="@dimen/lt_opc_height1"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@color/fundoletrajogo"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/bt_opc_2"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintBottom_toTopOf="@+id/bt_opc_14"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
@@ -767,21 +926,6 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ProgressBar
-        android:id="@+id/progressBarJogoPar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/adView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

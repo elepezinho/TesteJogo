@@ -45,84 +45,51 @@
         </activity>
 
         <activity
-        android:name=".Jogo4LetrasActivity"
-        android:screenOrientation="portrait"
-        android:parentActivityName=".CategoriesActivity"
-        >
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".CategoriesActivity">
-        </meta-data>
-        </activity>
-
-        <activity
-            android:name=".Jogo5LetrasActivity"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".CategoriesActivity"
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".CategoriesActivity">
-            </meta-data>
-        </activity>
-
-        <activity
-            android:name=".Jogo6LetrasActivity"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".CategoriesActivity"
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".CategoriesActivity">
-            </meta-data>
-        </activity>
-
-        <activity
-            android:name=".Jogo7LetrasActivity"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".CategoriesActivity"
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".CategoriesActivity">
-            </meta-data>
-        </activity>
-
-        <activity
-            android:name=".Jogo8LetrasActivity"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".CategoriesActivity"
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".CategoriesActivity">
-            </meta-data>
-        </activity>
-
-        <activity
-            android:name=".Jogo10LetrasActivity"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".CategoriesActivity"
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".CategoriesActivity">
-            </meta-data>
-        </activity>
-
-        <activity
-            android:name=".Jogo13LetrasActivity"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".CategoriesActivity"
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".CategoriesActivity">
-            </meta-data>
-        </activity>
-
-        <activity
             android:name=".JogoParActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".CategoriesActivity"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CategoriesActivity">
+            </meta-data>
+        </activity>
+
+        <activity
+            android:name=".JogoParParActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".CategoriesActivity"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CategoriesActivity">
+            </meta-data>
+        </activity>
+
+        <activity
+            android:name=".JogoParImparActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".CategoriesActivity"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CategoriesActivity">
+            </meta-data>
+        </activity>
+
+        <activity
+            android:name=".JogoImparParActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".CategoriesActivity"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CategoriesActivity">
+            </meta-data>
+        </activity>
+
+        <activity
+            android:name=".JogoImparImparActivity"
             android:screenOrientation="portrait"
             android:parentActivityName=".CategoriesActivity"
             >

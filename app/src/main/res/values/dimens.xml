@@ -2,4 +2,7 @@
 <resources>
     <dimen name="lt_opc_width">28dp</dimen>
     <dimen name="lt_opc_height">33dp</dimen>
+
+    <dimen name="lt_opc_width1">24dp</dimen>
+    <dimen name="lt_opc_height1">29dp</dimen>
 </resources>

@@ -29,7 +29,7 @@ import com.monteiro.guessmovie.screenshot.ScreenshotUtils;
 
 import java.io.File;
 
-public class JogoParActivity extends AppCompatActivity implements RewardedVideoAdListener, View.OnClickListener {
+public class JogoImparImparActivity extends AppCompatActivity implements RewardedVideoAdListener, View.OnClickListener {
 
     //imagem da rodada
     private ImageView im_principal;
@@ -55,6 +55,12 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
     private Button bt_opc_18;
     private Button bt_opc_19;
     private Button bt_opc_20;
+    private Button bt_opc_21;
+    private Button bt_opc_22;
+    private Button bt_opc_23;
+    private Button bt_opc_24;
+    private Button bt_opc_25;
+    private Button bt_opc_26;
 
     //botões das letras sortiadas
     private Button bt_lt_1;
@@ -77,6 +83,12 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
     private Button bt_lt_18;
     private Button bt_lt_19;
     private Button bt_lt_20;
+    private Button bt_lt_21;
+    private Button bt_lt_22;
+    private Button bt_lt_23;
+    private Button bt_lt_24;
+    private Button bt_lt_25;
+    private Button bt_lt_26;
 
     //controle da letra que está na respostaUsuario
     private String lt1_resposta;
@@ -99,14 +111,20 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
     private String lt18_resposta;
     private String lt19_resposta;
     private String lt20_resposta;
+    private String lt21_resposta;
+    private String lt22_resposta;
+    private String lt23_resposta;
+    private String lt24_resposta;
+    private String lt25_resposta;
+    private String lt26_resposta;
 
     private Toolbar toolbar;
 
-    private String[] respostaUsuario = new String[20];
-    private String[] resposta = new String[20];
-    private String[] letras = new String[20];
+    private String[] respostaUsuario = new String[26];
+    private String[] resposta = new String[26];
+    private String[] letras = new String[26];
     private String respostaFinal;
-    private String[] letrasErradas = new String[20];
+    private String[] letrasErradas = new String[26];
 
     private RewardedVideoAd mAd;
     private TextView txv_coins;
@@ -132,9 +150,7 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_jogo_par);
-        pb = (ProgressBar) findViewById(R.id.progressBarJogoPar);
-        pb.setVisibility(View.VISIBLE);
+        setContentView(R.layout.activity_jogo_impar_impar);
 
         new CriarFase().execute();
 
@@ -237,7 +253,6 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
 
         protected void onPostExecute(String string) {
             super.onPostExecute(string);
-            pb.setVisibility(View.GONE);
         }
     }
 
@@ -251,8 +266,7 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
     @Override
     public void onStart(){
         super.onStart();
-
-        //ação de clicar em umas das 16 letras
+        //ação de clicar em umas das 26 letras
         bt_lt_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -263,7 +277,6 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
                 verificarEspacoBranco();
             }
         });
-
         bt_lt_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -274,7 +287,6 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
                 verificarEspacoBranco();
             }
         });
-
         bt_lt_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -285,7 +297,6 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
                 verificarEspacoBranco();
             }
         });
-
         bt_lt_4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -296,7 +307,6 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
                 verificarEspacoBranco();
             }
         });
-
         bt_lt_5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -307,7 +317,6 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
                 verificarEspacoBranco();
             }
         });
-
         bt_lt_6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -318,7 +327,6 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
                 verificarEspacoBranco();
             }
         });
-
         bt_lt_7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -329,7 +337,6 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
                 verificarEspacoBranco();
             }
         });
-
         bt_lt_8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -340,7 +347,6 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
                 verificarEspacoBranco();
             }
         });
-
         bt_lt_9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -351,7 +357,6 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
                 verificarEspacoBranco();
             }
         });
-
         bt_lt_10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -362,7 +367,6 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
                 verificarEspacoBranco();
             }
         });
-
         bt_lt_11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -373,7 +377,6 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
                 verificarEspacoBranco();
             }
         });
-
         bt_lt_12.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -384,7 +387,6 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
                 verificarEspacoBranco();
             }
         });
-
         bt_lt_13.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -395,7 +397,6 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
                 verificarEspacoBranco();
             }
         });
-
         bt_lt_14.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -406,7 +407,6 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
                 verificarEspacoBranco();
             }
         });
-
         bt_lt_15.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -417,7 +417,6 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
                 verificarEspacoBranco();
             }
         });
-
         bt_lt_16.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -428,7 +427,6 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
                 verificarEspacoBranco();
             }
         });
-
         bt_lt_17.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -439,7 +437,6 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
                 verificarEspacoBranco();
             }
         });
-
         bt_lt_18.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -450,7 +447,6 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
                 verificarEspacoBranco();
             }
         });
-
         bt_lt_19.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -461,13 +457,72 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
                 verificarEspacoBranco();
             }
         });
-
         bt_lt_20.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(verificarEspacoBranco()) {
                     bt_lt_20.setVisibility(View.INVISIBLE);
                     inserirLetra(letras[19], "lt20");
+                }
+                verificarEspacoBranco();
+            }
+        });
+        bt_lt_21.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(verificarEspacoBranco()) {
+                    bt_lt_21.setVisibility(View.INVISIBLE);
+                    inserirLetra(letras[20], "lt21");
+                }
+                verificarEspacoBranco();
+            }
+        });
+        bt_lt_22.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(verificarEspacoBranco()) {
+                    bt_lt_22.setVisibility(View.INVISIBLE);
+                    inserirLetra(letras[21], "lt22");
+                }
+                verificarEspacoBranco();
+            }
+        });
+        bt_lt_23.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(verificarEspacoBranco()) {
+                    bt_lt_23.setVisibility(View.INVISIBLE);
+                    inserirLetra(letras[22], "lt23");
+                }
+                verificarEspacoBranco();
+            }
+        });
+        bt_lt_24.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(verificarEspacoBranco()) {
+                    bt_lt_24.setVisibility(View.INVISIBLE);
+                    inserirLetra(letras[23], "lt24");
+                }
+                verificarEspacoBranco();
+            }
+        });
+        bt_lt_25.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(verificarEspacoBranco()) {
+                    bt_lt_25.setVisibility(View.INVISIBLE);
+                    inserirLetra(letras[24], "lt25");
+                }
+                verificarEspacoBranco();
+            }
+        });
+        bt_lt_26.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(verificarEspacoBranco()) {
+                    bt_lt_26.setVisibility(View.INVISIBLE);
+                    inserirLetra(letras[25], "lt26");
                 }
                 verificarEspacoBranco();
             }
@@ -662,6 +717,62 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
                 verificarEspacoBranco();
             }
         });
+        bt_opc_21.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bt_opc_21.setText("");
+                removerLetra(lt21_resposta);
+                respostaUsuario[20] = null;
+                verificarEspacoBranco();
+            }
+        });
+        bt_opc_22.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bt_opc_22.setText("");
+                removerLetra(lt22_resposta);
+                respostaUsuario[21] = null;
+                verificarEspacoBranco();
+            }
+        });
+
+        bt_opc_23.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bt_opc_23.setText("");
+                removerLetra(lt23_resposta);
+                respostaUsuario[22] = null;
+                verificarEspacoBranco();
+            }
+        });
+
+        bt_opc_24.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bt_opc_24.setText("");
+                removerLetra(lt24_resposta);
+                respostaUsuario[23] = null;
+                verificarEspacoBranco();
+            }
+        });
+        bt_opc_25.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bt_opc_25.setText("");
+                removerLetra(lt25_resposta);
+                respostaUsuario[24] = null;
+                verificarEspacoBranco();
+            }
+        });
+        bt_opc_26.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bt_opc_26.setText("");
+                removerLetra(lt26_resposta);
+                respostaUsuario[25] = null;
+                verificarEspacoBranco();
+            }
+        });
     }
 
     private void inserirLetrasBotoes() {
@@ -686,6 +797,12 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
         bt_lt_18.setText(letras[17]);
         bt_lt_19.setText(letras[18]);
         bt_lt_20.setText(letras[19]);
+        bt_lt_21.setText(letras[20]);
+        bt_lt_22.setText(letras[21]);
+        bt_lt_23.setText(letras[22]);
+        bt_lt_24.setText(letras[23]);
+        bt_lt_25.setText(letras[24]);
+        bt_lt_26.setText(letras[25]);
     }
 
     private void criarBotoesLetras() {
@@ -710,6 +827,12 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
         bt_lt_18 = (Button) findViewById(R.id.bt_lt_18);
         bt_lt_19 = (Button) findViewById(R.id.bt_lt_19);
         bt_lt_20 = (Button) findViewById(R.id.bt_lt_20);
+        bt_lt_21 = (Button) findViewById(R.id.bt_lt_21);
+        bt_lt_22 = (Button) findViewById(R.id.bt_lt_22);
+        bt_lt_23 = (Button) findViewById(R.id.bt_lt_23);
+        bt_lt_24 = (Button) findViewById(R.id.bt_lt_24);
+        bt_lt_25 = (Button) findViewById(R.id.bt_lt_25);
+        bt_lt_26 = (Button) findViewById(R.id.bt_lt_26);
     }
 
     private void criarBotoesOpcoes() {
@@ -734,6 +857,12 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
         bt_opc_18 = (Button) findViewById(R.id.bt_opc_18);
         bt_opc_19 = (Button) findViewById(R.id.bt_opc_19);
         bt_opc_20 = (Button) findViewById(R.id.bt_opc_20);
+        bt_opc_21 = (Button) findViewById(R.id.bt_opc_21);
+        bt_opc_22 = (Button) findViewById(R.id.bt_opc_22);
+        bt_opc_23 = (Button) findViewById(R.id.bt_opc_23);
+        bt_opc_24 = (Button) findViewById(R.id.bt_opc_24);
+        bt_opc_25 = (Button) findViewById(R.id.bt_opc_25);
+        bt_opc_26 = (Button) findViewById(R.id.bt_opc_26);
     }
 
     private void criarJogo(int nvl) {
@@ -772,15 +901,15 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
         img = R.drawable.filme01;
         //Iniciando o vetor da resposta correta
         resposta[0] = "*";
-        resposta[1] = "T";
-        resposta[2] = "I";
+        resposta[1] = "*";
+        resposta[2] = "*";
         resposta[3] = "T";
-        resposta[4] = "A";
-        resposta[5] = "N";
-        resposta[6] = "I";
-        resposta[7] = "C";
-        resposta[8] = "*";
-        resposta[9] = "*";
+        resposta[4] = "I";
+        resposta[5] = "T";
+        resposta[6] = "A";
+        resposta[7] = "N";
+        resposta[8] = "I";
+        resposta[9] = "C";
         resposta[10] = "*";
         resposta[11] = "*";
         resposta[12] = "*";
@@ -791,6 +920,11 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
         resposta[17] = "*";
         resposta[18] = "*";
         resposta[19] = "*";
+        resposta[20] = "*";
+        resposta[21] = "*";
+        resposta[22] = "*";
+        resposta[23] = "*";
+        resposta[24] = "*";
 
         //iniciando o vetor com as 20 letras embaralhadas
         letras[0] = "O";
@@ -811,8 +945,14 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
         letras[15] = "M";
         letras[16] = "S";
         letras[17] = "H";
-        letras[18] = "H";
+        letras[18] = "D";
         letras[19] = "E";
+        letras[20] = "M";
+        letras[21] = "S";
+        letras[22] = "H";
+        letras[23] = "S";
+        letras[24] = "O";
+        letras[25] = "B";
 
         //inserir letras nos botões
         inserirLetrasBotoes();
@@ -1040,24 +1180,30 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
         //Iniciando o vetor da resposta correta
         resposta[0] = "*";
         resposta[1] = "*";
-        resposta[2] = "G";
-        resposta[3] = "A";
-        resposta[4] = "M";
-        resposta[5] = "E";
-        resposta[6] = "*";
-        resposta[7] = "O";
-        resposta[8] = "F";
-        resposta[9] = "*";
+        resposta[2] = "*";
+        resposta[3] = "G";
+        resposta[4] = "A";
+        resposta[5] = "M";
+        resposta[6] = "E";
+        resposta[7] = "*";
+        resposta[8] = "O";
+        resposta[9] = "F";
         resposta[10] = "*";
         resposta[11] = "*";
-        resposta[12] = "T";
-        resposta[13] = "H";
-        resposta[14] = "R";
-        resposta[15] = "O";
-        resposta[16] = "N";
-        resposta[17] = "E";
-        resposta[18] = "S";
-        resposta[19] = "*";
+        resposta[12] = "*";
+        resposta[13] = "*";
+        resposta[14] = "*";
+        resposta[15] = "*";
+        resposta[16] = "T";
+        resposta[17] = "H";
+        resposta[18] = "R";
+        resposta[19] = "O";
+        resposta[20] = "N";
+        resposta[21] = "E";
+        resposta[22] = "S";
+        resposta[23] = "*";
+        resposta[24] = "*";
+        resposta[25] = "*";
 
         //iniciando o vetor com as 20 letras embaralhadas
         letras[0] = "O";
@@ -1080,6 +1226,12 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
         letras[17] = "P";
         letras[18] = "U";
         letras[19] = "D";
+        letras[20] = "U";
+        letras[21] = "I";
+        letras[22] = "D";
+        letras[23] = "C";
+        letras[24] = "B";
+        letras[25] = "P";
 
         //inserir letras nos botões
         inserirLetrasBotoes();
@@ -1550,6 +1702,42 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
             lt20_resposta = lt_resposta;
             verificarResposta();
         }
+        else if (respostaUsuario[20]==null) {
+            respostaUsuario[20] = letra;
+            bt_opc_21.setText(letra);
+            lt21_resposta = lt_resposta;
+            verificarResposta();
+        }
+        else if (respostaUsuario[21]==null) {
+            respostaUsuario[21] = letra;
+            bt_opc_22.setText(letra);
+            lt22_resposta = lt_resposta;
+            verificarResposta();
+        }
+        else if (respostaUsuario[22]==null) {
+            respostaUsuario[22] = letra;
+            bt_opc_23.setText(letra);
+            lt23_resposta = lt_resposta;
+            verificarResposta();
+        }
+        else if (respostaUsuario[23]==null) {
+            respostaUsuario[23] = letra;
+            bt_opc_24.setText(letra);
+            lt24_resposta = lt_resposta;
+            verificarResposta();
+        }
+        else if (respostaUsuario[24]==null) {
+            respostaUsuario[24] = letra;
+            bt_opc_25.setText(letra);
+            lt25_resposta = lt_resposta;
+            verificarResposta();
+        }
+        else if (respostaUsuario[25]==null) {
+            respostaUsuario[25] = letra;
+            bt_opc_26.setText(letra);
+            lt26_resposta = lt_resposta;
+            verificarResposta();
+        }
     }
 
     private void removerLetra(String lt_resposta) {
@@ -1612,6 +1800,24 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
         }
         else if(lt_resposta=="lt20"){
             bt_lt_20.setVisibility(View.VISIBLE);
+        }
+        else if(lt_resposta=="lt21"){
+            bt_lt_21.setVisibility(View.VISIBLE);
+        }
+        else if(lt_resposta=="lt22"){
+            bt_lt_22.setVisibility(View.VISIBLE);
+        }
+        else if(lt_resposta=="lt23"){
+            bt_lt_23.setVisibility(View.VISIBLE);
+        }
+        else if(lt_resposta=="lt24"){
+            bt_lt_24.setVisibility(View.VISIBLE);
+        }
+        else if(lt_resposta=="lt25"){
+            bt_lt_25.setVisibility(View.VISIBLE);
+        }
+        else if(lt_resposta=="lt26"){
+            bt_lt_26.setVisibility(View.VISIBLE);
         }
     }
 
@@ -1696,6 +1902,30 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
             bt_opc_20.setVisibility(View.INVISIBLE);
             respostaUsuario[19] = "*";
         }
+        if (resposta[20] == "*"){
+            bt_opc_21.setVisibility(View.INVISIBLE);
+            respostaUsuario[20] = "*";
+        }
+        if (resposta[21] == "*"){
+            bt_opc_22.setVisibility(View.INVISIBLE);
+            respostaUsuario[21] = "*";
+        }
+        if (resposta[22] == "*"){
+            bt_opc_23.setVisibility(View.INVISIBLE);
+            respostaUsuario[22] = "*";
+        }
+        if (resposta[23] == "*"){
+            bt_opc_24.setVisibility(View.INVISIBLE);
+            respostaUsuario[23] = "*";
+        }
+        if (resposta[24] == "*"){
+            bt_opc_25.setVisibility(View.INVISIBLE);
+            respostaUsuario[24] = "*";
+        }
+        if (resposta[25] == "*"){
+            bt_opc_26.setVisibility(View.INVISIBLE);
+            respostaUsuario[25] = "*";
+        }
     }
 
     private void verificarResposta(){
@@ -1708,7 +1938,7 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
             editor.commit();
 
             Intent intent;
-            intent = new Intent(JogoParActivity.this, CheckAnswer.class);
+            intent = new Intent(JogoImparImparActivity.this, CheckAnswer.class);
             intent.putExtra("resposta", respostaFinal);
             intent.putExtra("jogando", jogando);
             startActivity( intent );
@@ -1737,7 +1967,13 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
                 respostaUsuario[16] == resposta[16] &&
                 respostaUsuario[17] == resposta[17] &&
                 respostaUsuario[18] == resposta[18] &&
-                respostaUsuario[19] == resposta[19]) {
+                respostaUsuario[19] == resposta[19] &&
+                respostaUsuario[20] == resposta[20] &&
+                respostaUsuario[21] == resposta[21] &&
+                respostaUsuario[22] == resposta[22] &&
+                respostaUsuario[23] == resposta[23] &&
+                respostaUsuario[24] == resposta[24] &&
+                respostaUsuario[25] == resposta[25]) {
             return true;
         }
         else return false;
@@ -1764,7 +2000,13 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
                 respostaUsuario[16] == null ||
                 respostaUsuario[17] == null ||
                 respostaUsuario[18] == null ||
-                respostaUsuario[19] == null){
+                respostaUsuario[19] == null ||
+                respostaUsuario[20] == null ||
+                respostaUsuario[21] == null ||
+                respostaUsuario[22] == null ||
+                respostaUsuario[23] == null ||
+                respostaUsuario[24] == null ||
+                respostaUsuario[25] == null){
             pintarDeBranco();
             return true;
         }
@@ -1799,6 +2041,12 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
         bt_opc_18.setTextColor(Color.WHITE);
         bt_opc_19.setTextColor(Color.WHITE);
         bt_opc_20.setTextColor(Color.WHITE);
+        bt_opc_21.setTextColor(Color.WHITE);
+        bt_opc_22.setTextColor(Color.WHITE);
+        bt_opc_23.setTextColor(Color.WHITE);
+        bt_opc_24.setTextColor(Color.WHITE);
+        bt_opc_25.setTextColor(Color.WHITE);
+        bt_opc_26.setTextColor(Color.WHITE);
     }
 
     private void pintarDeVermelho(){
@@ -1823,6 +2071,12 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
         bt_opc_18.setTextColor(Color.RED);
         bt_opc_19.setTextColor(Color.RED);
         bt_opc_20.setTextColor(Color.RED);
+        bt_opc_21.setTextColor(Color.RED);
+        bt_opc_22.setTextColor(Color.RED);
+        bt_opc_23.setTextColor(Color.RED);
+        bt_opc_24.setTextColor(Color.RED);
+        bt_opc_25.setTextColor(Color.RED);
+        bt_opc_26.setTextColor(Color.RED);
     }
 
     private void pintarDeVerde(){
@@ -1847,6 +2101,12 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
         bt_opc_18.setTextColor(Color.GREEN);
         bt_opc_19.setTextColor(Color.GREEN);
         bt_opc_20.setTextColor(Color.GREEN);
+        bt_opc_21.setTextColor(Color.GREEN);
+        bt_opc_22.setTextColor(Color.GREEN);
+        bt_opc_23.setTextColor(Color.GREEN);
+        bt_opc_24.setTextColor(Color.GREEN);
+        bt_opc_25.setTextColor(Color.GREEN);
+        bt_opc_26.setTextColor(Color.GREEN);
     }
 
     private void resolverFase(){
@@ -1876,6 +2136,12 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
             respostaUsuario[17] = resposta[17];
             respostaUsuario[18] = resposta[18];
             respostaUsuario[19] = resposta[19];
+            respostaUsuario[20] = resposta[20];
+            respostaUsuario[21] = resposta[21];
+            respostaUsuario[22] = resposta[22];
+            respostaUsuario[23] = resposta[23];
+            respostaUsuario[24] = resposta[24];
+            respostaUsuario[25] = resposta[25];
 
             bt_opc_1.setText(resposta[0]);
             bt_opc_2.setText(resposta[1]);
@@ -1897,12 +2163,18 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
             bt_opc_18.setText(resposta[17]);
             bt_opc_19.setText(resposta[18]);
             bt_opc_20.setText(resposta[19]);
+            bt_opc_21.setText(resposta[20]);
+            bt_opc_22.setText(resposta[21]);
+            bt_opc_23.setText(resposta[22]);
+            bt_opc_24.setText(resposta[23]);
+            bt_opc_25.setText(resposta[24]);
+            bt_opc_26.setText(resposta[25]);
             pintarDeVerde();
             verificarResposta();
 
         } else {
             Toast.makeText(
-                    JogoParActivity.this,
+                    JogoImparImparActivity.this,
                     "Você não tem moedas suficientes =(\nAssista a vídeos para receber moedas =)",
                     Toast.LENGTH_LONG
             ).show();
@@ -1931,6 +2203,12 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
         bt_lt_18.setVisibility(View.VISIBLE);
         bt_lt_19.setVisibility(View.VISIBLE);
         bt_lt_20.setVisibility(View.VISIBLE);
+        bt_lt_21.setVisibility(View.VISIBLE);
+        bt_lt_22.setVisibility(View.VISIBLE);
+        bt_lt_23.setVisibility(View.VISIBLE);
+        bt_lt_24.setVisibility(View.VISIBLE);
+        bt_lt_25.setVisibility(View.VISIBLE);
+        bt_lt_26.setVisibility(View.VISIBLE);
 
         //limpando todas as letras da resposta na tela
         bt_opc_1.setText(null);
@@ -1953,6 +2231,12 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
         bt_opc_18.setText(null);
         bt_opc_19.setText(null);
         bt_opc_20.setText(null);
+        bt_opc_21.setText(null);
+        bt_opc_22.setText(null);
+        bt_opc_23.setText(null);
+        bt_opc_24.setText(null);
+        bt_opc_25.setText(null);
+        bt_opc_26.setText(null);
     }
 
     private void jaApagouLetras() {
@@ -2017,11 +2301,29 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
             if(bt_lt_20.getText().equals(c)){
                 bt_lt_20.setVisibility(View.INVISIBLE);
             }
+            if(bt_lt_21.getText().equals(c)){
+                bt_lt_21.setVisibility(View.INVISIBLE);
+            }
+            if(bt_lt_22.getText().equals(c)){
+                bt_lt_22.setVisibility(View.INVISIBLE);
+            }
+            if(bt_lt_23.getText().equals(c)){
+                bt_lt_23.setVisibility(View.INVISIBLE);
+            }
+            if(bt_lt_24.getText().equals(c)){
+                bt_lt_24.setVisibility(View.INVISIBLE);
+            }
+            if(bt_lt_25.getText().equals(c)){
+                bt_lt_25.setVisibility(View.INVISIBLE);
+            }
+            if(bt_lt_26.getText().equals(c)){
+                bt_lt_26.setVisibility(View.INVISIBLE);
+            }
         }
     }
 
     private void apagarRespostaUsuario(){
-        for (int i = 0; i < 20;i++){
+        for (int i = 0; i < 26;i++){
             respostaUsuario[i] = null;
         }
     }
@@ -2114,11 +2416,29 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
                     if(bt_lt_20.getText().equals(c)){
                         bt_lt_20.setVisibility(View.INVISIBLE);
                     }
+                    if(bt_lt_21.getText().equals(c)){
+                        bt_lt_21.setVisibility(View.INVISIBLE);
+                    }
+                    if(bt_lt_22.getText().equals(c)){
+                        bt_lt_22.setVisibility(View.INVISIBLE);
+                    }
+                    if(bt_lt_23.getText().equals(c)){
+                        bt_lt_23.setVisibility(View.INVISIBLE);
+                    }
+                    if(bt_lt_24.getText().equals(c)){
+                        bt_lt_24.setVisibility(View.INVISIBLE);
+                    }
+                    if(bt_lt_25.getText().equals(c)){
+                        bt_lt_25.setVisibility(View.INVISIBLE);
+                    }
+                    if(bt_lt_26.getText().equals(c)){
+                        bt_lt_26.setVisibility(View.INVISIBLE);
+                    }
                 }
             }
             else {
                 Toast.makeText(
-                        JogoParActivity.this,
+                        JogoImparImparActivity.this,
                         "Você não tem moedas suficientes =(\nAssista a vídeos para receber moedas =)",
                         Toast.LENGTH_LONG
                 ).show();
@@ -2126,7 +2446,7 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
         }
         else {
             Toast.makeText(
-                    JogoParActivity.this,
+                    JogoImparImparActivity.this,
                     "Você já removeu as letras erradas dessa fase.",
                     Toast.LENGTH_LONG
             ).show();
@@ -2181,7 +2501,7 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
 
     private void shareScreenshot(File file) {
         //modificado para android oreo
-        Uri uri = FileProvider.getUriForFile(JogoParActivity.this, BuildConfig.APPLICATION_ID + ".provider",file);
+        Uri uri = FileProvider.getUriForFile(JogoImparImparActivity.this, BuildConfig.APPLICATION_ID + ".provider",file);
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_SEND);
         intent.setType("image/*");

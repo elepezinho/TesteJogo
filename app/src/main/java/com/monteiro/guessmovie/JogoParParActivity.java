@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -29,7 +30,7 @@ import com.monteiro.guessmovie.screenshot.ScreenshotUtils;
 
 import java.io.File;
 
-public class JogoParActivity extends AppCompatActivity implements RewardedVideoAdListener, View.OnClickListener {
+public class JogoParParActivity extends AppCompatActivity implements RewardedVideoAdListener, View.OnClickListener {
 
     //imagem da rodada
     private ImageView im_principal;
@@ -125,6 +126,8 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
     private Button btRemoveLetters;
     private ImageView imageView;
     private ConstraintLayout rootContent;
+    private FrameLayout fm;
+    private FrameLayout fmPrincipal;
     private ProgressBar pb;
 
     SharedPreferences pref;
@@ -132,9 +135,9 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_jogo_par);
-        pb = (ProgressBar) findViewById(R.id.progressBarJogoPar);
-        pb.setVisibility(View.VISIBLE);
+        setContentView(R.layout.activity_jogo_par_par);
+        fm = (FrameLayout) findViewById(R.id.frame_progress_bar);
+        fmPrincipal = (FrameLayout) findViewById(R.id.frame_conteudo_principal);
 
         new CriarFase().execute();
 
@@ -237,7 +240,8 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
 
         protected void onPostExecute(String string) {
             super.onPostExecute(string);
-            pb.setVisibility(View.GONE);
+            fm.setVisibility(View.INVISIBLE);
+            fmPrincipal.setVisibility(View.VISIBLE);
         }
     }
 
@@ -1708,7 +1712,7 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
             editor.commit();
 
             Intent intent;
-            intent = new Intent(JogoParActivity.this, CheckAnswer.class);
+            intent = new Intent(JogoParParActivity.this, CheckAnswer.class);
             intent.putExtra("resposta", respostaFinal);
             intent.putExtra("jogando", jogando);
             startActivity( intent );
@@ -1902,7 +1906,7 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
 
         } else {
             Toast.makeText(
-                    JogoParActivity.this,
+                    JogoParParActivity.this,
                     "Você não tem moedas suficientes =(\nAssista a vídeos para receber moedas =)",
                     Toast.LENGTH_LONG
             ).show();
@@ -2118,7 +2122,7 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
             }
             else {
                 Toast.makeText(
-                        JogoParActivity.this,
+                        JogoParParActivity.this,
                         "Você não tem moedas suficientes =(\nAssista a vídeos para receber moedas =)",
                         Toast.LENGTH_LONG
                 ).show();
@@ -2126,7 +2130,7 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
         }
         else {
             Toast.makeText(
-                    JogoParActivity.this,
+                    JogoParParActivity.this,
                     "Você já removeu as letras erradas dessa fase.",
                     Toast.LENGTH_LONG
             ).show();
@@ -2181,7 +2185,7 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
 
     private void shareScreenshot(File file) {
         //modificado para android oreo
-        Uri uri = FileProvider.getUriForFile(JogoParActivity.this, BuildConfig.APPLICATION_ID + ".provider",file);
+        Uri uri = FileProvider.getUriForFile(JogoParParActivity.this, BuildConfig.APPLICATION_ID + ".provider",file);
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_SEND);
         intent.setType("image/*");

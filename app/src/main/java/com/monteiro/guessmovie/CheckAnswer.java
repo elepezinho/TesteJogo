@@ -99,14 +99,21 @@ public class CheckAnswer extends AppCompatActivity {
             public void onClick(View view) {
                 if(jogando.equals("filme")) {
                     if (verificarAcertosFilme()) {
-                        //if (nvlFilme == 01 || nvlFilme == 03 || nvlFilme ==  02) {
+                        if (nvlFilme == 01) {
+                            Intent intent = new Intent(CheckAnswer.this, JogoImparParActivity.class);
+                            jogando = "filme";
+                            intent.putExtra("jogando", jogando);
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
+                            finish();
+                        } else if (nvlFilme == 02 || nvlFilme == 03 || nvlFilme == 04) {
                             Intent intent = new Intent(CheckAnswer.this, JogoParActivity.class);
                             jogando = "filme";
                             intent.putExtra("jogando", jogando);
                             startActivity(intent);
                             overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                             finish();
-                        //}
+                        }
                     }
                     else{
                         Toast.makeText(
@@ -118,14 +125,21 @@ public class CheckAnswer extends AppCompatActivity {
                 }
                 else if(jogando.equals("serie")) {
                     if (verificarAcertosSerie()) {
-                        //if (nvlSerie == 01 || nvlSerie == 02 || nvlSerie == 03) {
+                        if (nvlSerie == 01  || nvlSerie == 03) {
                             Intent intent = new Intent(CheckAnswer.this, JogoParActivity.class);
                             jogando = "serie";
                             intent.putExtra("jogando", jogando);
                             startActivity(intent);
                             overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                             finish();
-                        //}
+                        } else if (nvlSerie == 02) {
+                            Intent intent = new Intent(CheckAnswer.this, JogoImparImparActivity.class);
+                            jogando = "serie";
+                            intent.putExtra("jogando", jogando);
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
+                            finish();
+                        }
                     }
                     else{
                         Toast.makeText(
@@ -180,7 +194,7 @@ public class CheckAnswer extends AppCompatActivity {
     }
 
     private boolean verificarAcertosFilme() {
-        if(nvlFilme%2==0){
+        if(nvlFilme%3==0){
             exibirPropaganda();
         }
         if (nvlFilme <= totalFilme) return true;
