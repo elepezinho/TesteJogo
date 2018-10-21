@@ -99,14 +99,14 @@ public class CheckAnswer extends AppCompatActivity {
             public void onClick(View view) {
                 if(jogando.equals("filme")) {
                     if (verificarAcertosFilme()) {
-                        if (nvlFilme == 01) {
+                        if (nvlFilme == 01 || nvlFilme == 04) {
                             Intent intent = new Intent(CheckAnswer.this, JogoImparParActivity.class);
                             jogando = "filme";
                             intent.putExtra("jogando", jogando);
                             startActivity(intent);
                             overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                             finish();
-                        } else if (nvlFilme == 02 || nvlFilme == 03 || nvlFilme == 04) {
+                        } else if (nvlFilme == 02 || nvlFilme == 03) {
                             Intent intent = new Intent(CheckAnswer.this, JogoParActivity.class);
                             jogando = "filme";
                             intent.putExtra("jogando", jogando);

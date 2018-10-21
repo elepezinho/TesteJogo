@@ -1499,45 +1499,57 @@ public class JogoImparParActivity extends AppCompatActivity implements RewardedV
         resposta[0] = "*";
         resposta[1] = "*";
         resposta[2] = "*";
-        resposta[3] = "H";
-        resposta[4] = "O";
-        resposta[5] = "M";
-        resposta[6] = "E";
-        resposta[7] = "M";
-        resposta[8] = "*";
+        resposta[3] = "*";
+        resposta[4] = "H";
+        resposta[5] = "O";
+        resposta[6] = "M";
+        resposta[7] = "E";
+        resposta[8] = "M";
         resposta[9] = "*";
         resposta[10] = "*";
         resposta[11] = "*";
-        resposta[12] = "A";
-        resposta[13] = "R";
-        resposta[14] = "A";
-        resposta[15] = "N";
-        resposta[16] = "H";
-        resposta[17] = "A";
-        resposta[18] = "*";
-        resposta[19] = "*";
+        resposta[12] = "*";
+
+        resposta[13] = "*";
+        resposta[14] = "*";
+        resposta[15] = "*";
+        resposta[16] = "A";
+        resposta[17] = "R";
+        resposta[18] = "A";
+        resposta[19] = "N";
+        resposta[20] = "H";
+        resposta[21] = "A";
+        resposta[22] = "*";
+        resposta[23] = "*";
+        resposta[24] = "*";
 
         //iniciando o vetor com as 20 letras embaralhadas
-        letras[0] = "O";
-        letras[1] = "O";
-        letras[2] = "T";
-        letras[3] = "M";
-        letras[4] = "U";
-        letras[5] = "H";
-        letras[6] = "S";
+        letras[0] = "H";
+        letras[1] = "I";
+        letras[2] = "O";
+        letras[3] = "E";
+        letras[4] = "M";
+        letras[5] = "I";
+        letras[6] = "E";
         letras[7] = "C";
-        letras[8] = "T";
+        letras[8] = "M";
         letras[9] = "B";
-        letras[10] = "H";
+        letras[10] = "A";
         letras[11] = "A";
-        letras[12] = "E";
+        letras[12] = "R";
         letras[13] = "A";
-        letras[14] = "R";
-        letras[15] = "M";
-        letras[16] = "M";
-        letras[17] = "H";
-        letras[18] = "A";
-        letras[19] = "N";
+        letras[14] = "A";
+        letras[15] = "N";
+        letras[16] = "N";
+        letras[17] = "A";
+        letras[18] = "H";
+        letras[19] = "A";
+        letras[20] = "M";
+        letras[21] = "S";
+        letras[22] = "H";
+        letras[23] = "S";
+        letras[24] = "O";
+        letras[25] = "B";
 
         //inserir letras nos botões
         inserirLetrasBotoes();
@@ -1546,16 +1558,21 @@ public class JogoImparParActivity extends AppCompatActivity implements RewardedV
         respostaFinal = "Homem Aranha";
 
         //vetor com as letras erradas
-        letrasErradas[0] = "O";
-        letrasErradas[1] = "T";
-        letrasErradas[2] = "U";
-        letrasErradas[3] = "H";
-        letrasErradas[4] = "S";
-        letrasErradas[5] = "C";
-        letrasErradas[6] = "T";
-        letrasErradas[7] = "B";
-        letrasErradas[8] = "E";
-        letrasErradas[9] = "M";
+        letras[1] = "I";
+        letras[3] = "E";
+        letras[5] = "I";
+        letras[7] = "C";
+        letras[9] = "B";
+        letras[11] = "A";
+        letras[13] = "A";
+        letras[15] = "N";
+        letras[17] = "A";
+        letras[20] = "M";
+        letras[21] = "S";
+        letras[22] = "H";
+        letras[23] = "S";
+        letras[24] = "O";
+        letras[25] = "B";
     }
 
     public void inserirLetra(String letra, String lt_resposta){
