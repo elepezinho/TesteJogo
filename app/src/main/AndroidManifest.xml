@@ -14,7 +14,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:hardwareAccelerated="true">
         </activity>
 
         <activity
@@ -37,6 +38,7 @@
             android:name=".CategoriesActivity"
             android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity"
+            android:hardwareAccelerated="true"
              >
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
@@ -48,6 +50,7 @@
             android:name=".JogoParActivity"
             android:screenOrientation="portrait"
             android:parentActivityName=".CategoriesActivity"
+            android:hardwareAccelerated="true"
             >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -59,6 +62,7 @@
             android:name=".JogoParParActivity"
             android:screenOrientation="portrait"
             android:parentActivityName=".CategoriesActivity"
+            android:hardwareAccelerated="true"
             >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -70,6 +74,7 @@
             android:name=".JogoParImparActivity"
             android:screenOrientation="portrait"
             android:parentActivityName=".CategoriesActivity"
+            android:hardwareAccelerated="true"
             >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -81,6 +86,7 @@
             android:name=".JogoImparParActivity"
             android:screenOrientation="portrait"
             android:parentActivityName=".CategoriesActivity"
+            android:hardwareAccelerated="true"
             >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -92,6 +98,7 @@
             android:name=".JogoImparImparActivity"
             android:screenOrientation="portrait"
             android:parentActivityName=".CategoriesActivity"
+            android:hardwareAccelerated="true"
             >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -103,6 +110,7 @@
             android:name=".CheckAnswer"
             android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity"
+            android:hardwareAccelerated="true"
              >
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
@@ -114,6 +122,7 @@
             android:name=".about.AboutActivity"
             android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity"
+            android:hardwareAccelerated="true"
             >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.reward.RewardItem;
@@ -115,9 +116,11 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
     private int nvlFilme;
     private int nvlSerie;
     private int nvlAnime;
+    private int nvlGame;
     private int removeuFilme;
     private int removeuSerie;
     private int removeuAnime;
+    private int removeuGame;
     private String jogando;
     private AdView mAdview;
     private Button fullPageScreenshot;
@@ -139,13 +142,17 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
         new CriarFase().execute();
 
         //banner
-        MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");
+        MobileAds.initialize(this,"ca-app-pub-1493186259985891~9080093224");
         mAdview = (AdView)findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         //AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
         mAdview.loadAd(adRequest);
 
-        MobileAds.initialize(getApplicationContext(),"ca-app-pub-3940256099942544~3347511713");
+        AdView adView = new AdView(this);
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdUnitId("ca-app-pub-1493186259985891/2131541497");
+
+        MobileAds.initialize(getApplicationContext(),"ca-app-pub-1493186259985891~9080093224"); //
 
         mAd = MobileAds.getRewardedVideoAdInstance(this);
         mAd.setRewardedVideoAdListener(this);
@@ -170,9 +177,11 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
             nvlFilme = pref.getInt("nvl_filme", 01);
             nvlSerie = pref.getInt("nvl_serie", 01);
             nvlAnime = pref.getInt("nvl_anime", 01);
+            nvlGame = pref.getInt("nvl_game", 01);
             removeuFilme = pref.getInt("removeu_filme", 00);
             removeuSerie = pref.getInt("removeu_serie", 00);
             removeuAnime = pref.getInt("removeu_anime", 00);
+            removeuGame = pref.getInt("removeu_game", 00);
 
             //inserir qt moedas do usuario na tela
             txv_coins = (TextView)findViewById(R.id.txv_coins_par);
@@ -199,6 +208,10 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
             else if(jogando.equals("anime")) {
                 toolbar.setTitle("ANIME");
                 criarJogo(nvlAnime);
+            }
+            else if(jogando.equals("game")) {
+                toolbar.setTitle("GAME");
+                criarJogo(nvlGame);
             }
             setSupportActionBar(toolbar);
 
@@ -228,7 +241,8 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
             //verificar se o usuario já removeu letras
             if (( jogando.equals("filme") && removeuFilme==1) ||
                     (jogando.equals("serie") && removeuSerie==1) ||
-                    (jogando.equals("anime") && removeuAnime==1) ) {
+                    (jogando.equals("anime") && removeuAnime==1) ||
+                    (jogando.equals("game") && removeuGame==1) ) {
                 jaApagouLetras();
             }
 
@@ -764,6 +778,22 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
             criarAnime03();
         } else if (nvl == 04 && jogando.equals("filme")) {
             criarFilme04();
+        } else if (nvl == 06 && jogando.equals("filme")) {
+            criarFilme06();
+        } else if (nvl == 10 && jogando.equals("filme")) {
+            criarFilme10();
+        } else if (nvl == 9 && jogando.equals("serie")) {
+            criarSerie09();
+        } else if (nvl == 05 && jogando.equals("anime")) {
+            criarAnime05();
+        } else if (nvl == 02 && jogando.equals("game")) {
+            criarGame02();
+        } else if (nvl == 05 && jogando.equals("game")) {
+            criarGame05();
+        } else if (nvl == 07 && jogando.equals("game")) {
+            criarGame07();
+        } else if (nvl == 10 && jogando.equals("game")) {
+            criarGame10();
         }
     }
 
@@ -1429,6 +1459,559 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
         letrasErradas[9] = "M";
     }
 
+    //Filmes
+
+    private void criarFilme06() {
+        //inserindo o caminho da imagem
+        img = R.drawable.filme06;
+        //Iniciando o vetor da resposta correta
+        resposta[0] = "*";
+        resposta[1] = "*";
+        resposta[2] = "*";
+        resposta[3] = "T";
+        resposta[4] = "H";
+        resposta[5] = "O";
+        resposta[6] = "R";
+        resposta[7] = "*";
+        resposta[8] = "*";
+        resposta[9] = "*";
+        resposta[10] = "*";
+        resposta[11] = "*";
+        resposta[12] = "*";
+        resposta[13] = "*";
+        resposta[14] = "*";
+        resposta[15] = "*";
+        resposta[16] = "*";
+        resposta[17] = "*";
+        resposta[18] = "*";
+        resposta[19] = "*";
+
+        //iniciando o vetor com as 20 letras embaralhadas
+        letras[0] = "O";//
+        letras[1] = "I";
+        letras[2] = "T";//
+        letras[3] = "E";
+        letras[4] = "U";
+        letras[5] = "I";
+        letras[6] = "S";
+        letras[7] = "C";
+        letras[8] = "X";
+        letras[9] = "B";
+        letras[10] = "D";
+        letras[11] = "A";
+        letras[12] = "L";
+        letras[13] = "B";
+        letras[14] = "N";
+        letras[15] = "M";
+        letras[16] = "S";
+        letras[17] = "H";//
+        letras[18] = "G";
+        letras[19] = "R";//
+
+        //inserir letras nos botões
+        inserirLetrasBotoes();
+
+        //String com a resposta final
+        respostaFinal = "Thor";
+
+        //vetor com as letras erradas
+        letrasErradas[1] = "I";
+        letrasErradas[3] = "E";
+        letrasErradas[4] = "U";
+        letrasErradas[5] = "I";
+        letrasErradas[6] = "S";
+        letrasErradas[7] = "C";
+        letrasErradas[8] = "X";
+        letrasErradas[9] = "B";
+        letrasErradas[10] = "D";
+        letrasErradas[11] = "A";
+        letrasErradas[12] = "L";
+        letrasErradas[13] = "B";
+        letrasErradas[14] = "N";
+        letrasErradas[15] = "M";
+        letrasErradas[16] = "S";
+        letrasErradas[18] = "G";
+    }
+
+    private void criarFilme10() {
+        //inserindo o caminho da imagem
+        img = R.drawable.filme10;
+        //Iniciando o vetor da resposta correta
+        resposta[0] = "*";
+        resposta[1] = "*";
+        resposta[2] = "G";
+        resposta[3] = "U";
+        resposta[4] = "E";
+        resposta[5] = "R";
+        resposta[6] = "R";
+        resposta[7] = "A";
+        resposta[8] = "*";
+        resposta[9] = "*";
+
+        resposta[10] = "*";
+        resposta[11] = "I";
+        resposta[12] = "N";
+        resposta[13] = "F";
+        resposta[14] = "I";
+        resposta[15] = "N";
+        resposta[16] = "I";
+        resposta[17] = "T";
+        resposta[18] = "A";
+        resposta[19] = "*";
+
+        //iniciando o vetor com as 20 letras embaralhadas
+        letras[0] = "O";
+        letras[1] = "L";
+        letras[2] = "I";//
+        letras[3] = "R";//
+        letras[4] = "U";//
+        letras[5] = "H";
+        letras[6] = "S";
+        letras[7] = "C";
+        letras[8] = "F";//
+        letras[9] = "N";//
+        letras[10] = "T";//
+        letras[11] = "A";//
+        letras[12] = "E";//
+        letras[13] = "A";//
+        letras[14] = "R";//
+        letras[15] = "G";//
+        letras[16] = "I";//
+        letras[17] = "I";//
+        letras[18] = "X";
+        letras[19] = "N";//
+
+        //inserir letras nos botões
+        inserirLetrasBotoes();
+
+        //String com a resposta final
+        respostaFinal = "Guerra Infinita";
+
+        //vetor com as letras erradas
+        letrasErradas[0] = "O";
+        letrasErradas[1] = "L";
+        letrasErradas[5] = "H";
+        letrasErradas[6] = "S";
+        letrasErradas[7] = "C";
+        letrasErradas[13] = "X";
+    }
+
+    //Series
+
+    private void criarSerie09() {
+        //inserindo o caminho da imagem
+        img = R.drawable.serie09;
+        //Iniciando o vetor da resposta correta
+        resposta[0] = "*";
+        resposta[1] = "S";
+        resposta[2] = "T";
+        resposta[3] = "R";
+        resposta[4] = "A";
+        resposta[5] = "N";
+        resposta[6] = "G";
+        resposta[7] = "E";
+        resposta[8] = "R";
+        resposta[9] = "*";
+
+        resposta[10] = "*";
+        resposta[11] = "*";
+        resposta[12] = "T";
+        resposta[13] = "H";
+        resposta[14] = "I";
+        resposta[15] = "N";
+        resposta[16] = "G";
+        resposta[17] = "S";
+        resposta[18] = "*";
+        resposta[19] = "*";
+
+        //iniciando o vetor com as 20 letras embaralhadas
+        letras[0] = "O";
+        letras[1] = "L";
+        letras[2] = "I";//
+        letras[3] = "R";//
+        letras[4] = "S";//
+        letras[5] = "G";//
+        letras[6] = "S";//
+        letras[7] = "H";//
+        letras[8] = "F";
+        letras[9] = "N";//
+        letras[10] = "T";//
+        letras[11] = "A";//
+        letras[12] = "E";//
+        letras[13] = "Z";
+        letras[14] = "V";
+        letras[15] = "G";//
+        letras[16] = "W";
+        letras[17] = "T";//
+        letras[18] = "R";//
+        letras[19] = "N";//
+
+        //inserir letras nos botões
+        inserirLetrasBotoes();
+
+        //String com a resposta final
+        respostaFinal = "Stranger Things";
+
+        //vetor com as letras erradas
+        letrasErradas[0] = "O";
+        letrasErradas[1] = "L";
+        letrasErradas[2] = "F";
+        letrasErradas[3] = "Z";
+        letrasErradas[4] = "V";
+        letrasErradas[5] = "W";
+    }
+
+    //Animes
+
+    private void criarAnime05() {
+        //inserindo o caminho da imagem
+        img = R.drawable.anime05;
+        //Iniciando o vetor da resposta correta
+        resposta[0] = "*";
+        resposta[1] = "*";
+        resposta[2] = "B";
+        resposta[3] = "L";
+        resposta[4] = "E";
+        resposta[5] = "A";
+        resposta[6] = "C";
+        resposta[7] = "H";
+        resposta[8] = "*";
+        resposta[9] = "*";
+
+        resposta[10] = "*";
+        resposta[11] = "*";
+        resposta[12] = "*";
+        resposta[13] = "*";
+        resposta[14] = "*";
+        resposta[15] = "*";
+        resposta[16] = "*";
+        resposta[17] = "*";
+        resposta[18] = "*";
+        resposta[19] = "*";
+
+        //iniciando o vetor com as 20 letras embaralhadas
+        letras[0] = "O";
+        letras[1] = "L";//
+        letras[2] = "I";
+        letras[3] = "R";
+        letras[4] = "S";
+        letras[5] = "G";
+        letras[6] = "S";
+        letras[7] = "H";//
+        letras[8] = "F";
+        letras[9] = "N";
+        letras[10] = "T";
+        letras[11] = "A";//
+        letras[12] = "E";//
+        letras[13] = "Z";
+        letras[14] = "V";
+        letras[15] = "B";//
+        letras[16] = "W";
+        letras[17] = "C";//
+        letras[18] = "R";
+        letras[19] = "N";
+
+        //inserir letras nos botões
+        inserirLetrasBotoes();
+
+        //String com a resposta final
+        respostaFinal = "Bleach";
+
+        //vetor com as letras erradas
+        letrasErradas[0] = "O";
+        letrasErradas[1] = "I";
+        letrasErradas[2] = "R";
+        letrasErradas[3] = "S";
+        letrasErradas[4] = "G";
+        letrasErradas[5] = "S";
+        letrasErradas[6] = "F";
+        letrasErradas[7] = "N";
+        letrasErradas[8] = "T";
+        letrasErradas[9] = "Z";
+        letrasErradas[10] = "V";
+        letrasErradas[11] = "W";
+        letrasErradas[12] = "R";
+        letrasErradas[13] = "N";
+    }
+
+    //Games
+
+    private void criarGame02() {
+        //inserindo o caminho da imagem
+        img = R.drawable.game02;
+        //Iniciando o vetor da resposta correta
+        resposta[0] = "*";
+        resposta[1] = "*";
+        resposta[2] = "*";
+        resposta[3] = "P";
+        resposta[4] = "U";
+        resposta[5] = "B";
+        resposta[6] = "G";
+        resposta[7] = "*";
+        resposta[8] = "*";
+        resposta[9] = "*";
+
+        resposta[10] = "*";
+        resposta[11] = "*";
+        resposta[12] = "*";
+        resposta[13] = "*";
+        resposta[14] = "*";
+        resposta[15] = "*";
+        resposta[16] = "*";
+        resposta[17] = "*";
+        resposta[18] = "*";
+        resposta[19] = "*";
+
+        //iniciando o vetor com as 20 letras embaralhadas
+        letras[0] = "O";
+        letras[1] = "L";
+        letras[2] = "I";
+        letras[3] = "R";
+        letras[4] = "S";
+        letras[5] = "G";//
+        letras[6] = "S";
+        letras[7] = "P";//
+        letras[8] = "F";
+        letras[9] = "N";
+        letras[10] = "T";
+        letras[11] = "U";//
+        letras[12] = "E";
+        letras[13] = "Z";
+        letras[14] = "V";
+        letras[15] = "B";//
+        letras[16] = "W";
+        letras[17] = "C";
+        letras[18] = "R";
+        letras[19] = "N";
+
+        //inserir letras nos botões
+        inserirLetrasBotoes();
+
+        //String com a resposta final
+        respostaFinal = "PUBG";
+
+        //vetor com as letras erradas
+        letrasErradas[0] = "O";
+        letrasErradas[1] = "L";
+        letrasErradas[2] = "I";
+        letrasErradas[3] = "R";
+        letrasErradas[4] = "S";
+        letrasErradas[5] = "S";
+        letrasErradas[6] = "F";
+        letrasErradas[7] = "N";
+        letrasErradas[8] = "T";
+        letrasErradas[9] = "E";
+        letrasErradas[10] = "Z";
+        letrasErradas[11] = "V";
+        letrasErradas[12] = "W";
+        letrasErradas[13] = "C";
+        letrasErradas[14] = "R";
+        letrasErradas[15] = "N";
+    }
+
+    private void criarGame05() {
+        //inserindo o caminho da imagem
+        img = R.drawable.game05;
+        //Iniciando o vetor da resposta correta
+        resposta[0] = "G";
+        resposta[1] = "O";
+        resposta[2] = "D";
+        resposta[3] = "*";
+        resposta[4] = "O";
+        resposta[5] = "F";
+        resposta[6] = "*";
+        resposta[7] = "W";
+        resposta[8] = "A";
+        resposta[9] = "R";
+
+        resposta[10] = "*";
+        resposta[11] = "*";
+        resposta[12] = "*";
+        resposta[13] = "*";
+        resposta[14] = "*";
+        resposta[15] = "*";
+        resposta[16] = "*";
+        resposta[17] = "*";
+        resposta[18] = "*";
+        resposta[19] = "*";
+
+        //iniciando o vetor com as 20 letras embaralhadas
+        letras[0] = "O";//
+        letras[1] = "L";
+        letras[2] = "I";
+        letras[3] = "R";//
+        letras[4] = "W";//
+        letras[5] = "G";//
+        letras[6] = "S";
+        letras[7] = "P";
+        letras[8] = "F";//
+        letras[9] = "N";
+        letras[10] = "A";//
+        letras[11] = "U";
+        letras[12] = "E";
+        letras[13] = "Z";
+        letras[14] = "V";
+        letras[15] = "B";
+        letras[16] = "D";//
+        letras[17] = "C";
+        letras[18] = "O";//
+        letras[19] = "N";
+
+        //inserir letras nos botões
+        inserirLetrasBotoes();
+
+        //String com a resposta final
+        respostaFinal = "God of War";
+
+        //vetor com as letras erradas
+        letrasErradas[0] = "L";
+        letrasErradas[1] = "I";
+        letrasErradas[2] = "S";
+        letrasErradas[3] = "P";
+        letrasErradas[4] = "N";
+        letrasErradas[5] = "U";
+        letrasErradas[6] = "E";
+        letrasErradas[7] = "Z";
+        letrasErradas[8] = "V";
+        letrasErradas[9] = "B";
+        letrasErradas[10] = "C";
+        letrasErradas[11] = "N";
+    }
+
+    private void criarGame07() {
+        //inserindo o caminho da imagem
+        img = R.drawable.game07;
+        //Iniciando o vetor da resposta correta
+        resposta[0] = "*";
+        resposta[1] = "*";
+        resposta[2] = "*";
+        resposta[3] = "D";
+        resposta[4] = "O";
+        resposta[5] = "N";
+        resposta[6] = "K";
+        resposta[7] = "*";
+        resposta[8] = "*";
+        resposta[9] = "*";
+
+        resposta[10] = "*";
+        resposta[11] = "*";
+        resposta[12] = "*";
+        resposta[13] = "K";
+        resposta[14] = "O";
+        resposta[15] = "N";
+        resposta[16] = "G";
+        resposta[17] = "*";
+        resposta[18] = "*";
+        resposta[19] = "*";
+
+        //iniciando o vetor com as 20 letras embaralhadas
+        letras[0] = "O";//
+        letras[1] = "L";
+        letras[2] = "I";
+        letras[3] = "R";
+        letras[4] = "K";//
+        letras[5] = "G";//
+        letras[6] = "S";
+        letras[7] = "O";//
+        letras[8] = "F";
+        letras[9] = "N";//
+        letras[10] = "A";
+        letras[11] = "U";
+        letras[12] = "E";
+        letras[13] = "K";//
+        letras[14] = "V";
+        letras[15] = "B";
+        letras[16] = "D";//
+        letras[17] = "C";
+        letras[18] = "X";
+        letras[19] = "N";//
+
+        //inserir letras nos botões
+        inserirLetrasBotoes();
+
+        //String com a resposta final
+        respostaFinal = "Donk Kong";
+
+        //vetor com as letras erradas
+        letrasErradas[0] = "L";
+        letrasErradas[1] = "I";
+        letrasErradas[2] = "R";
+        letrasErradas[3] = "S";
+        letrasErradas[4] = "F";
+        letrasErradas[5] = "A";
+        letrasErradas[6] = "U";
+        letrasErradas[7] = "E";
+        letrasErradas[8] = "V";
+        letrasErradas[9] = "B";
+        letrasErradas[10] = "C";
+        letrasErradas[11] = "X";
+    }
+
+    private void criarGame10() {
+        //inserindo o caminho da imagem
+        img = R.drawable.game10;
+        //Iniciando o vetor da resposta correta
+        resposta[0] = "*";
+        resposta[1] = "R";
+        resposta[2] = "E";
+        resposta[3] = "S";
+        resposta[4] = "I";
+        resposta[5] = "D";
+        resposta[6] = "E";
+        resposta[7] = "N";
+        resposta[8] = "T";
+        resposta[9] = "*";
+
+        resposta[10] = "*";
+        resposta[11] = "*";
+        resposta[12] = "*";
+        resposta[13] = "E";
+        resposta[14] = "V";
+        resposta[15] = "I";
+        resposta[16] = "L";
+        resposta[17] = "*";
+        resposta[18] = "*";
+        resposta[19] = "*";
+
+        //iniciando o vetor com as 20 letras embaralhadas
+        letras[0] = "E";//
+        letras[1] = "L";//
+        letras[2] = "I";//
+        letras[3] = "R";//
+        letras[4] = "K";
+        letras[5] = "T";//
+        letras[6] = "S";//
+        letras[7] = "O";
+        letras[8] = "V";//
+        letras[9] = "N";//
+        letras[10] = "A";
+        letras[11] = "U";
+        letras[12] = "E";//
+        letras[13] = "K";
+        letras[14] = "K";
+        letras[15] = "I";//
+        letras[16] = "D";//
+        letras[17] = "E";//
+        letras[18] = "X";
+        letras[19] = "F";
+
+        //inserir letras nos botões
+        inserirLetrasBotoes();
+
+        //String com a resposta final
+        respostaFinal = "Resident Evil";
+
+        //vetor com as letras erradas
+        letrasErradas[0] = "K";
+        letrasErradas[1] = "O";
+        letrasErradas[2] = "A";
+        letrasErradas[3] = "U";
+        letrasErradas[4] = "K";
+        letrasErradas[5] = "K";
+        letrasErradas[6] = "X";
+        letrasErradas[7] = "F";
+    }
+
     public void inserirLetra(String letra, String lt_resposta){
         if(respostaUsuario[0]==null) {
             respostaUsuario[0] = letra;
@@ -1705,6 +2288,7 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
             editor.putInt("removeu_filme", 00);
             editor.putInt("removeu_serie", 00);
             editor.putInt("removeu_anime", 00);
+            editor.putInt("removeu_game", 00);
             editor.commit();
 
             Intent intent;
@@ -1850,8 +2434,8 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
     }
 
     private void resolverFase(){
-        if(moeda>=50) {
-            txv_coins.setText("" + (moeda -= 50));
+        if(moeda>=100) {
+            txv_coins.setText("" + (moeda -= 100));
             SharedPreferences.Editor editor = pref.edit();
             editor.putInt("qt_moedas", moeda);
             editor.commit();
@@ -2028,7 +2612,7 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
 
     private void apagarLetras(String j){
 
-        if ((j.equals("filme") && removeuFilme==0) || (j.equals("serie") && removeuSerie==0) || (j.equals("anime") && removeuAnime==0) ){
+        if ((j.equals("filme") && removeuFilme==0) || (j.equals("serie") && removeuSerie==0) || (j.equals("anime") && removeuAnime==0) || (j.equals("game") && removeuGame==0) ){
             if(moeda>=30) {
                 txv_coins.setText("" + (moeda -= 30));
                 SharedPreferences.Editor editor = pref.edit();
@@ -2044,6 +2628,10 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
                 if(j.equals("anime")) {
                     editor.putInt("removeu_anime", 01);
                     removeuAnime = 1;
+                }
+                if(j.equals("game")) {
+                    editor.putInt("removeu_game", 01);
+                    removeuGame = 1;
                 }
                 editor.commit();
 
@@ -2195,7 +2783,7 @@ public class JogoParActivity extends AppCompatActivity implements RewardedVideoA
     {
         if(!mAd.isLoaded())
         {
-            mAd.loadAd("ca-app-pub-3940256099942544/5224354917", new AdRequest.Builder().build());
+            mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().build()); //
         }
     }
 

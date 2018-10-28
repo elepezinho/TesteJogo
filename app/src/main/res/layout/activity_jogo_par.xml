@@ -331,7 +331,7 @@
         android:cropToPadding="false"
         android:scaleType="fitEnd"
         ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        ads:adUnitId="ca-app-pub-1493186259985891/2131541497"
         ads:layout_constraintTop_toTopOf="@+id/guideline4"
         ads:layout_constraintVertical_bias="1.0"
         app:layout_constraintBottom_toBottomOf="parent"

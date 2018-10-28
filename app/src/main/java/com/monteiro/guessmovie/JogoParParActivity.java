@@ -116,9 +116,11 @@ public class JogoParParActivity extends AppCompatActivity implements RewardedVid
     private int nvlFilme;
     private int nvlSerie;
     private int nvlAnime;
+    private int nvlGame;
     private int removeuFilme;
     private int removeuSerie;
     private int removeuAnime;
+    private int removeuGame;
     private String jogando;
     private AdView mAdview;
     private Button fullPageScreenshot;
@@ -173,9 +175,11 @@ public class JogoParParActivity extends AppCompatActivity implements RewardedVid
             nvlFilme = pref.getInt("nvl_filme", 01);
             nvlSerie = pref.getInt("nvl_serie", 01);
             nvlAnime = pref.getInt("nvl_anime", 01);
+            nvlGame = pref.getInt("nvl_game", 01);
             removeuFilme = pref.getInt("removeu_filme", 00);
             removeuSerie = pref.getInt("removeu_serie", 00);
             removeuAnime = pref.getInt("removeu_anime", 00);
+            removeuGame = pref.getInt("removeu_game", 00);
 
             //inserir qt moedas do usuario na tela
             txv_coins = (TextView)findViewById(R.id.txv_coins_par);
@@ -202,6 +206,10 @@ public class JogoParParActivity extends AppCompatActivity implements RewardedVid
             else if(jogando.equals("anime")) {
                 toolbar.setTitle("ANIME");
                 criarJogo(nvlAnime);
+            }
+            else if(jogando.equals("game")) {
+                toolbar.setTitle("GAME");
+                criarJogo(nvlGame);
             }
             setSupportActionBar(toolbar);
 
@@ -231,7 +239,8 @@ public class JogoParParActivity extends AppCompatActivity implements RewardedVid
             //verificar se o usuario já removeu letras
             if (( jogando.equals("filme") && removeuFilme==1) ||
                     (jogando.equals("serie") && removeuSerie==1) ||
-                    (jogando.equals("anime") && removeuAnime==1) ) {
+                    (jogando.equals("anime") && removeuAnime==1) ||
+                    (jogando.equals("anime") && removeuGame==1) ) {
                 jaApagouLetras();
             }
 
@@ -1709,6 +1718,7 @@ public class JogoParParActivity extends AppCompatActivity implements RewardedVid
             editor.putInt("removeu_filme", 00);
             editor.putInt("removeu_serie", 00);
             editor.putInt("removeu_anime", 00);
+            editor.putInt("removeu_game", 00);
             editor.commit();
 
             Intent intent;
@@ -2032,7 +2042,7 @@ public class JogoParParActivity extends AppCompatActivity implements RewardedVid
 
     private void apagarLetras(String j){
 
-        if ((j.equals("filme") && removeuFilme==0) || (j.equals("serie") && removeuSerie==0) || (j.equals("anime") && removeuAnime==0) ){
+        if ((j.equals("filme") && removeuFilme==0) || (j.equals("serie") && removeuSerie==0) || (j.equals("anime") && removeuAnime==0) || (j.equals("game") && removeuGame==0) ){
             if(moeda>=30) {
                 txv_coins.setText("" + (moeda -= 30));
                 SharedPreferences.Editor editor = pref.edit();
@@ -2048,6 +2058,10 @@ public class JogoParParActivity extends AppCompatActivity implements RewardedVid
                 if(j.equals("anime")) {
                     editor.putInt("removeu_anime", 01);
                     removeuAnime = 1;
+                }
+                if(j.equals("game")) {
+                    editor.putInt("removeu_game", 01);
+                    removeuGame = 1;
                 }
                 editor.commit();
 

@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
@@ -26,9 +27,11 @@ public class CheckAnswer extends AppCompatActivity {
     private int nvlFilme;
     private int nvlSerie;
     private int nvlAnime;
+    private int nvlGame;
     private int totalFilme;
     private int totalSerie;
     private int totalAnime;
+    private int totalGame;
     private AdView mAdview;
     private InterstitialAd interstitial;
 
@@ -60,9 +63,11 @@ public class CheckAnswer extends AppCompatActivity {
         nvlFilme = pref.getInt("nvl_filme", 01);
         nvlSerie = pref.getInt("nvl_serie", 01);
         nvlAnime = pref.getInt("nvl_anime", 01);
-        totalFilme = pref.getInt("total_filme", 4);
-        totalSerie = pref.getInt("total_serie", 3);
-        totalAnime = pref.getInt("total_anime", 3);
+        nvlGame = pref.getInt("nvl_game", 01);
+        totalFilme = pref.getInt("total_filme", 10);
+        totalSerie = pref.getInt("total_serie", 10);
+        totalAnime = pref.getInt("total_anime", 10);
+        totalGame = pref.getInt("total_game", 10);
 
         SharedPreferences.Editor editor = pref.edit();
         editor.putInt("qt_moedas", moeda);
@@ -79,6 +84,10 @@ public class CheckAnswer extends AppCompatActivity {
         else if(jogando.equals("anime")) {
             nvlAnime+=1;
             editor.putInt("nvl_anime", nvlAnime);
+        }
+        else if(jogando.equals("game")) {
+            nvlGame+=1;
+            editor.putInt("nvl_game", nvlGame);
         }
 
         editor.commit();
@@ -99,15 +108,24 @@ public class CheckAnswer extends AppCompatActivity {
             public void onClick(View view) {
                 if(jogando.equals("filme")) {
                     if (verificarAcertosFilme()) {
-                        if (nvlFilme == 01 || nvlFilme == 04) {
+                        if (nvlFilme == 01 || nvlFilme == 04 || nvlFilme == 05 || nvlFilme == 07) {
                             Intent intent = new Intent(CheckAnswer.this, JogoImparParActivity.class);
                             jogando = "filme";
                             intent.putExtra("jogando", jogando);
                             startActivity(intent);
                             overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                             finish();
-                        } else if (nvlFilme == 02 || nvlFilme == 03) {
+                        }
+                        else if (nvlFilme == 02 || nvlFilme == 03 || nvlFilme == 06 || nvlFilme == 10) {
                             Intent intent = new Intent(CheckAnswer.this, JogoParActivity.class);
+                            jogando = "filme";
+                            intent.putExtra("jogando", jogando);
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
+                            finish();
+                        }
+                        else if (nvlFilme == 8 || nvlFilme == 9) {
+                            Intent intent = new Intent(CheckAnswer.this, JogoImparImparActivity.class);
                             jogando = "filme";
                             intent.putExtra("jogando", jogando);
                             startActivity(intent);
@@ -125,15 +143,31 @@ public class CheckAnswer extends AppCompatActivity {
                 }
                 else if(jogando.equals("serie")) {
                     if (verificarAcertosSerie()) {
-                        if (nvlSerie == 01  || nvlSerie == 03) {
+                        if (nvlSerie == 01 || nvlSerie == 9) {
                             Intent intent = new Intent(CheckAnswer.this, JogoParActivity.class);
                             jogando = "serie";
                             intent.putExtra("jogando", jogando);
                             startActivity(intent);
                             overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                             finish();
-                        } else if (nvlSerie == 02) {
+                        } else if (nvlSerie == 02 || nvlSerie == 03 || nvlSerie == 06 || nvlSerie == 10) {
                             Intent intent = new Intent(CheckAnswer.this, JogoImparImparActivity.class);
+                            jogando = "serie";
+                            intent.putExtra("jogando", jogando);
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
+                            finish();
+                        }
+                        else if (nvlSerie == 04 || nvlSerie == 07) {
+                            Intent intent = new Intent(CheckAnswer.this, JogoParImparActivity.class);
+                            jogando = "serie";
+                            intent.putExtra("jogando", jogando);
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
+                            finish();
+                        }
+                        else if (nvlSerie == 05 || nvlSerie == 8) {
+                            Intent intent = new Intent(CheckAnswer.this, JogoImparParActivity.class);
                             jogando = "serie";
                             intent.putExtra("jogando", jogando);
                             startActivity(intent);
@@ -151,14 +185,63 @@ public class CheckAnswer extends AppCompatActivity {
                 }
                 else if(jogando.equals("anime")) {
                     if (verificarAcertosAnime()) {
-                        //if (nvlAnime == 01) {
-                            Intent intent = new Intent(CheckAnswer.this, JogoParActivity.class);
+                        if (nvlAnime == 01 || nvlAnime == 02 || nvlAnime == 05) {
+                        Intent intent = new Intent(CheckAnswer.this, JogoParActivity.class);
+                        jogando = "anime";
+                        intent.putExtra("jogando", jogando);
+                        startActivity(intent);
+                        overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
+                        finish();
+                        }
+                        if (nvlAnime == 03 || nvlAnime == 06 || nvlAnime == 8 ) {
+                            Intent intent = new Intent(CheckAnswer.this, JogoImparImparActivity.class);
                             jogando = "anime";
                             intent.putExtra("jogando", jogando);
                             startActivity(intent);
                             overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                             finish();
-                        //}
+                        }
+                        if (nvlAnime == 04 || nvlAnime == 07 || nvlAnime == 9 || nvlAnime == 10 ) {
+                            Intent intent = new Intent(CheckAnswer.this, JogoImparParActivity.class);
+                            jogando = "anime";
+                            intent.putExtra("jogando", jogando);
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
+                            finish();
+                        }
+                    }
+                    else{
+                        Toast.makeText(
+                                CheckAnswer.this,
+                                "Você já acertou tudo dessa categoria!!\nEm breve teremos mais fases =)",
+                                Toast.LENGTH_LONG
+                        ).show();
+                    }
+                }
+                if(jogando.equals("game")) {
+                    if (verificarAcertosGame()) {
+                        if (nvlGame == 01 || nvlGame == 03 || nvlGame == 04 || nvlGame == 9) {
+                            Intent intent = new Intent(CheckAnswer.this, JogoImparImparActivity.class);
+                            jogando = "game";
+                            intent.putExtra("jogando", jogando);
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
+                            finish();
+                        } if (nvlGame == 06 || nvlGame == 8) {
+                            Intent intent = new Intent(CheckAnswer.this, JogoParImparActivity.class);
+                            jogando = "game";
+                            intent.putExtra("jogando", jogando);
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
+                            finish();
+                        } if (nvlGame == 02 || nvlGame == 05 || nvlGame == 07 || nvlGame == 10) {
+                            Intent intent = new Intent(CheckAnswer.this, JogoParActivity.class);
+                            jogando = "game";
+                            intent.putExtra("jogando", jogando);
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
+                            finish();
+                        }
                     }
                     else{
                         Toast.makeText(
@@ -172,11 +255,15 @@ public class CheckAnswer extends AppCompatActivity {
         });
 
         //banner
-        MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");
+        MobileAds.initialize(this,"ca-app-pub-1493186259985891~9080093224");
         mAdview = (AdView)findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         //AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
         mAdview.loadAd(adRequest);
+
+        AdView adView = new AdView(this);
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdUnitId("ca-app-pub-1493186259985891/2131541497");
     }
 
     private void exibirPropaganda(){
@@ -194,7 +281,7 @@ public class CheckAnswer extends AppCompatActivity {
     }
 
     private boolean verificarAcertosFilme() {
-        if(nvlFilme%3==0){
+        if(nvlFilme%5==0){
             exibirPropaganda();
         }
         if (nvlFilme <= totalFilme) return true;
@@ -202,7 +289,7 @@ public class CheckAnswer extends AppCompatActivity {
     }
 
     private boolean verificarAcertosSerie() {
-        if(nvlSerie%3==0){
+        if(nvlSerie%5==0){
             exibirPropaganda();
         }
         if (nvlSerie <= totalSerie) return true;
@@ -210,10 +297,18 @@ public class CheckAnswer extends AppCompatActivity {
     }
 
     private boolean verificarAcertosAnime() {
-        if(nvlAnime%3==0){
+        if(nvlAnime%5==0){
             exibirPropaganda();
         }
         if (nvlAnime <= totalAnime) return true;
+        else return false;
+    }
+
+    private boolean verificarAcertosGame() {
+        if(nvlGame%5==0){
+            exibirPropaganda();
+        }
+        if (nvlGame <= totalGame) return true;
         else return false;
     }
 

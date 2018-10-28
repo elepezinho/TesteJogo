@@ -44,7 +44,7 @@ public class AboutActivity extends AppCompatActivity {
         questionary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String url = "https://docs.google.com/forms/d/e/1FAIpQLSe0nWosa1WtEonzrnBpkCHy8iDQBH_qzbEXvdxfH_3_4K1ojA/viewform";
+                String url = "http://bit.ly/2CKDIxc";
                 Intent intent;
                 intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(url));
@@ -61,9 +61,11 @@ public class AboutActivity extends AppCompatActivity {
                 editor.putInt("nvl_filme", 01);
                 editor.putInt("nvl_serie", 01);
                 editor.putInt("nvl_anime", 01);
+                editor.putInt("nvl_game", 01);
                 editor.putInt("removeu_filme", 00);
                 editor.putInt("removeu_serie", 00);
                 editor.putInt("removeu_anime", 00);
+                editor.putInt("removeu_game", 00);
                 editor.commit();
             }
         });
