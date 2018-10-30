@@ -257,8 +257,8 @@ public class CheckAnswer extends AppCompatActivity {
         //banner
         MobileAds.initialize(this,"ca-app-pub-1493186259985891~9080093224");
         mAdview = (AdView)findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        //AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+        //AdRequest adRequest = new AdRequest.Builder().build();
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("9FD8ED97110B2A6E9CD4264637EBDCF7").build();
         mAdview.loadAd(adRequest);
 
         AdView adView = new AdView(this);
@@ -268,7 +268,8 @@ public class CheckAnswer extends AppCompatActivity {
 
     private void exibirPropaganda(){
         //propaganda interticial
-        AdRequest adRequest = new AdRequest.Builder().build();
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("9FD8ED97110B2A6E9CD4264637EBDCF7").build();
+        //AdRequest adRequest = new AdRequest.Builder().build();
         interstitial = new InterstitialAd(CheckAnswer.this);
         interstitial.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
         interstitial.loadAd(adRequest);

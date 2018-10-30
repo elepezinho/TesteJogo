@@ -160,8 +160,8 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
         //banner
         MobileAds.initialize(this,"ca-app-pub-1493186259985891~9080093224");
         mAdview = (AdView)findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        //AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+        //AdRequest adRequest = new AdRequest.Builder().build();
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("9FD8ED97110B2A6E9CD4264637EBDCF7").build();
         mAdview.loadAd(adRequest);
 
         AdView adView = new AdView(this);
@@ -3472,7 +3472,8 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
     {
         if(!mAd.isLoaded())
         {
-            mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().build()); //
+            mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("9FD8ED97110B2A6E9CD4264637EBDCF7").build());
+            //            mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().build()); //
         }
     }
 
