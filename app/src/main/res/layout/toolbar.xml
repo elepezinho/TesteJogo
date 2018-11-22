@@ -9,7 +9,7 @@
     android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
     android:textAlignment="center"
     android:textDirection="anyRtl"
-    app:navigationIcon="@android:drawable/ic_menu_revert"
+    app:navigationIcon="@drawable/backpage"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
     app:title="categoriz"
     app:titleTextColor="@android:color/white" />

@@ -2,6 +2,8 @@ package com.monteiro.guessmovie;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -9,6 +11,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.monteiro.guessmovie.repositorio.DbHelper;
+import com.monteiro.guessmovie.repositorio.PostConfig;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -36,10 +41,56 @@ public class CategoriesActivity extends AppCompatActivity {
     private int moeda;
     private String jogando;
 
+    public SQLiteDatabase db;
+    public DbHelper dbHelper;
+
+    public int oito = Integer.parseInt("08");
+    public int nove = Integer.parseInt("09");
+    public int dez = Integer.parseInt("10");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categories);
+
+        View decorView = getWindow().getDecorView();
+        // Esconde tanto a barra de navegação e a barra de status .
+        int uiOptions =  View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
+
+        dbHelper = new DbHelper(getBaseContext());
+        db = dbHelper.getReadableDatabase();
+        String[] projection = {
+                PostConfig.PostEntry._ID,
+                PostConfig.PostEntry.COLUMN_QT_MOEDAS,
+                PostConfig.PostEntry.COLUMN_TOTAL_FILME,
+                PostConfig.PostEntry.COLUMN_TOTAL_SERIE,
+                PostConfig.PostEntry.COLUMN_TOTAL_ANIME,
+                PostConfig.PostEntry.COLUMN_TOTAL_GAME
+        };
+        Cursor c = db.query(PostConfig.PostEntry.TABLE_NAME,projection,null,null,null,null,null);
+
+        c.moveToFirst();
+        int valorMoedas = c.getInt(
+                c.getColumnIndexOrThrow(PostConfig.PostEntry.COLUMN_QT_MOEDAS)
+        );
+
+        int valorFilme = c.getInt(
+                c.getColumnIndexOrThrow(PostConfig.PostEntry.COLUMN_TOTAL_FILME)
+        );
+
+        int valorSerie = c.getInt(
+                c.getColumnIndexOrThrow(PostConfig.PostEntry.COLUMN_TOTAL_SERIE)
+        );
+
+        int valorAnime = c.getInt(
+                c.getColumnIndexOrThrow(PostConfig.PostEntry.COLUMN_TOTAL_ANIME)
+        );
+
+        int valorGame = c.getInt(
+                c.getColumnIndexOrThrow(PostConfig.PostEntry.COLUMN_TOTAL_GAME)
+        );
 
         //consultando preferencias do usuario
         pref = getSharedPreferences("pref", MODE_PRIVATE);
@@ -48,11 +99,11 @@ public class CategoriesActivity extends AppCompatActivity {
         nvlSerie = pref.getInt("nvl_serie", 01);
         nvlAnime = pref.getInt("nvl_anime", 01);
         nvlGame = pref.getInt("nvl_game", 01);
-        totalFilme = pref.getInt("total_filme", 10);
-        totalSerie = pref.getInt("total_serie", 10);
-        totalAnime = pref.getInt("total_anime", 10);
-        totalGame = pref.getInt("total_game", 10);
-        moeda = pref.getInt("qt_moedas", 100);
+        totalFilme = pref.getInt("total_filme", valorFilme);
+        totalSerie = pref.getInt("total_serie", valorSerie);
+        totalAnime = pref.getInt("total_anime", valorAnime);
+        totalGame = pref.getInt("total_game", valorGame);
+        moeda = pref.getInt("qt_moedas", valorMoedas);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("CATEGORIAS");
@@ -70,7 +121,7 @@ public class CategoriesActivity extends AppCompatActivity {
 
                 if(position == 0) {
                     if (verificarAcertosFilme()) {
-                        if (nvlFilme == 01 || nvlFilme == 04 || nvlFilme == 05 || nvlFilme == 07) {
+                        if (nvlFilme == 1 || nvlFilme == 4 || nvlFilme == 5 || nvlFilme == 7) {
                             Intent intent = new Intent(CategoriesActivity.this, JogoImparParActivity.class);
                             jogando = "filme";
                             intent.putExtra("jogando", jogando);
@@ -78,7 +129,7 @@ public class CategoriesActivity extends AppCompatActivity {
                             overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                             onPause();
                         }
-                        else if (nvlFilme == 02 || nvlFilme == 03 || nvlFilme == 06 || nvlFilme == 10) {
+                        else if (nvlFilme == 2 || nvlFilme == 3 || nvlFilme == 6 || nvlFilme == 10) {
                             Intent intent = new Intent(CategoriesActivity.this, JogoParActivity.class);
                             jogando = "filme";
                             intent.putExtra("jogando", jogando);
@@ -86,7 +137,7 @@ public class CategoriesActivity extends AppCompatActivity {
                             overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                             onPause();
                         }
-                        else if (nvlFilme == 8 || nvlFilme == 9) {
+                        else if (nvlFilme == Integer.parseInt("8") || nvlFilme == Integer.parseInt("9")) {
                             Intent intent = new Intent(CategoriesActivity.this, JogoImparImparActivity.class);
                             jogando = "filme";
                             intent.putExtra("jogando", jogando);

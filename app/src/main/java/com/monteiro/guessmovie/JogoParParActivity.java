@@ -141,7 +141,82 @@ public class JogoParParActivity extends AppCompatActivity implements RewardedVid
         fm = (FrameLayout) findViewById(R.id.frame_progress_bar);
         fmPrincipal = (FrameLayout) findViewById(R.id.frame_conteudo_principal);
 
-        new CriarFase().execute();
+        //new CriarFase().execute();
+
+        //recuperando dados de preferencia do usuario
+        pref = getSharedPreferences("pref", MODE_PRIVATE);
+        moeda = pref.getInt("qt_moedas", 100);
+        nvlFilme = pref.getInt("nvl_filme", 01);
+        nvlSerie = pref.getInt("nvl_serie", 01);
+        nvlAnime = pref.getInt("nvl_anime", 01);
+        nvlGame = pref.getInt("nvl_game", 01);
+        removeuFilme = pref.getInt("removeu_filme", 00);
+        removeuSerie = pref.getInt("removeu_serie", 00);
+        removeuAnime = pref.getInt("removeu_anime", 00);
+        removeuGame = pref.getInt("removeu_game", 00);
+
+        //inserir qt moedas do usuario na tela
+        txv_coins = (TextView)findViewById(R.id.txv_coins_par);
+        txv_coins.setText(""+moeda);
+        btAddLetter = (Button) findViewById(R.id.bt_add_letter);
+        btRemoveLetters = (Button) findViewById(R.id.btn_remove_letters);
+
+        //recuperando tipo de categoria que o usuario selecionou
+        Bundle extra = getIntent().getExtras();
+        if(extra != null){
+            jogando = extra.getString("jogando");
+        }
+        toolbar = (Toolbar) findViewById(R.id.toolbar_par);
+
+        //verificando a categoria e criando a fase de acordo com o nvl do usuario na categoria
+        if(jogando.equals("filme")) {
+            toolbar.setTitle("FILME");
+            criarJogo(nvlFilme);
+        }
+        else if(jogando.equals("serie")) {
+            toolbar.setTitle("SÉRIE");
+            criarJogo(nvlSerie);
+        }
+        else if(jogando.equals("anime")) {
+            toolbar.setTitle("ANIME");
+            criarJogo(nvlAnime);
+        }
+        else if(jogando.equals("game")) {
+            toolbar.setTitle("GAME");
+            criarJogo(nvlGame);
+        }
+        setSupportActionBar(toolbar);
+
+        //inserir imagem da jogada na tela
+        im_principal = (ImageView) findViewById(R.id.im_principal_par);
+        im_principal.setImageResource(img);
+
+        //Remover os botões que não irão aparecer na resposta
+        prepararBotaoOpc();
+
+        //ação ao clicar no botão de remover letras
+        btRemoveLetters.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                apagarLetras(jogando);
+            }
+        });
+
+        //ação ao clicar no botão de ganhar uma letra
+        btAddLetter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                resolverFase();
+            }
+        });
+
+        //verificar se o usuario já removeu letras
+        if (( jogando.equals("filme") && removeuFilme==1) ||
+                (jogando.equals("serie") && removeuSerie==1) ||
+                (jogando.equals("anime") && removeuAnime==1) ||
+                (jogando.equals("anime") && removeuGame==1) ) {
+            jaApagouLetras();
+        }
 
         //banner
         MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");
@@ -1713,14 +1788,6 @@ public class JogoParParActivity extends AppCompatActivity implements RewardedVid
 
     private void verificarResposta(){
         if( compararResposta() ){
-
-            SharedPreferences.Editor editor = pref.edit();
-            editor.putInt("removeu_filme", 00);
-            editor.putInt("removeu_serie", 00);
-            editor.putInt("removeu_anime", 00);
-            editor.putInt("removeu_game", 00);
-            editor.commit();
-
             Intent intent;
             intent = new Intent(JogoParParActivity.this, CheckAnswer.class);
             intent.putExtra("resposta", respostaFinal);

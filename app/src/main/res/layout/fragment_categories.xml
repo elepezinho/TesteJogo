@@ -28,7 +28,7 @@
 
         <ImageView
             android:id="@+id/img_star"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/start" />
 
@@ -40,7 +40,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center_vertical"
-        android:text="10/10"
+        android:text="100/100"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="18sp"

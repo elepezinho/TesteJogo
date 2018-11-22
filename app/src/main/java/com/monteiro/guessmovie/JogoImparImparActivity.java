@@ -2,6 +2,8 @@ package com.monteiro.guessmovie;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
@@ -11,6 +13,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -25,6 +28,8 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
+import com.monteiro.guessmovie.repositorio.DbHelper;
+import com.monteiro.guessmovie.repositorio.PostFase;
 import com.monteiro.guessmovie.screenshot.ScreenshotType;
 import com.monteiro.guessmovie.screenshot.ScreenshotUtils;
 
@@ -150,12 +155,90 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
 
     SharedPreferences pref;
 
+    public SQLiteDatabase db;
+    public DbHelper dbHelper;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jogo_impar_impar);
 
-        new CriarFase().execute();
+        dbHelper = new DbHelper(getBaseContext());
+
+        //new CriarFase().execute();
+        //recuperando dados de preferencia do usuario
+        pref = getSharedPreferences("pref", MODE_PRIVATE);
+        moeda = pref.getInt("qt_moedas", 100);
+        nvlFilme = pref.getInt("nvl_filme", 01);
+        nvlSerie = pref.getInt("nvl_serie", 01);
+        nvlAnime = pref.getInt("nvl_anime", 01);
+        nvlGame = pref.getInt("nvl_game", 01);
+        removeuFilme = pref.getInt("removeu_filme", 00);
+        removeuSerie = pref.getInt("removeu_serie", 00);
+        removeuAnime = pref.getInt("removeu_anime", 00);
+        removeuGame = pref.getInt("removeu_game", 00);
+
+        //inserir qt moedas do usuario na tela
+        txv_coins = (TextView)findViewById(R.id.txv_coins_par);
+        txv_coins.setText(""+moeda);
+        btAddLetter = (Button) findViewById(R.id.bt_add_letter);
+        btRemoveLetters = (Button) findViewById(R.id.btn_remove_letters);
+        //inserir imagem da jogada na tela
+        im_principal = (ImageView) findViewById(R.id.im_principal_par);
+        //im_principal.setImageResource(img);
+
+        //recuperando tipo de categoria que o usuario selecionou
+        Bundle extra = getIntent().getExtras();
+        if(extra != null){
+            jogando = extra.getString("jogando");
+        }
+        toolbar = (Toolbar) findViewById(R.id.toolbar_par);
+
+        //verificando a categoria e criando a fase de acordo com o nvl do usuario na categoria
+        if(jogando.equals("filme")) {
+            toolbar.setTitle("FILME");
+            criarJogo(jogando, nvlFilme);
+        }
+        else if(jogando.equals("serie")) {
+            toolbar.setTitle("SÉRIE");
+            criarJogo(jogando, nvlSerie);
+        }
+        else if(jogando.equals("anime")) {
+            toolbar.setTitle("ANIME");
+            criarJogo(jogando, nvlAnime);
+        }
+        else if(jogando.equals("game")) {
+            toolbar.setTitle("GAME");
+            criarJogo(jogando, nvlGame);
+        }
+        setSupportActionBar(toolbar);
+
+        //Remover os botões que não irão aparecer na resposta
+        prepararBotaoOpc();
+
+        //ação ao clicar no botão de remover letras
+        btRemoveLetters.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                apagarLetras(jogando);
+            }
+        });
+
+        //ação ao clicar no botão de ganhar uma letra
+        btAddLetter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                resolverFase();
+            }
+        });
+
+        //verificar se o usuario já removeu letras
+        if (( jogando.equals("filme") && removeuFilme==1) ||
+                (jogando.equals("serie") && removeuSerie==1) ||
+                (jogando.equals("anime") && removeuAnime==1) ||
+                (jogando.equals("game") && removeuGame==1) ) {
+            jaApagouLetras();
+        }
 
         //banner
         MobileAds.initialize(this,"ca-app-pub-1493186259985891~9080093224");
@@ -204,6 +287,9 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             txv_coins.setText(""+moeda);
             btAddLetter = (Button) findViewById(R.id.bt_add_letter);
             btRemoveLetters = (Button) findViewById(R.id.btn_remove_letters);
+            //inserir imagem da jogada na tela
+            im_principal = (ImageView) findViewById(R.id.im_principal_par);
+            //im_principal.setImageResource(img);
 
             //recuperando tipo de categoria que o usuario selecionou
             Bundle extra = getIntent().getExtras();
@@ -215,19 +301,19 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             //verificando a categoria e criando a fase de acordo com o nvl do usuario na categoria
             if(jogando.equals("filme")) {
                 toolbar.setTitle("FILME");
-                criarJogo(nvlFilme);
+                criarJogo(jogando, nvlFilme);
             }
             else if(jogando.equals("serie")) {
                 toolbar.setTitle("SÉRIE");
-                criarJogo(nvlSerie);
+                criarJogo(jogando, nvlSerie);
             }
             else if(jogando.equals("anime")) {
                 toolbar.setTitle("ANIME");
-                criarJogo(nvlAnime);
+                criarJogo(jogando, nvlAnime);
             }
             else if(jogando.equals("game")) {
                 toolbar.setTitle("GAME");
-                criarJogo(nvlGame);
+                criarJogo(jogando, nvlGame);
             }
             setSupportActionBar(toolbar);
 
@@ -280,6 +366,9 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
     @Override
     public void onStart(){
         super.onStart();
+
+        criarBotoesLetras();
+
         //ação de clicar em umas das 26 letras
         bt_lt_1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -542,13 +631,15 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             }
         });
 
+        criarBotoesOpcoes();
+
         //ação ao clicar nas letras escolhidas
         bt_opc_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 bt_opc_1.setText("");
                 removerLetra(lt1_resposta);
-                respostaUsuario[0] = null;
+                respostaUsuario[0] = "";
                 verificarEspacoBranco();
             }
         });
@@ -558,7 +649,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             public void onClick(View view) {
                 bt_opc_2.setText("");
                 removerLetra(lt2_resposta);
-                respostaUsuario[1] = null;
+                respostaUsuario[1] = "";
                 verificarEspacoBranco();
             }
         });
@@ -568,7 +659,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             public void onClick(View view) {
                 bt_opc_3.setText("");
                 removerLetra(lt3_resposta);
-                respostaUsuario[2] = null;
+                respostaUsuario[2] = "";
                 verificarEspacoBranco();
             }
         });
@@ -577,7 +668,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             public void onClick(View view) {
                 bt_opc_4.setText("");
                 removerLetra(lt4_resposta);
-                respostaUsuario[3] = null;
+                respostaUsuario[3] = "";
                 verificarEspacoBranco();
             }
         });
@@ -586,7 +677,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             public void onClick(View view) {
                 bt_opc_5.setText("");
                 removerLetra(lt5_resposta);
-                respostaUsuario[4] = null;
+                respostaUsuario[4] = "";
                 verificarEspacoBranco();
             }
         });
@@ -595,7 +686,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             public void onClick(View view) {
                 bt_opc_6.setText("");
                 removerLetra(lt6_resposta);
-                respostaUsuario[5] = null;
+                respostaUsuario[5] = "";
                 verificarEspacoBranco();
             }
         });
@@ -604,7 +695,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             public void onClick(View view) {
                 bt_opc_7.setText("");
                 removerLetra(lt7_resposta);
-                respostaUsuario[6] = null;
+                respostaUsuario[6] = "";
                 verificarEspacoBranco();
             }
         });
@@ -614,7 +705,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             public void onClick(View view) {
                 bt_opc_8.setText("");
                 removerLetra(lt8_resposta);
-                respostaUsuario[7] = null;
+                respostaUsuario[7] = "";
                 verificarEspacoBranco();
             }
         });
@@ -624,7 +715,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             public void onClick(View view) {
                 bt_opc_9.setText("");
                 removerLetra(lt9_resposta);
-                respostaUsuario[8] = null;
+                respostaUsuario[8] = "";
                 verificarEspacoBranco();
             }
         });
@@ -633,7 +724,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             public void onClick(View view) {
                 bt_opc_10.setText("");
                 removerLetra(lt10_resposta);
-                respostaUsuario[9] = null;
+                respostaUsuario[9] = "";
                 verificarEspacoBranco();
             }
         });
@@ -642,7 +733,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             public void onClick(View view) {
                 bt_opc_11.setText("");
                 removerLetra(lt11_resposta);
-                respostaUsuario[10] = null;
+                respostaUsuario[10] = "";
                 verificarEspacoBranco();
             }
         });
@@ -652,7 +743,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             public void onClick(View view) {
                 bt_opc_12.setText("");
                 removerLetra(lt12_resposta);
-                respostaUsuario[11] = null;
+                respostaUsuario[11] = "";
                 verificarEspacoBranco();
             }
         });
@@ -662,7 +753,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             public void onClick(View view) {
                 bt_opc_13.setText("");
                 removerLetra(lt13_resposta);
-                respostaUsuario[12] = null;
+                respostaUsuario[12] = "";
                 verificarEspacoBranco();
             }
         });
@@ -671,7 +762,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             public void onClick(View view) {
                 bt_opc_14.setText("");
                 removerLetra(lt14_resposta);
-                respostaUsuario[13] = null;
+                respostaUsuario[13] = "";
                 verificarEspacoBranco();
             }
         });
@@ -680,7 +771,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             public void onClick(View view) {
                 bt_opc_15.setText("");
                 removerLetra(lt15_resposta);
-                respostaUsuario[14] = null;
+                respostaUsuario[14] = "";
                 verificarEspacoBranco();
             }
         });
@@ -689,7 +780,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             public void onClick(View view) {
                 bt_opc_16.setText("");
                 removerLetra(lt16_resposta);
-                respostaUsuario[15] = null;
+                respostaUsuario[15] = "";
                 verificarEspacoBranco();
             }
         });
@@ -698,7 +789,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             public void onClick(View view) {
                 bt_opc_17.setText("");
                 removerLetra(lt17_resposta);
-                respostaUsuario[16] = null;
+                respostaUsuario[16] = "";
                 verificarEspacoBranco();
             }
         });
@@ -708,7 +799,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             public void onClick(View view) {
                 bt_opc_18.setText("");
                 removerLetra(lt18_resposta);
-                respostaUsuario[17] = null;
+                respostaUsuario[17] = "";
                 verificarEspacoBranco();
             }
         });
@@ -718,7 +809,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             public void onClick(View view) {
                 bt_opc_19.setText("");
                 removerLetra(lt19_resposta);
-                respostaUsuario[18] = null;
+                respostaUsuario[18] = "";
                 verificarEspacoBranco();
             }
         });
@@ -727,7 +818,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             public void onClick(View view) {
                 bt_opc_20.setText("");
                 removerLetra(lt20_resposta);
-                respostaUsuario[19] = null;
+                respostaUsuario[19] = "";
                 verificarEspacoBranco();
             }
         });
@@ -736,7 +827,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             public void onClick(View view) {
                 bt_opc_21.setText("");
                 removerLetra(lt21_resposta);
-                respostaUsuario[20] = null;
+                respostaUsuario[20] = "";
                 verificarEspacoBranco();
             }
         });
@@ -745,7 +836,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             public void onClick(View view) {
                 bt_opc_22.setText("");
                 removerLetra(lt22_resposta);
-                respostaUsuario[21] = null;
+                respostaUsuario[21] = "";
                 verificarEspacoBranco();
             }
         });
@@ -755,7 +846,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             public void onClick(View view) {
                 bt_opc_23.setText("");
                 removerLetra(lt23_resposta);
-                respostaUsuario[22] = null;
+                respostaUsuario[22] = "";
                 verificarEspacoBranco();
             }
         });
@@ -765,7 +856,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             public void onClick(View view) {
                 bt_opc_24.setText("");
                 removerLetra(lt24_resposta);
-                respostaUsuario[23] = null;
+                respostaUsuario[23] = "";
                 verificarEspacoBranco();
             }
         });
@@ -774,7 +865,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             public void onClick(View view) {
                 bt_opc_25.setText("");
                 removerLetra(lt25_resposta);
-                respostaUsuario[24] = null;
+                respostaUsuario[24] = "";
                 verificarEspacoBranco();
             }
         });
@@ -783,7 +874,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             public void onClick(View view) {
                 bt_opc_26.setText("");
                 removerLetra(lt26_resposta);
-                respostaUsuario[25] = null;
+                respostaUsuario[25] = "";
                 verificarEspacoBranco();
             }
         });
@@ -879,7 +970,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
         bt_opc_26 = (Button) findViewById(R.id.bt_opc_26);
     }
 
-    private void criarJogo(int nvl) {
+    private void criarJogo(String categoria, int nvl) {
 
         //botões de escolha do usuário
         criarBotoesOpcoes();
@@ -887,7 +978,9 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
         //botões das letras
         criarBotoesLetras();
 
-        if (nvl == 01 && jogando.equals("filme")) {
+        criarFase(categoria, nvl, dbHelper );
+
+        /*if (nvl == 01 && jogando.equals("filme")) {
             criarFilme01();
         } else if (nvl == 01 && jogando.equals("serie")) {
             criarSerie01();
@@ -927,7 +1020,77 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             criarGame04();
         } else if (nvl == 9 && jogando.equals("game")) {
             criarGame09();
+        }*/
+    }
+
+    public void criarFase(String categoria, int nivel, DbHelper dbHelper) {
+        int resid;
+        if(nivel == 1 || nivel == 2 || nivel == 3 || nivel == 4 || nivel == 5 || nivel == 6 || nivel == 7 || nivel == 8 || nivel == 9) {
+            resid = this.getResources().getIdentifier(categoria + "0" + nivel, "drawable", this.getPackageName());
+        } else{
+            resid = this.getResources().getIdentifier(categoria + nivel, "drawable", this.getPackageName());
         }
+        Log.d("valorr ", ""+resid);
+        im_principal.setImageResource(resid);
+
+        db = dbHelper.getReadableDatabase();
+        String[] projection = {
+                PostFase.PostEntry._ID,
+                PostFase.PostEntry.COLUMN_TITULO,
+                PostFase.PostEntry.COLUMN_RESPOSTA,
+                PostFase.PostEntry.COLUMN_LETRAS_ERRADAS,
+                PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS,
+                PostFase.PostEntry.COLUMN_NIVEL
+        };
+        String selection = PostFase.PostEntry.COLUMN_CATEGORIA + " = '" + categoria + "' AND " + PostFase.PostEntry.COLUMN_NIVEL + " = " + nivel;
+        String[] selectionArgs = { categoria };
+        Cursor c = db.query(PostFase.PostEntry.TABLE_NAME,projection,selection,null,null,null,null);
+
+        c.moveToFirst();
+        String valorTitulo = c.getString(
+                c.getColumnIndexOrThrow(PostFase.PostEntry.COLUMN_TITULO)
+        );
+
+        String valorResposta = c.getString(
+                c.getColumnIndexOrThrow(PostFase.PostEntry.COLUMN_RESPOSTA)
+        );
+
+        String valorLetrasEmbaralhadas = c.getString(
+                c.getColumnIndexOrThrow(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS)
+        );
+
+        String valorLetrasErradas = c.getString(
+                c.getColumnIndexOrThrow(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS)
+        );
+
+        //popular vetor resposta
+        for(int z = 0; z<valorResposta.length(); z++){
+            resposta[z] = String.valueOf(valorResposta.charAt(z));
+        }
+
+        //popular vetor resposta
+        for(int z = 0; z<26; z++){
+            respostaUsuario[z] = "";
+            letrasErradas[z] = "";
+        }
+
+        prepararBotaoOpc();
+
+        //iniciando o vetor com as 20 letras embaralhadas
+        for(int z = 0; z<valorLetrasEmbaralhadas.length(); z++){
+            letras[z] = String.valueOf(valorLetrasEmbaralhadas.charAt(z));
+        }
+
+        //vetor com as letras erradas
+        for(int z = 0; z<valorLetrasErradas.length(); z++){
+            letrasErradas[z] = String.valueOf(valorLetrasErradas.charAt(z));
+        }
+
+        //inserir letras nos botões
+        inserirLetrasBotoes();
+
+        //String com a resposta final
+        respostaFinal = valorTitulo;
     }
 
     private void criarFilme01() {
@@ -1901,16 +2064,10 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
         letrasErradas[7] = "C";
         letrasErradas[8] = "X";
         letrasErradas[9] = "B";
-        letrasErradas[10] = "H";
         letrasErradas[11] = "Q";
         letrasErradas[13] = "W";
         letrasErradas[14] = "R";
-        letrasErradas[15] = "M";
-        letrasErradas[16] = "M";
         letrasErradas[19] = "R";
-        letrasErradas[20] = "R";
-        letrasErradas[22] = "M";
-        letrasErradas[23] = "H";
         letrasErradas[24] = "P";
     }
 
@@ -2534,157 +2691,157 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
     }
 
     public void inserirLetra(String letra, String lt_resposta){
-        if(respostaUsuario[0]==null) {
+        if(respostaUsuario[0].equals("")) {
             respostaUsuario[0] = letra;
             bt_opc_1.setText(letra);
             lt1_resposta = lt_resposta;
             verificarResposta();
         }
-        else if (respostaUsuario[1]==null) {
+        else if (respostaUsuario[1].equals("")) {
             respostaUsuario[1] = letra;
             bt_opc_2.setText(letra);
             lt2_resposta = lt_resposta;
             verificarResposta();
         }
-        else if (respostaUsuario[2]==null) {
+        else if (respostaUsuario[2].equals("")) {
             respostaUsuario[2] = letra;
             bt_opc_3.setText(letra);
             lt3_resposta = lt_resposta;
             verificarResposta();
         }
-        else if (respostaUsuario[3]==null) {
+        else if (respostaUsuario[3].equals("")) {
             respostaUsuario[3] = letra;
             bt_opc_4.setText(letra);
             lt4_resposta = lt_resposta;
             verificarResposta();
         }
-        else if (respostaUsuario[4]==null) {
+        else if (respostaUsuario[4].equals("")) {
             respostaUsuario[4] = letra;
             bt_opc_5.setText(letra);
             lt5_resposta = lt_resposta;
             verificarResposta();
         }
-        else if (respostaUsuario[5]==null) {
+        else if (respostaUsuario[5].equals("")) {
             respostaUsuario[5] = letra;
             bt_opc_6.setText(letra);
             lt6_resposta = lt_resposta;
             verificarResposta();
         }
-        else if (respostaUsuario[6]==null) {
+        else if (respostaUsuario[6].equals("")) {
             respostaUsuario[6] = letra;
             bt_opc_7.setText(letra);
             lt7_resposta = lt_resposta;
             verificarResposta();
         }
-        else if (respostaUsuario[7]==null) {
+        else if (respostaUsuario[7].equals("")) {
             respostaUsuario[7] = letra;
             bt_opc_8.setText(letra);
             lt8_resposta = lt_resposta;
             verificarResposta();
         }
-        else if (respostaUsuario[8]==null) {
+        else if (respostaUsuario[8].equals("")) {
             respostaUsuario[8] = letra;
             bt_opc_9.setText(letra);
             lt9_resposta = lt_resposta;
             verificarResposta();
         }
-        else if (respostaUsuario[9]==null) {
+        else if (respostaUsuario[9].equals("")) {
             respostaUsuario[9] = letra;
             bt_opc_10.setText(letra);
             lt10_resposta = lt_resposta;
             verificarResposta();
         }
-        else if (respostaUsuario[10]==null) {
+        else if (respostaUsuario[10].equals("")) {
             respostaUsuario[10] = letra;
             bt_opc_11.setText(letra);
             lt11_resposta = lt_resposta;
             verificarResposta();
         }
-        else if (respostaUsuario[11]==null) {
+        else if (respostaUsuario[11].equals("")) {
             respostaUsuario[11] = letra;
             bt_opc_12.setText(letra);
             lt12_resposta = lt_resposta;
             verificarResposta();
         }
-        else if (respostaUsuario[12]==null) {
+        else if (respostaUsuario[12].equals("")) {
             respostaUsuario[12] = letra;
             bt_opc_13.setText(letra);
             lt13_resposta = lt_resposta;
             verificarResposta();
         }
-        else if (respostaUsuario[13]==null) {
+        else if (respostaUsuario[13].equals("")) {
             respostaUsuario[13] = letra;
             bt_opc_14.setText(letra);
             lt14_resposta = lt_resposta;
             verificarResposta();
         }
-        else if (respostaUsuario[14]==null) {
+        else if (respostaUsuario[14].equals("")) {
             respostaUsuario[14] = letra;
             bt_opc_15.setText(letra);
             lt15_resposta = lt_resposta;
             verificarResposta();
         }
-        else if (respostaUsuario[15]==null) {
+        else if (respostaUsuario[15].equals("")) {
             respostaUsuario[15] = letra;
             bt_opc_16.setText(letra);
             lt16_resposta = lt_resposta;
             verificarResposta();
         }
-        else if (respostaUsuario[16]==null) {
+        else if (respostaUsuario[16].equals("")) {
             respostaUsuario[16] = letra;
             bt_opc_17.setText(letra);
             lt17_resposta = lt_resposta;
             verificarResposta();
         }
-        else if (respostaUsuario[17]==null) {
+        else if (respostaUsuario[17].equals("")) {
             respostaUsuario[17] = letra;
             bt_opc_18.setText(letra);
             lt18_resposta = lt_resposta;
             verificarResposta();
         }
-        else if (respostaUsuario[18]==null) {
+        else if (respostaUsuario[18].equals("")) {
             respostaUsuario[18] = letra;
             bt_opc_19.setText(letra);
             lt19_resposta = lt_resposta;
             verificarResposta();
         }
-        else if (respostaUsuario[19]==null) {
+        else if (respostaUsuario[19].equals("")) {
             respostaUsuario[19] = letra;
             bt_opc_20.setText(letra);
             lt20_resposta = lt_resposta;
             verificarResposta();
         }
-        else if (respostaUsuario[20]==null) {
+        else if (respostaUsuario[20].equals("")) {
             respostaUsuario[20] = letra;
             bt_opc_21.setText(letra);
             lt21_resposta = lt_resposta;
             verificarResposta();
         }
-        else if (respostaUsuario[21]==null) {
+        else if (respostaUsuario[21].equals("")) {
             respostaUsuario[21] = letra;
             bt_opc_22.setText(letra);
             lt22_resposta = lt_resposta;
             verificarResposta();
         }
-        else if (respostaUsuario[22]==null) {
+        else if (respostaUsuario[22].equals("")) {
             respostaUsuario[22] = letra;
             bt_opc_23.setText(letra);
             lt23_resposta = lt_resposta;
             verificarResposta();
         }
-        else if (respostaUsuario[23]==null) {
+        else if (respostaUsuario[23].equals("")) {
             respostaUsuario[23] = letra;
             bt_opc_24.setText(letra);
             lt24_resposta = lt_resposta;
             verificarResposta();
         }
-        else if (respostaUsuario[24]==null) {
+        else if (respostaUsuario[24].equals("")) {
             respostaUsuario[24] = letra;
             bt_opc_25.setText(letra);
             lt25_resposta = lt_resposta;
             verificarResposta();
         }
-        else if (respostaUsuario[25]==null) {
+        else if (respostaUsuario[25].equals("")) {
             respostaUsuario[25] = letra;
             bt_opc_26.setText(letra);
             lt26_resposta = lt_resposta;
@@ -2774,107 +2931,107 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
     }
 
     private void prepararBotaoOpc(){
-        if (resposta[0] == "*"){
+        if (resposta[0].equals("*")){
             bt_opc_1.setVisibility(View.INVISIBLE);
             respostaUsuario[0] = "*";
         }
-        if (resposta[1] == "*"){
+        if (resposta[1].equals("*")){
             bt_opc_2.setVisibility(View.INVISIBLE);
             respostaUsuario[1] = "*";
         }
-        if (resposta[2] == "*"){
+        if (resposta[2].equals("*")){
             bt_opc_3.setVisibility(View.INVISIBLE);
             respostaUsuario[2] = "*";
         }
-        if (resposta[3] == "*"){
+        if (resposta[3].equals("*")){
             bt_opc_4.setVisibility(View.INVISIBLE);
             respostaUsuario[3] = "*";
         }
-        if (resposta[4] == "*"){
+        if (resposta[4].equals("*")){
             bt_opc_5.setVisibility(View.INVISIBLE);
             respostaUsuario[4] = "*";
         }
-        if (resposta[5] == "*"){
+        if (resposta[5].equals("*")){
             bt_opc_6.setVisibility(View.INVISIBLE);
             respostaUsuario[5] = "*";
         }
-        if (resposta[6] == "*"){
+        if (resposta[6].equals("*")){
             bt_opc_7.setVisibility(View.INVISIBLE);
             respostaUsuario[6] = "*";
         }
-        if (resposta[7] == "*"){
+        if (resposta[7].equals("*")){
             bt_opc_8.setVisibility(View.INVISIBLE);
             respostaUsuario[7] = "*";
         }
-        if (resposta[8] == "*"){
+        if (resposta[8].equals("*")){
             bt_opc_9.setVisibility(View.INVISIBLE);
             respostaUsuario[8] = "*";
         }
-        if (resposta[9] == "*"){
+        if (resposta[9].equals("*")){
             bt_opc_10.setVisibility(View.INVISIBLE);
             respostaUsuario[9] = "*";
         }
-        if (resposta[10] == "*"){
+        if (resposta[10].equals("*")){
             bt_opc_11.setVisibility(View.INVISIBLE);
             respostaUsuario[10] = "*";
         }
-        if (resposta[11] == "*"){
+        if (resposta[11].equals("*")){
             bt_opc_12.setVisibility(View.INVISIBLE);
             respostaUsuario[11] = "*";
         }
-        if (resposta[12] == "*"){
+        if (resposta[12].equals("*")){
             bt_opc_13.setVisibility(View.INVISIBLE);
             respostaUsuario[12] = "*";
         }
-        if (resposta[13] == "*"){
+        if (resposta[13].equals("*")){
             bt_opc_14.setVisibility(View.INVISIBLE);
             respostaUsuario[13] = "*";
         }
-        if (resposta[14] == "*"){
+        if (resposta[14].equals("*")){
             bt_opc_15.setVisibility(View.INVISIBLE);
             respostaUsuario[14] = "*";
         }
-        if (resposta[15] == "*"){
+        if (resposta[15].equals("*")){
             bt_opc_16.setVisibility(View.INVISIBLE);
             respostaUsuario[15] = "*";
         }
-        if (resposta[16] == "*"){
+        if (resposta[16].equals("*")){
             bt_opc_17.setVisibility(View.INVISIBLE);
             respostaUsuario[16] = "*";
         }
-        if (resposta[17] == "*"){
+        if (resposta[17].equals("*")){
             bt_opc_18.setVisibility(View.INVISIBLE);
             respostaUsuario[17] = "*";
         }
-        if (resposta[18] == "*"){
+        if (resposta[18].equals("*")){
             bt_opc_19.setVisibility(View.INVISIBLE);
             respostaUsuario[18] = "*";
         }
-        if (resposta[19] == "*"){
+        if (resposta[19].equals("*")){
             bt_opc_20.setVisibility(View.INVISIBLE);
             respostaUsuario[19] = "*";
         }
-        if (resposta[20] == "*"){
+        if (resposta[20].equals("*")){
             bt_opc_21.setVisibility(View.INVISIBLE);
             respostaUsuario[20] = "*";
         }
-        if (resposta[21] == "*"){
+        if (resposta[21].equals("*")){
             bt_opc_22.setVisibility(View.INVISIBLE);
             respostaUsuario[21] = "*";
         }
-        if (resposta[22] == "*"){
+        if (resposta[22].equals("*")){
             bt_opc_23.setVisibility(View.INVISIBLE);
             respostaUsuario[22] = "*";
         }
-        if (resposta[23] == "*"){
+        if (resposta[23].equals("*")){
             bt_opc_24.setVisibility(View.INVISIBLE);
             respostaUsuario[23] = "*";
         }
-        if (resposta[24] == "*"){
+        if (resposta[24].equals("*")){
             bt_opc_25.setVisibility(View.INVISIBLE);
             respostaUsuario[24] = "*";
         }
-        if (resposta[25] == "*"){
+        if (resposta[25].equals("*")){
             bt_opc_26.setVisibility(View.INVISIBLE);
             respostaUsuario[25] = "*";
         }
@@ -2882,14 +3039,6 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
 
     private void verificarResposta(){
         if( compararResposta() ){
-
-            SharedPreferences.Editor editor = pref.edit();
-            editor.putInt("removeu_filme", 00);
-            editor.putInt("removeu_serie", 00);
-            editor.putInt("removeu_anime", 00);
-            editor.putInt("removeu_game", 00);
-            editor.commit();
-
             Intent intent;
             intent = new Intent(JogoImparImparActivity.this, CheckAnswer.class);
             intent.putExtra("resposta", respostaFinal);
@@ -2901,32 +3050,32 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
     }
 
     private boolean compararResposta(){
-        if (respostaUsuario[0] == resposta[0] &&
-                respostaUsuario[1] == resposta[1] &&
-                respostaUsuario[2] == resposta[2] &&
-                respostaUsuario[3] == resposta[3] &&
-                respostaUsuario[4] == resposta[4] &&
-                respostaUsuario[5] == resposta[5] &&
-                respostaUsuario[6] == resposta[6] &&
-                respostaUsuario[7] == resposta[7] &&
-                respostaUsuario[8] == resposta[8] &&
-                respostaUsuario[9] == resposta[9] &&
-                respostaUsuario[10] == resposta[10] &&
-                respostaUsuario[11] == resposta[11] &&
-                respostaUsuario[12] == resposta[12] &&
-                respostaUsuario[13] == resposta[13] &&
-                respostaUsuario[14] == resposta[14] &&
-                respostaUsuario[15] == resposta[15] &&
-                respostaUsuario[16] == resposta[16] &&
-                respostaUsuario[17] == resposta[17] &&
-                respostaUsuario[18] == resposta[18] &&
-                respostaUsuario[19] == resposta[19] &&
-                respostaUsuario[20] == resposta[20] &&
-                respostaUsuario[21] == resposta[21] &&
-                respostaUsuario[22] == resposta[22] &&
-                respostaUsuario[23] == resposta[23] &&
-                respostaUsuario[24] == resposta[24] &&
-                respostaUsuario[25] == resposta[25]) {
+        if (respostaUsuario[0].equals(resposta[0]) &&
+                respostaUsuario[1].equals(resposta[1]) &&
+                respostaUsuario[2].equals(resposta[2]) &&
+                respostaUsuario[3].equals(resposta[3]) &&
+                respostaUsuario[4].equals(resposta[4]) &&
+                respostaUsuario[5].equals(resposta[5]) &&
+                respostaUsuario[6].equals(resposta[6]) &&
+                respostaUsuario[7].equals(resposta[7]) &&
+                respostaUsuario[8].equals(resposta[8]) &&
+                respostaUsuario[9].equals(resposta[9]) &&
+                respostaUsuario[10].equals(resposta[10]) &&
+                respostaUsuario[11].equals(resposta[11]) &&
+                respostaUsuario[12].equals(resposta[12]) &&
+                respostaUsuario[13].equals(resposta[13]) &&
+                respostaUsuario[14].equals(resposta[14]) &&
+                respostaUsuario[15].equals(resposta[15]) &&
+                respostaUsuario[16].equals(resposta[16]) &&
+                respostaUsuario[17].equals(resposta[17]) &&
+                respostaUsuario[18].equals(resposta[18]) &&
+                respostaUsuario[19].equals(resposta[19]) &&
+                respostaUsuario[20].equals(resposta[20]) &&
+                respostaUsuario[21].equals(resposta[21]) &&
+                respostaUsuario[22].equals(resposta[22]) &&
+                respostaUsuario[23].equals(resposta[23]) &&
+                respostaUsuario[24].equals(resposta[24]) &&
+                respostaUsuario[25].equals(resposta[25])) {
             return true;
         }
         else return false;
@@ -2934,32 +3083,32 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
 
     //verifica se existe campo em branco para colocar a letra
     private boolean verificarEspacoBranco() {
-        if (respostaUsuario[0] == null ||
-                respostaUsuario[1] == null ||
-                respostaUsuario[2] == null ||
-                respostaUsuario[3] == null ||
-                respostaUsuario[4] == null ||
-                respostaUsuario[5] == null ||
-                respostaUsuario[6] == null ||
-                respostaUsuario[7] == null ||
-                respostaUsuario[8] == null ||
-                respostaUsuario[9] == null ||
-                respostaUsuario[10] == null ||
-                respostaUsuario[11] == null ||
-                respostaUsuario[12] == null ||
-                respostaUsuario[13] == null ||
-                respostaUsuario[14] == null ||
-                respostaUsuario[15] == null ||
-                respostaUsuario[16] == null ||
-                respostaUsuario[17] == null ||
-                respostaUsuario[18] == null ||
-                respostaUsuario[19] == null ||
-                respostaUsuario[20] == null ||
-                respostaUsuario[21] == null ||
-                respostaUsuario[22] == null ||
-                respostaUsuario[23] == null ||
-                respostaUsuario[24] == null ||
-                respostaUsuario[25] == null){
+        if (respostaUsuario[0].equals("") ||
+                respostaUsuario[1].equals("") ||
+                respostaUsuario[2].equals("") ||
+                respostaUsuario[3].equals("") ||
+                respostaUsuario[4].equals("") ||
+                respostaUsuario[5].equals("") ||
+                respostaUsuario[6].equals("") ||
+                respostaUsuario[7].equals("") ||
+                respostaUsuario[8].equals("") ||
+                respostaUsuario[9].equals("") ||
+                respostaUsuario[10].equals("") ||
+                respostaUsuario[11].equals("") ||
+                respostaUsuario[12].equals("") ||
+                respostaUsuario[13].equals("") ||
+                respostaUsuario[14].equals("") ||
+                respostaUsuario[15].equals("") ||
+                respostaUsuario[16].equals("") ||
+                respostaUsuario[17].equals("") ||
+                respostaUsuario[18].equals("") ||
+                respostaUsuario[19].equals("") ||
+                respostaUsuario[20].equals("") ||
+                respostaUsuario[21].equals("") ||
+                respostaUsuario[22].equals("") ||
+                respostaUsuario[23].equals("") ||
+                respostaUsuario[24].equals("") ||
+                respostaUsuario[25].equals("")){
             pintarDeBranco();
             return true;
         }
@@ -3063,8 +3212,8 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
     }
 
     private void resolverFase(){
-        if(moeda>=100) {
-            txv_coins.setText("" + (moeda -= 100));
+        if(moeda>=200) {
+            txv_coins.setText("" + (moeda -= 200));
             SharedPreferences.Editor editor = pref.edit();
             editor.putInt("qt_moedas", moeda);
             editor.commit();
@@ -3164,32 +3313,32 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
         bt_lt_26.setVisibility(View.VISIBLE);
 
         //limpando todas as letras da resposta na tela
-        bt_opc_1.setText(null);
-        bt_opc_2.setText(null);
-        bt_opc_3.setText(null);
-        bt_opc_4.setText(null);
-        bt_opc_5.setText(null);
-        bt_opc_6.setText(null);
-        bt_opc_7.setText(null);
-        bt_opc_8.setText(null);
-        bt_opc_9.setText(null);
-        bt_opc_10.setText(null);
-        bt_opc_11.setText(null);
-        bt_opc_12.setText(null);
-        bt_opc_13.setText(null);
-        bt_opc_14.setText(null);
-        bt_opc_15.setText(null);
-        bt_opc_16.setText(null);
-        bt_opc_17.setText(null);
-        bt_opc_18.setText(null);
-        bt_opc_19.setText(null);
-        bt_opc_20.setText(null);
-        bt_opc_21.setText(null);
-        bt_opc_22.setText(null);
-        bt_opc_23.setText(null);
-        bt_opc_24.setText(null);
-        bt_opc_25.setText(null);
-        bt_opc_26.setText(null);
+        bt_opc_1.setText("");
+        bt_opc_2.setText("");
+        bt_opc_3.setText("");
+        bt_opc_4.setText("");
+        bt_opc_5.setText("");
+        bt_opc_6.setText("");
+        bt_opc_7.setText("");
+        bt_opc_8.setText("");
+        bt_opc_9.setText("");
+        bt_opc_10.setText("");
+        bt_opc_11.setText("");
+        bt_opc_12.setText("");
+        bt_opc_13.setText("");
+        bt_opc_14.setText("");
+        bt_opc_15.setText("");
+        bt_opc_16.setText("");
+        bt_opc_17.setText("");
+        bt_opc_18.setText("");
+        bt_opc_19.setText("");
+        bt_opc_20.setText("");
+        bt_opc_21.setText("");
+        bt_opc_22.setText("");
+        bt_opc_23.setText("");
+        bt_opc_24.setText("");
+        bt_opc_25.setText("");
+        bt_opc_26.setText("");
     }
 
     private void jaApagouLetras() {
@@ -3277,15 +3426,15 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
 
     private void apagarRespostaUsuario(){
         for (int i = 0; i < 26;i++){
-            respostaUsuario[i] = null;
+            respostaUsuario[i] = "";
         }
     }
 
     private void apagarLetras(String j){
 
         if ((j.equals("filme") && removeuFilme==0) || (j.equals("serie") && removeuSerie==0) || (j.equals("anime") && removeuAnime==0) || (j.equals("game") && removeuGame==0) ){
-            if(moeda>=30) {
-                txv_coins.setText("" + (moeda -= 30));
+            if(moeda>=100) {
+                txv_coins.setText("" + (moeda -= 100));
                 SharedPreferences.Editor editor = pref.edit();
                 editor.putInt("qt_moedas", moeda);
                 if(j.equals("filme")) {

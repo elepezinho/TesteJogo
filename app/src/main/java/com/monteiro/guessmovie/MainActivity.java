@@ -1,15 +1,25 @@
 package com.monteiro.guessmovie;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.monteiro.guessmovie.about.AboutActivity;
+import com.monteiro.guessmovie.repositorio.DbCargaConfig;
+import com.monteiro.guessmovie.repositorio.DbCargaFilmes;
+import com.monteiro.guessmovie.repositorio.DbHelper;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,19 +29,47 @@ public class MainActivity extends AppCompatActivity {
     private ImageView img_info;
 
     //Usar para reiniciar as preferencias do app
-    SharedPreferences.Editor editor;
-
     SharedPreferences pref;
 
     private Boolean jaAcessou;
+    public Boolean jaAvaliou;
+    public int versaoBD;
+    private int moeda;
+    public int valorMoedas = 100;
+    public DbCargaFilmes dbCargaFilmes;
+    public DbCargaConfig dbCargaConfig;
+
+    public SQLiteDatabase db;
+    public DbHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        pref = getSharedPreferences("pref", MODE_PRIVATE);
-        jaAcessou = pref.getBoolean("ja_acessou", false);
+        View decorView = getWindow().getDecorView();
+        // Esconde tanto a barra de navegação e a barra de status .
+        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
+
+        dbHelper = new DbHelper(getBaseContext());
+
+        //versaoBD = 99;
+        if(versaoBD != DbHelper.DATABASE_VERSION) {
+
+            DbHelper dbHelper = new DbHelper(getBaseContext());
+            dbCargaFilmes = new DbCargaFilmes(dbHelper);
+            dbCargaConfig = new DbCargaConfig(dbHelper);
+
+            dbCargaFilmes.inserirFases();
+            dbCargaConfig.inserirConfig();
+
+            SharedPreferences.Editor editor;
+            editor = getSharedPreferences("pref", MODE_PRIVATE).edit();
+            editor.putInt("versao_banco", DbHelper.DATABASE_VERSION);
+            editor.commit();
+        }
 
         bt_start = (Button) findViewById(R.id.bt_start);
         img_star = (ImageView) findViewById(R.id.img_star);
@@ -44,19 +82,31 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(MainActivity.this, CategoriesActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
+                onPause();
             }
         });
 
-        /*img_star.setOnClickListener(new View.OnClickListener() {
+        img_star.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String url = "https://play.google.com/";
-                Intent intent;
-                intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse(url));
-                startActivity(intent);
+
+                if(jaAvaliou == false) {
+                    showRateDialog(view.getContext());
+                    /*String url1 = "http://www.play.google.com/details?id=com.google.earth";
+                    String url = "market://details?id=com.google.earth";
+                    Intent intent;
+                    intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse(url));
+                    startActivity(intent);*/
+                } else {
+                    Toast.makeText(
+                            MainActivity.this,
+                            "Você já avaliou nosso jogo na Play Store. Obrigado! ^^",
+                            Toast.LENGTH_LONG
+                    ).show();
+                }
             }
-        });*/
+        });
 
         img_info.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,5 +117,49 @@ public class MainActivity extends AppCompatActivity {
                 overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        pref = getSharedPreferences("pref", MODE_PRIVATE);
+        jaAcessou = pref.getBoolean("ja_acessou", false);
+        jaAvaliou = pref.getBoolean("ja_avaliou", false);
+        versaoBD = pref.getInt("versao_banco", 0);
+        moeda = pref.getInt("qt_moedas", valorMoedas);
+    }
+
+    public void showRateDialog(final Context context){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context)
+                .setTitle("Avaliar na Play Store")
+                .setMessage("Diga o que achou do nosso jogo na Play Store e ganhe 100 moedas para jogar ainda mais $$$")
+                .setPositiveButton("AVALIAR", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if (context != null){
+                            String link = "market://details?id=";
+                            try {
+                                context.getPackageManager().getPackageInfo("com.android.vending", 0);
+                            } catch (PackageManager.NameNotFoundException e){
+                                e.printStackTrace();
+                                link = "https://play.google.com/store/apps/details?id=";
+                            }
+                            ganharMoedas();
+                            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(link + context.getPackageName())));
+
+                        }
+                    }
+                }).setNegativeButton("CANCELAR", null);
+        builder.show();
+    }
+
+    public void ganharMoedas(){
+        SharedPreferences.Editor editor;
+        editor = getSharedPreferences("pref", MODE_PRIVATE).edit();
+        editor.putInt("qt_moedas", moeda+100);
+        editor.putBoolean("ja_avaliou", true);
+        editor.commit();
+        jaAvaliou = true;
     }
 }

@@ -2,6 +2,8 @@ package com.monteiro.guessmovie.about;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +11,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.monteiro.guessmovie.R;
+import com.monteiro.guessmovie.repositorio.DbHelper;
+import com.monteiro.guessmovie.repositorio.PostConfig;
 import com.monteiro.guessmovie.slider.WelcomeActivity;
 
 public class AboutActivity extends AppCompatActivity {
@@ -18,12 +22,15 @@ public class AboutActivity extends AppCompatActivity {
     private TextView version;
 
     SharedPreferences.Editor editor;
+    public SQLiteDatabase db;
+    public DbHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
+        dbHelper = new DbHelper(getBaseContext());
         tutorial = (TextView) findViewById(R.id.txv_tutorial);
         questionary = (TextView) findViewById(R.id.txv_questionary);
         version = (TextView) findViewById(R.id.txv_version);
@@ -55,9 +62,41 @@ public class AboutActivity extends AppCompatActivity {
         version.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                db = dbHelper.getReadableDatabase();
+                String[] projection = {
+                        PostConfig.PostEntry._ID,
+                        PostConfig.PostEntry.COLUMN_QT_MOEDAS,
+                        PostConfig.PostEntry.COLUMN_TOTAL_FILME,
+                        PostConfig.PostEntry.COLUMN_TOTAL_SERIE,
+                        PostConfig.PostEntry.COLUMN_TOTAL_ANIME,
+                        PostConfig.PostEntry.COLUMN_TOTAL_GAME
+                };
+                Cursor c = db.query(PostConfig.PostEntry.TABLE_NAME,projection,null,null,null,null,null);
+
+                c.moveToFirst();
+                int valorMoedas = c.getInt(
+                        c.getColumnIndexOrThrow(PostConfig.PostEntry.COLUMN_QT_MOEDAS)
+                );
+
+                int valorFilme = c.getInt(
+                        c.getColumnIndexOrThrow(PostConfig.PostEntry.COLUMN_TOTAL_FILME)
+                );
+
+                int valorSerie = c.getInt(
+                        c.getColumnIndexOrThrow(PostConfig.PostEntry.COLUMN_TOTAL_SERIE)
+                );
+
+                int valorAnime = c.getInt(
+                        c.getColumnIndexOrThrow(PostConfig.PostEntry.COLUMN_TOTAL_ANIME)
+                );
+
+                int valorGame = c.getInt(
+                        c.getColumnIndexOrThrow(PostConfig.PostEntry.COLUMN_TOTAL_GAME)
+                );
+
                 //usar para reiniciar as preferencias do app
                 editor = getSharedPreferences("pref", MODE_PRIVATE).edit();
-                editor.putInt("qt_moedas", 100);
+                editor.putInt("qt_moedas", valorMoedas);
                 editor.putInt("nvl_filme", 01);
                 editor.putInt("nvl_serie", 01);
                 editor.putInt("nvl_anime", 01);
@@ -66,6 +105,7 @@ public class AboutActivity extends AppCompatActivity {
                 editor.putInt("removeu_serie", 00);
                 editor.putInt("removeu_anime", 00);
                 editor.putInt("removeu_game", 00);
+                editor.putBoolean("ja_avaliou", false);
                 editor.commit();
             }
         });

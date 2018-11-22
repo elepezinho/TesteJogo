@@ -32,8 +32,8 @@
 
     <Button
         android:id="@+id/bt_inicio"
-        android:layout_width="80dp"
-        android:layout_height="73dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:background="@drawable/house"
         android:textColor="@android:color/white"
         app:layout_constraintBaseline_toBaselineOf="@+id/bt_proximo"
@@ -42,8 +42,8 @@
 
     <Button
         android:id="@+id/bt_proximo"
-        android:layout_width="88dp"
-        android:layout_height="90dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:background="@drawable/start"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline13"
@@ -86,11 +86,10 @@
         android:layout_width="43dp"
         android:layout_height="38dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintHorizontal_bias="0.953"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline10"
         app:srcCompat="@drawable/coin" />
 
@@ -99,15 +98,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="+15"
         android:textColor="@android:color/white"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintEnd_toStartOf="@+id/imageView4"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline10" />
 
     <android.support.constraint.Guideline
@@ -151,4 +152,17 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.89" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="98dp"
+        android:layout_height="66dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:srcCompat="@drawable/dobrar" />
 </android.support.constraint.ConstraintLayout>

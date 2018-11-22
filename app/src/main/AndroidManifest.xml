@@ -15,7 +15,8 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
-            android:hardwareAccelerated="true">
+            android:hardwareAccelerated="true"
+            android:theme="@style/AlertDialog.AppCompat.FullScreen">
         </activity>
 
         <activity
@@ -39,7 +40,7 @@
             android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity"
             android:hardwareAccelerated="true"
-             >
+            android:theme="@style/AlertDialog.AppCompat.FullScreen">
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".MainActivity">
@@ -51,7 +52,7 @@
             android:screenOrientation="portrait"
             android:parentActivityName=".CategoriesActivity"
             android:hardwareAccelerated="true"
-            >
+            android:theme="@style/AlertDialog.AppCompat.FullScreen">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".CategoriesActivity">
@@ -63,7 +64,7 @@
             android:screenOrientation="portrait"
             android:parentActivityName=".CategoriesActivity"
             android:hardwareAccelerated="true"
-            >
+            android:theme="@style/AlertDialog.AppCompat.FullScreen">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".CategoriesActivity">
@@ -75,7 +76,7 @@
             android:screenOrientation="portrait"
             android:parentActivityName=".CategoriesActivity"
             android:hardwareAccelerated="true"
-            >
+            android:theme="@style/AlertDialog.AppCompat.FullScreen">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".CategoriesActivity">
@@ -87,7 +88,7 @@
             android:screenOrientation="portrait"
             android:parentActivityName=".CategoriesActivity"
             android:hardwareAccelerated="true"
-            >
+            android:theme="@style/AlertDialog.AppCompat.FullScreen">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".CategoriesActivity">
@@ -99,7 +100,7 @@
             android:screenOrientation="portrait"
             android:parentActivityName=".CategoriesActivity"
             android:hardwareAccelerated="true"
-            >
+            android:theme="@style/AlertDialog.AppCompat.FullScreen">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".CategoriesActivity">
@@ -111,7 +112,7 @@
             android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity"
             android:hardwareAccelerated="true"
-             >
+            android:theme="@style/AlertDialog.AppCompat.FullScreen">
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".MainActivity">
@@ -123,7 +124,7 @@
             android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity"
             android:hardwareAccelerated="true"
-            >
+            android:theme="@style/AlertDialog.AppCompat.FullScreen">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity">
