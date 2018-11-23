@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
@@ -17,6 +18,7 @@ import com.monteiro.guessmovie.slider.WelcomeActivity;
 
 public class AboutActivity extends AppCompatActivity {
 
+    private Toolbar toolbar;
     private TextView tutorial;
     private TextView questionary;
     private TextView version;
@@ -41,6 +43,9 @@ public class AboutActivity extends AppCompatActivity {
         tutorial = (TextView) findViewById(R.id.txv_tutorial);
         questionary = (TextView) findViewById(R.id.txv_questionary);
         version = (TextView) findViewById(R.id.txv_version);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("INFORMAÇÃO");
+        setSupportActionBar(toolbar);
 
         tutorial.setOnClickListener(new View.OnClickListener() {
             @Override
