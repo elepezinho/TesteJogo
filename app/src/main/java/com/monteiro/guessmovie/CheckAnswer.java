@@ -72,7 +72,7 @@ public class CheckAnswer extends AppCompatActivity {
         nvlSerie = pref.getInt("nvl_serie", 01);
         nvlAnime = pref.getInt("nvl_anime", 01);
         nvlGame = pref.getInt("nvl_game", 01);
-        totalFilme = pref.getInt("total_filme", 10);
+        totalFilme = pref.getInt("total_filme", 12);
         totalSerie = pref.getInt("total_serie", 10);
         totalAnime = pref.getInt("total_anime", 10);
         totalGame = pref.getInt("total_game", 10);
@@ -139,6 +139,14 @@ public class CheckAnswer extends AppCompatActivity {
                         }
                         else if (nvlFilme == 8 || nvlFilme == 9) {
                             Intent intent = new Intent(CheckAnswer.this, JogoImparImparActivity.class);
+                            jogando = "filme";
+                            intent.putExtra("jogando", jogando);
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
+                            finish();
+                        }
+                        else if (nvlFilme == 11 || nvlFilme == 12) {
+                            Intent intent = new Intent(CheckAnswer.this, JogoParImparActivity.class);
                             jogando = "filme";
                             intent.putExtra("jogando", jogando);
                             startActivity(intent);

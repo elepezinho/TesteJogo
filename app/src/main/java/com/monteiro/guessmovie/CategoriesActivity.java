@@ -146,6 +146,14 @@ public class CategoriesActivity extends AppCompatActivity {
                             overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                             onPause();
                         }
+                        else if (nvlFilme == 11 || nvlFilme == 12) {
+                            Intent intent = new Intent(CategoriesActivity.this, JogoParImparActivity.class);
+                            jogando = "filme";
+                            intent.putExtra("jogando", jogando);
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
+                            onPause();
+                        }
                     }
                     else{
                         Toast.makeText(

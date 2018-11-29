@@ -94,5 +94,21 @@ public class DbCargaFilmes {
         values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "**GUERRA***INFINITA*");
         values.put(PostFase.PostEntry.COLUMN_NIVEL, 10);
         newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Perdido em Marte");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "filme");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "TQDMIVOZRJXLRPKWMBEDAYEEUY");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "WQZXYJKLBVYU");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "*PERDIDO*EM*****MARTE****");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 11);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Tropa de Elite");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "filme");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "WKJPLDQRKEITHQZEATQEYWOUSX");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "YKJWQZKUQSHXW");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "**TROPA*DE******ELITE****");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 12);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
     }
 }

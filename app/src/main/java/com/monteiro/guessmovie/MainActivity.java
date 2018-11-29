@@ -21,6 +21,7 @@ import com.monteiro.guessmovie.repositorio.DbCargaAnimes;
 import com.monteiro.guessmovie.repositorio.DbCargaConfig;
 import com.monteiro.guessmovie.repositorio.DbCargaFilmes;
 import com.monteiro.guessmovie.repositorio.DbCargaSeries;
+import com.monteiro.guessmovie.repositorio.DbCargaGames;
 import com.monteiro.guessmovie.repositorio.DbHelper;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,11 +38,12 @@ public class MainActivity extends AppCompatActivity {
     public Boolean jaAvaliou;
     public int versaoBD;
     private int moeda;
-    public int valorMoedas = 100;
+    public int valorMoedas = 300;
     public DbCargaConfig dbCargaConfig;
     public DbCargaFilmes dbCargaFilmes;
     public DbCargaSeries dbCargaSeries;
     public DbCargaAnimes dbCargaAnimes;
+    public DbCargaGames dbCargaGames;
 
     public SQLiteDatabase db;
     public DbHelper dbHelper;
@@ -68,10 +70,12 @@ public class MainActivity extends AppCompatActivity {
             dbCargaFilmes = new DbCargaFilmes(dbHelper);
             dbCargaSeries = new DbCargaSeries(dbHelper);
             dbCargaAnimes = new DbCargaAnimes(dbHelper);
+            dbCargaGames = new DbCargaGames(dbHelper);
 
             dbCargaFilmes.inserirFases();
             dbCargaSeries.inserirFases();
             dbCargaAnimes.inserirFases();
+            dbCargaGames.inserirFases();
             dbCargaConfig.inserirConfig();
 
             SharedPreferences.Editor editor;
@@ -142,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
     public void showRateDialog(final Context context){
         AlertDialog.Builder builder = new AlertDialog.Builder(context)
                 .setTitle("Avaliar na Play Store")
-                .setMessage("Diga o que achou do nosso jogo na Play Store e ganhe 100 moedas para jogar ainda mais $$$")
+                .setMessage("Diga o que achou do nosso jogo na Play Store e ganhe 300 moedas para jogar ainda mais $$$")
                 .setPositiveButton("AVALIAR", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -166,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
     public void ganharMoedas(){
         SharedPreferences.Editor editor;
         editor = getSharedPreferences("pref", MODE_PRIVATE).edit();
-        editor.putInt("qt_moedas", moeda+100);
+        editor.putInt("qt_moedas", moeda+300);
         editor.putBoolean("ja_avaliou", true);
         editor.commit();
         jaAvaliou = true;

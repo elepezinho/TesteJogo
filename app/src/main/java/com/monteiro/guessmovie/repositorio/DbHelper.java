@@ -36,7 +36,7 @@ public class DbHelper extends SQLiteOpenHelper {
             "DROP TABLE IF EXISTS " + PostConfig.PostEntry.TABLE_NAME;
 
     // S E M P R E que atualizar o banco, alterar a versão
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 8;
     public static final String DATABASE_NAME = "FrasesEmoji.db";
 
     public DbHelper(Context context) {

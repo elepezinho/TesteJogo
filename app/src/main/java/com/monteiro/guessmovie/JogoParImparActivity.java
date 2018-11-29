@@ -1751,6 +1751,94 @@ public class JogoParImparActivity extends AppCompatActivity implements RewardedV
         letrasErradas[9] = "M";
     }
 
+    private void criarFilme11(){
+        //inserindo o caminho da imagem
+        img = R.drawable.filme11;
+        //Iniciando o vetor da resposta correta
+        resposta[0] = "*";
+        resposta[1] = "*";
+        resposta[2] = "*";
+        resposta[3] = "P";
+        resposta[4] = "R";
+        resposta[5] = "I";
+        resposta[6] = "S";
+        resposta[7] = "O";
+        resposta[8] = "N";
+        resposta[9] = "*";
+        resposta[10] = "*";
+        resposta[11] = "*";
+        resposta[12] = "*";
+        resposta[13] = "*";
+        resposta[14] = "*";
+        resposta[15] = "*";
+        resposta[16] = "B";
+        resposta[17] = "R";
+        resposta[18] = "E";
+        resposta[19] = "A";
+        resposta[20] = "K";
+        resposta[21] = "*";
+        resposta[22] = "*";
+        resposta[23] = "*";
+        resposta[24] = "*";
+
+        //iniciando o vetor com as 20 letras embaralhadas
+        letras[0] = "Q";
+        letras[1] = "G";
+        letras[2] = "H";
+        letras[3] = "R";//
+        letras[4] = "F";
+        letras[5] = "I";//
+        letras[6] = "S";//
+        letras[7] = "D";
+        letras[8] = "T";
+        letras[9] = "B";//
+        letras[10] = "D";
+        letras[11] = "E";//
+        letras[12] = "R";//
+        letras[13] = "N";//
+        letras[14] = "P";//
+        letras[15] = "K";//
+        letras[16] = "C";//
+        letras[17] = "A";//
+        letras[18] = "U";
+        letras[19] = "O";//
+        letras[20] = "J";
+        letras[21] = "X";
+        letras[22] = "V";
+        letras[23] = "U";
+        letras[24] = "L";
+        letras[25] = "V";
+
+        //inserir letras nos botões
+        inserirLetrasBotoes();
+
+        //String com a resposta final
+        respostaFinal = "Prison Break";
+
+        //vetor com as letras erradas
+        letrasErradas[0] = "Q";
+        letrasErradas[1] = "G";
+        letrasErradas[2] = "H";
+        letrasErradas[3] = "F";
+        letrasErradas[4] = "D";
+        letrasErradas[5] = "T";
+        letrasErradas[6] = "D";
+        letrasErradas[7] = "U";
+        letrasErradas[8] = "X";
+        letrasErradas[9] = "V";
+        letrasErradas[10] = "U";
+        letrasErradas[11] = "L";
+        letrasErradas[12] = "V";
+        letrasErradas[13] = "C";
+        letrasErradas[14] = "J";
+    }
+
+    private void criarFilme12(){
+        //inserindo o caminho da imagem
+        img = R.drawable.filme12;
+        //Iniciando o vetor da resposta correta
+    }
+
     //Séries
 
     private void criarSerie04(){
@@ -2998,8 +3086,9 @@ public class JogoParImparActivity extends AppCompatActivity implements RewardedV
     {
         if(!mAd.isLoaded())
         {
+           // mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("2DB0EA37E5782F0EFA7DF542EEC99770").build());
             mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("9FD8ED97110B2A6E9CD4264637EBDCF7").build());
-            //            mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().build()); //
+                   //   mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().build()); //
         }
     }
 
