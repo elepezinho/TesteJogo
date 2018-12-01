@@ -2681,7 +2681,7 @@ public class JogoParImparActivity extends AppCompatActivity implements RewardedV
 
     private void resolverFase(){
         if(moeda>=100) {
-            txv_coins.setText("" + (moeda -= 100));
+            txv_coins.setText("" + (moeda -= 10));
             SharedPreferences.Editor editor = pref.edit();
             editor.putInt("qt_moedas", moeda);
             editor.commit();

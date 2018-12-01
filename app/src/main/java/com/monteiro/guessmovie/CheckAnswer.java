@@ -74,7 +74,7 @@ public class CheckAnswer extends AppCompatActivity {
         nvlGame = pref.getInt("nvl_game", 01);
         totalFilme = pref.getInt("total_filme", 12);
         totalSerie = pref.getInt("total_serie", 10);
-        totalAnime = pref.getInt("total_anime", 10);
+        totalAnime = pref.getInt("total_anime", 50);
         totalGame = pref.getInt("total_game", 10);
 
         SharedPreferences.Editor editor = pref.edit();
@@ -206,7 +206,9 @@ public class CheckAnswer extends AppCompatActivity {
                 }
                 else if(jogando.equals("anime")) {
                     if (verificarAcertosAnime()) {
-                        if (nvlAnime == 1 || nvlAnime == 2 || nvlAnime == 5) {
+                        if (nvlAnime == 01 || nvlAnime == 02 || nvlAnime == 05 || nvlAnime == 15 || nvlAnime == 17 || nvlAnime == 20 || nvlAnime == 22 || nvlAnime == 23
+                                || nvlAnime == 28 || nvlAnime == 31 || nvlAnime == 33 || nvlAnime == 34 || nvlAnime == 39 || nvlAnime == 43 || nvlAnime == 44
+                                || nvlAnime == 48 || nvlAnime == 49) {
                         Intent intent = new Intent(CheckAnswer.this, JogoParActivity.class);
                         jogando = "anime";
                         intent.putExtra("jogando", jogando);
@@ -214,7 +216,9 @@ public class CheckAnswer extends AppCompatActivity {
                         overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                         finish();
                         }
-                        if (nvlAnime == 3 || nvlAnime == 6 || nvlAnime == 8 ) {
+                        if (nvlAnime == 03 || nvlAnime == 06 || nvlAnime == 8 || nvlAnime == 12 || nvlAnime == 13 || nvlAnime == 18 || nvlAnime == 19  || nvlAnime == 24
+                                || nvlAnime == 26 || nvlAnime == 29 || nvlAnime == 30 || nvlAnime == 32 || nvlAnime == 36 || nvlAnime == 37 || nvlAnime == 38
+                                || nvlAnime == 40 || nvlAnime == 42 || nvlAnime == 47 || nvlAnime == 50) {
                             Intent intent = new Intent(CheckAnswer.this, JogoImparImparActivity.class);
                             jogando = "anime";
                             intent.putExtra("jogando", jogando);
@@ -222,8 +226,17 @@ public class CheckAnswer extends AppCompatActivity {
                             overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                             finish();
                         }
-                        if (nvlAnime == 4 || nvlAnime == 7 || nvlAnime == 9 || nvlAnime == 10 ) {
+                        if (nvlAnime == 04 || nvlAnime == 07 || nvlAnime == 9 || nvlAnime == 10 || nvlAnime == 25 || nvlAnime == 27 || nvlAnime == 41 || nvlAnime == 45
+                                || nvlAnime == 46) {
                             Intent intent = new Intent(CheckAnswer.this, JogoImparParActivity.class);
+                            jogando = "anime";
+                            intent.putExtra("jogando", jogando);
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
+                            finish();
+                        }
+                        if (nvlAnime == 11 || nvlAnime == 14 || nvlAnime == 16 || nvlAnime == 21 || nvlAnime == 35) {
+                            Intent intent = new Intent(CheckAnswer.this, JogoParImparActivity.class);
                             jogando = "anime";
                             intent.putExtra("jogando", jogando);
                             startActivity(intent);

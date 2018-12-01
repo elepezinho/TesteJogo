@@ -3177,7 +3177,7 @@ public class JogoImparParActivity extends AppCompatActivity implements RewardedV
 
         if ((j.equals("filme") && removeuFilme==0) || (j.equals("serie") && removeuSerie==0) || (j.equals("anime") && removeuAnime==0) || (j.equals("game") && removeuGame==0) ){
             if(moeda>=100) {
-                txv_coins.setText("" + (moeda -= 100));
+                txv_coins.setText("" + (moeda -= 10));
                 SharedPreferences.Editor editor = pref.edit();
                 editor.putInt("qt_moedas", moeda);
                 if(j.equals("filme")) {
