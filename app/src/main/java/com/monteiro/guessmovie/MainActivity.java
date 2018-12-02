@@ -22,8 +22,8 @@ import com.monteiro.guessmovie.about.AboutActivity;
 import com.monteiro.guessmovie.repositorio.DbCargaAnimes;
 import com.monteiro.guessmovie.repositorio.DbCargaConfig;
 import com.monteiro.guessmovie.repositorio.DbCargaFilmes;
-import com.monteiro.guessmovie.repositorio.DbCargaSeries;
 import com.monteiro.guessmovie.repositorio.DbCargaGames;
+import com.monteiro.guessmovie.repositorio.DbCargaSeries;
 import com.monteiro.guessmovie.repositorio.DbHelper;
 
 public class MainActivity extends AppCompatActivity {
@@ -141,14 +141,29 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
-        getWindow().getDecorView().setSystemUiVisibility(
+        final View decorview = getWindow().getDecorView();
+        decorview.setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                         | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_IMMERSIVE);
+
+        decorview.setOnSystemUiVisibilityChangeListener(
+                new View.OnSystemUiVisibilityChangeListener() {
+                    @Override
+                    public void onSystemUiVisibilityChange(int i) {
+                        decorview.setSystemUiVisibility(
+                                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                                        | View.SYSTEM_UI_FLAG_FULLSCREEN
+                                        | View.SYSTEM_UI_FLAG_IMMERSIVE);
+                    }
+                }
+        );
 
         pref = getSharedPreferences("pref", MODE_PRIVATE);
         jaAcessou = pref.getBoolean("ja_acessou", false);
