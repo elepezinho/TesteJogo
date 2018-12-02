@@ -124,7 +124,6 @@ public class CheckAnswer extends AppCompatActivity implements RewardedVideoAdLis
         totalSerie = pref.getInt("total_serie", valorSerie);
         totalAnime = pref.getInt("total_anime", valorAnime);
         totalGame = pref.getInt("total_game", valorGame);
-        moeda = pref.getInt("qt_moedas", valorMoedas);
 
         SharedPreferences.Editor editor = pref.edit();
         editor.putInt("qt_moedas", moeda);
@@ -505,7 +504,7 @@ public class CheckAnswer extends AppCompatActivity implements RewardedVideoAdLis
     @Override
     public void onRewarded(RewardItem rewardItem) {
         SharedPreferences.Editor editor = pref.edit();
-        editor.putInt("qt_moedas", moeda);
+        editor.putInt("qt_moedas", moeda+15);
         editor.commit();
     }
 
