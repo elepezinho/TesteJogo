@@ -15,20 +15,17 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
-            android:hardwareAccelerated="true"
-            android:theme="@style/AlertDialog.AppCompat.FullScreen">
+            android:hardwareAccelerated="true">
         </activity>
 
         <activity
             android:name=".SplashScreenActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AlertDialog.AppCompat.FullScreen">
+            android:screenOrientation="portrait">
         </activity>
 
         <activity
             android:name=".slider.WelcomeActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AlertDialog.AppCompat.FullScreen">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -39,8 +36,7 @@
             android:name=".CategoriesActivity"
             android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity"
-            android:hardwareAccelerated="true"
-            android:theme="@style/AlertDialog.AppCompat.FullScreen">
+            android:hardwareAccelerated="true">
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".MainActivity">
@@ -51,8 +47,7 @@
             android:name=".JogoParActivity"
             android:screenOrientation="portrait"
             android:parentActivityName=".CategoriesActivity"
-            android:hardwareAccelerated="true"
-            android:theme="@style/AlertDialog.AppCompat.FullScreen">
+            android:hardwareAccelerated="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".CategoriesActivity">
@@ -63,8 +58,7 @@
             android:name=".JogoParParActivity"
             android:screenOrientation="portrait"
             android:parentActivityName=".CategoriesActivity"
-            android:hardwareAccelerated="true"
-            android:theme="@style/AlertDialog.AppCompat.FullScreen">
+            android:hardwareAccelerated="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".CategoriesActivity">
@@ -75,8 +69,7 @@
             android:name=".JogoParImparActivity"
             android:screenOrientation="portrait"
             android:parentActivityName=".CategoriesActivity"
-            android:hardwareAccelerated="true"
-            android:theme="@style/AlertDialog.AppCompat.FullScreen">
+            android:hardwareAccelerated="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".CategoriesActivity">
@@ -87,8 +80,7 @@
             android:name=".JogoImparParActivity"
             android:screenOrientation="portrait"
             android:parentActivityName=".CategoriesActivity"
-            android:hardwareAccelerated="true"
-            android:theme="@style/AlertDialog.AppCompat.FullScreen">
+            android:hardwareAccelerated="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".CategoriesActivity">
@@ -99,8 +91,7 @@
             android:name=".JogoImparImparActivity"
             android:screenOrientation="portrait"
             android:parentActivityName=".CategoriesActivity"
-            android:hardwareAccelerated="true"
-            android:theme="@style/AlertDialog.AppCompat.FullScreen">
+            android:hardwareAccelerated="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".CategoriesActivity">
@@ -111,8 +102,7 @@
             android:name=".CheckAnswer"
             android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity"
-            android:hardwareAccelerated="true"
-            android:theme="@style/AlertDialog.AppCompat.FullScreen">
+            android:hardwareAccelerated="true">
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".MainActivity">
@@ -123,8 +113,7 @@
             android:name=".about.AboutActivity"
             android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity"
-            android:hardwareAccelerated="true"
-            android:theme="@style/AlertDialog.AppCompat.FullScreen">
+            android:hardwareAccelerated="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity">

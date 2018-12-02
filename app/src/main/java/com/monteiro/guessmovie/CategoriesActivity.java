@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -44,13 +46,14 @@ public class CategoriesActivity extends AppCompatActivity {
     public SQLiteDatabase db;
     public DbHelper dbHelper;
 
-    public int oito = Integer.parseInt("08");
-    public int nove = Integer.parseInt("09");
-    public int dez = Integer.parseInt("10");
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                    WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        }
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                         | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
@@ -122,7 +125,8 @@ public class CategoriesActivity extends AppCompatActivity {
 
                 if(position == 0) {
                     if (verificarAcertosFilme()) {
-                        if (nvlFilme == 1 || nvlFilme == 4 || nvlFilme == 5 || nvlFilme == 7) {
+                        if (nvlFilme == 1 || nvlFilme == 4 || nvlFilme == 5 || nvlFilme == 7 || nvlFilme == 13
+                                || nvlFilme == 16 || nvlFilme == 46) {
                             Intent intent = new Intent(CategoriesActivity.this, JogoImparParActivity.class);
                             jogando = "filme";
                             intent.putExtra("jogando", jogando);
@@ -130,7 +134,10 @@ public class CategoriesActivity extends AppCompatActivity {
                             overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                             onPause();
                         }
-                        else if (nvlFilme == 2 || nvlFilme == 3 || nvlFilme == 6 || nvlFilme == 10) {
+                        else if (nvlFilme == 2 || nvlFilme == 3 || nvlFilme == 6 || nvlFilme == 10 || nvlFilme == 17
+                                || nvlFilme == 19 || nvlFilme == 21 || nvlFilme == 23 || nvlFilme == 27 || nvlFilme == 28
+                                || nvlFilme == 32 || nvlFilme == 35 || nvlFilme == 36 || nvlFilme == 37 || nvlFilme == 38
+                                || nvlFilme == 43 || nvlFilme == 44 || nvlFilme == 45 || nvlFilme == 50) {
                             Intent intent = new Intent(CategoriesActivity.this, JogoParActivity.class);
                             jogando = "filme";
                             intent.putExtra("jogando", jogando);
@@ -138,7 +145,11 @@ public class CategoriesActivity extends AppCompatActivity {
                             overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                             onPause();
                         }
-                        else if (nvlFilme == Integer.parseInt("8") || nvlFilme == Integer.parseInt("9")) {
+                        else if (nvlFilme == Integer.parseInt("8") || nvlFilme == Integer.parseInt("9")
+                                || nvlFilme == 14 || nvlFilme == 18 || nvlFilme == 22 || nvlFilme == 24 || nvlFilme == 26
+                                || nvlFilme == 29 || nvlFilme == 30 || nvlFilme == 31 || nvlFilme == 33 || nvlFilme == 39
+                                || nvlFilme == 40 || nvlFilme == 41 || nvlFilme == 42 || nvlFilme == 47 || nvlFilme == 48
+                                || nvlFilme == 49) {
                             Intent intent = new Intent(CategoriesActivity.this, JogoImparImparActivity.class);
                             jogando = "filme";
                             intent.putExtra("jogando", jogando);
@@ -146,7 +157,8 @@ public class CategoriesActivity extends AppCompatActivity {
                             overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                             onPause();
                         }
-                        else if (nvlFilme == 11 || nvlFilme == 12) {
+                        else if (nvlFilme == 11 || nvlFilme == 12 || nvlFilme == 15 || nvlFilme == 20 || nvlFilme == 25
+                                || nvlFilme == 34) {
                             Intent intent = new Intent(CategoriesActivity.this, JogoParImparActivity.class);
                             jogando = "filme";
                             intent.putExtra("jogando", jogando);
@@ -165,14 +177,21 @@ public class CategoriesActivity extends AppCompatActivity {
                 }
                 else if(position == 1) {
                     if (verificarAcertosSerie()) {
-                        if (nvlSerie == 01 || nvlSerie == 9) {
+                        if (nvlSerie == 01 || nvlSerie == 9 || nvlSerie == 13 || nvlSerie == 14 || nvlSerie == 15
+                                || nvlSerie == 17 || nvlSerie == 20 || nvlSerie == 25 || nvlSerie == 26
+                                || nvlSerie == 30 || nvlSerie == 32 || nvlSerie == 33 || nvlSerie == 41
+                                || nvlSerie == 45 || nvlSerie == 50) {
                             Intent intent = new Intent(CategoriesActivity.this, JogoParActivity.class);
                             jogando = "serie";
                             intent.putExtra("jogando", jogando);
                             startActivity(intent);
                             overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                             onPause();
-                        } else if (nvlSerie == 02 || nvlSerie == 03 || nvlSerie == 06 || nvlSerie == 10) {
+                        } else if (nvlSerie == 02 || nvlSerie == 03 || nvlSerie == 06 || nvlSerie == 10 || nvlSerie == 11
+                                || nvlSerie == 12 || nvlSerie == 18 || nvlSerie == 19 || nvlSerie == 21 || nvlSerie == 22
+                                || nvlSerie == 23 || nvlSerie == 24 || nvlSerie == 28 || nvlSerie == 31 || nvlSerie == 34
+                                || nvlSerie == 36 || nvlSerie == 37 || nvlSerie == 38 || nvlSerie == 46 || nvlSerie == 47
+                                || nvlSerie == 48 || nvlSerie == 49) {
                             Intent intent = new Intent(CategoriesActivity.this, JogoImparImparActivity.class);
                             jogando = "serie";
                             intent.putExtra("jogando", jogando);
@@ -180,14 +199,15 @@ public class CategoriesActivity extends AppCompatActivity {
                             overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                             onPause();
                         }
-                        else if (nvlSerie == 04 || nvlSerie == 07) {
+                        else if (nvlSerie == 04 || nvlSerie == 07 || nvlSerie == 16 || nvlSerie == 27 || nvlSerie == 29
+                                || nvlSerie == 39 || nvlSerie == 40 || nvlSerie == 42) {
                             Intent intent = new Intent(CategoriesActivity.this, JogoParImparActivity.class);
                             jogando = "serie";
                             intent.putExtra("jogando", jogando);
                             startActivity(intent);
                             overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                             onPause();
-                        }else if (nvlSerie == 05 || nvlSerie == 8) {
+                        }else if (nvlSerie == 05 || nvlSerie == 8 || nvlSerie == 35 || nvlSerie == 43 || nvlSerie == 44) {
                             Intent intent = new Intent(CategoriesActivity.this, JogoImparParActivity.class);
                             jogando = "serie";
                             intent.putExtra("jogando", jogando);

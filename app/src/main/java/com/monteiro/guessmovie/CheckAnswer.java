@@ -2,10 +2,15 @@ package com.monteiro.guessmovie;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,12 +20,19 @@ import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.reward.RewardItem;
+import com.google.android.gms.ads.reward.RewardedVideoAd;
+import com.google.android.gms.ads.reward.RewardedVideoAdListener;
+import com.monteiro.guessmovie.repositorio.DbHelper;
+import com.monteiro.guessmovie.repositorio.PostConfig;
 
-public class CheckAnswer extends AppCompatActivity {
+public class CheckAnswer extends AppCompatActivity implements RewardedVideoAdListener {
 
     private Button bt_inicio;
     private Button bt_proximo;
     private TextView txv_resposta;
+    private ImageView imv_dobrar_premio;
+    private RewardedVideoAd mAd;
     private String resposta;
     private int moeda;
     private String jogando;
@@ -36,25 +48,28 @@ public class CheckAnswer extends AppCompatActivity {
     private AdView mAdview;
     private InterstitialAd interstitial;
 
+    public SQLiteDatabase db;
+    public DbHelper dbHelper;
+
     SharedPreferences pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_IMMERSIVE);
         setContentView(R.layout.activity_correct);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                    WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        }
 
         pref = getSharedPreferences("pref", MODE_PRIVATE);
 
         bt_inicio = (Button) findViewById(R.id.bt_inicio);
         bt_proximo = (Button) findViewById(R.id.bt_proximo);
         txv_resposta = (TextView) findViewById(R.id.txv_resposta);
+        imv_dobrar_premio = (ImageView) findViewById(R.id.imv_dobrar_premio);
 
         Bundle extra = getIntent().getExtras();
 
@@ -62,6 +77,39 @@ public class CheckAnswer extends AppCompatActivity {
             resposta = extra.getString("resposta");
             jogando = extra.getString("jogando");
         }
+
+        dbHelper = new DbHelper(getBaseContext());
+        db = dbHelper.getReadableDatabase();
+        String[] projection = {
+                PostConfig.PostEntry._ID,
+                PostConfig.PostEntry.COLUMN_QT_MOEDAS,
+                PostConfig.PostEntry.COLUMN_TOTAL_FILME,
+                PostConfig.PostEntry.COLUMN_TOTAL_SERIE,
+                PostConfig.PostEntry.COLUMN_TOTAL_ANIME,
+                PostConfig.PostEntry.COLUMN_TOTAL_GAME
+        };
+        Cursor c = db.query(PostConfig.PostEntry.TABLE_NAME,projection,null,null,null,null,null);
+
+        c.moveToFirst();
+        int valorMoedas = c.getInt(
+                c.getColumnIndexOrThrow(PostConfig.PostEntry.COLUMN_QT_MOEDAS)
+        );
+
+        int valorFilme = c.getInt(
+                c.getColumnIndexOrThrow(PostConfig.PostEntry.COLUMN_TOTAL_FILME)
+        );
+
+        int valorSerie = c.getInt(
+                c.getColumnIndexOrThrow(PostConfig.PostEntry.COLUMN_TOTAL_SERIE)
+        );
+
+        int valorAnime = c.getInt(
+                c.getColumnIndexOrThrow(PostConfig.PostEntry.COLUMN_TOTAL_ANIME)
+        );
+
+        int valorGame = c.getInt(
+                c.getColumnIndexOrThrow(PostConfig.PostEntry.COLUMN_TOTAL_GAME)
+        );
 
         //pegando a preferencia moeda e somando +15
         moeda = pref.getInt("qt_moedas", 100);
@@ -72,10 +120,11 @@ public class CheckAnswer extends AppCompatActivity {
         nvlSerie = pref.getInt("nvl_serie", 01);
         nvlAnime = pref.getInt("nvl_anime", 01);
         nvlGame = pref.getInt("nvl_game", 01);
-        totalFilme = pref.getInt("total_filme", 12);
-        totalSerie = pref.getInt("total_serie", 10);
-        totalAnime = pref.getInt("total_anime", 50);
-        totalGame = pref.getInt("total_game", 10);
+        totalFilme = pref.getInt("total_filme", valorFilme);
+        totalSerie = pref.getInt("total_serie", valorSerie);
+        totalAnime = pref.getInt("total_anime", valorAnime);
+        totalGame = pref.getInt("total_game", valorGame);
+        moeda = pref.getInt("qt_moedas", valorMoedas);
 
         SharedPreferences.Editor editor = pref.edit();
         editor.putInt("qt_moedas", moeda);
@@ -121,7 +170,8 @@ public class CheckAnswer extends AppCompatActivity {
             public void onClick(View view) {
                 if(jogando.equals("filme")) {
                     if (verificarAcertosFilme()) {
-                        if (nvlFilme == 1 || nvlFilme == 4 || nvlFilme == 5 || nvlFilme == 7) {
+                        if (nvlFilme == 1 || nvlFilme == 4 || nvlFilme == 5 || nvlFilme == 7 || nvlFilme == 13
+                                || nvlFilme == 16 || nvlFilme == 46) {
                             Intent intent = new Intent(CheckAnswer.this, JogoImparParActivity.class);
                             jogando = "filme";
                             intent.putExtra("jogando", jogando);
@@ -129,7 +179,10 @@ public class CheckAnswer extends AppCompatActivity {
                             overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                             finish();
                         }
-                        else if (nvlFilme == 2 || nvlFilme == 3 || nvlFilme == 6 || nvlFilme == 10) {
+                        else if (nvlFilme == 2 || nvlFilme == 3 || nvlFilme == 6 || nvlFilme == 10 || nvlFilme == 17
+                                || nvlFilme == 19 || nvlFilme == 21 || nvlFilme == 23 || nvlFilme == 27 || nvlFilme == 28
+                                || nvlFilme == 32 || nvlFilme == 35 || nvlFilme == 36 || nvlFilme == 37 || nvlFilme == 38
+                                || nvlFilme == 43 || nvlFilme == 44 || nvlFilme == 45 || nvlFilme == 50) {
                             Intent intent = new Intent(CheckAnswer.this, JogoParActivity.class);
                             jogando = "filme";
                             intent.putExtra("jogando", jogando);
@@ -137,7 +190,11 @@ public class CheckAnswer extends AppCompatActivity {
                             overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                             finish();
                         }
-                        else if (nvlFilme == 8 || nvlFilme == 9) {
+                        else if (nvlFilme == Integer.parseInt("8") || nvlFilme == Integer.parseInt("9")
+                                || nvlFilme == 14 || nvlFilme == 18 || nvlFilme == 22 || nvlFilme == 24 || nvlFilme == 26
+                                || nvlFilme == 29 || nvlFilme == 30 || nvlFilme == 31 || nvlFilme == 33 || nvlFilme == 39
+                                || nvlFilme == 40 || nvlFilme == 41 || nvlFilme == 42 || nvlFilme == 47 || nvlFilme == 48
+                                || nvlFilme == 49) {
                             Intent intent = new Intent(CheckAnswer.this, JogoImparImparActivity.class);
                             jogando = "filme";
                             intent.putExtra("jogando", jogando);
@@ -145,7 +202,8 @@ public class CheckAnswer extends AppCompatActivity {
                             overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                             finish();
                         }
-                        else if (nvlFilme == 11 || nvlFilme == 12) {
+                        else if (nvlFilme == 11 || nvlFilme == 12 || nvlFilme == 15 || nvlFilme == 20 || nvlFilme == 25
+                                || nvlFilme == 34) {
                             Intent intent = new Intent(CheckAnswer.this, JogoParImparActivity.class);
                             jogando = "filme";
                             intent.putExtra("jogando", jogando);
@@ -164,14 +222,21 @@ public class CheckAnswer extends AppCompatActivity {
                 }
                 else if(jogando.equals("serie")) {
                     if (verificarAcertosSerie()) {
-                        if (nvlSerie == 1 || nvlSerie == 9) {
+                        if (nvlSerie == 01 || nvlSerie == 9 || nvlSerie == 13 || nvlSerie == 14 || nvlSerie == 15
+                                || nvlSerie == 17 || nvlSerie == 20 || nvlSerie == 25 || nvlSerie == 26
+                                || nvlSerie == 30 || nvlSerie == 32 || nvlSerie == 33 || nvlSerie == 41
+                                || nvlSerie == 45 || nvlSerie == 50) {
                             Intent intent = new Intent(CheckAnswer.this, JogoParActivity.class);
                             jogando = "serie";
                             intent.putExtra("jogando", jogando);
                             startActivity(intent);
                             overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                             finish();
-                        } else if (nvlSerie == 2 || nvlSerie == 3 || nvlSerie == 6 || nvlSerie == 10) {
+                        } else if (nvlSerie == 02 || nvlSerie == 03 || nvlSerie == 06 || nvlSerie == 10 || nvlSerie == 11
+                                || nvlSerie == 12 || nvlSerie == 18 || nvlSerie == 19 || nvlSerie == 21 || nvlSerie == 22
+                                || nvlSerie == 23 || nvlSerie == 24 || nvlSerie == 28 || nvlSerie == 31 || nvlSerie == 34
+                                || nvlSerie == 36 || nvlSerie == 37 || nvlSerie == 38 || nvlSerie == 46 || nvlSerie == 47
+                                || nvlSerie == 48 || nvlSerie == 49) {
                             Intent intent = new Intent(CheckAnswer.this, JogoImparImparActivity.class);
                             jogando = "serie";
                             intent.putExtra("jogando", jogando);
@@ -179,7 +244,8 @@ public class CheckAnswer extends AppCompatActivity {
                             overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                             finish();
                         }
-                        else if (nvlSerie == 4 || nvlSerie == 7) {
+                        else if (nvlSerie == 04 || nvlSerie == 07 || nvlSerie == 16 || nvlSerie == 27 || nvlSerie == 29
+                                || nvlSerie == 39 || nvlSerie == 40 || nvlSerie == 42) {
                             Intent intent = new Intent(CheckAnswer.this, JogoParImparActivity.class);
                             jogando = "serie";
                             intent.putExtra("jogando", jogando);
@@ -187,7 +253,7 @@ public class CheckAnswer extends AppCompatActivity {
                             overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                             finish();
                         }
-                        else if (nvlSerie == 5 || nvlSerie == 8) {
+                        else if (nvlSerie == 05 || nvlSerie == 8 || nvlSerie == 35 || nvlSerie == 43 || nvlSerie == 44) {
                             Intent intent = new Intent(CheckAnswer.this, JogoImparParActivity.class);
                             jogando = "serie";
                             intent.putExtra("jogando", jogando);
@@ -298,6 +364,13 @@ public class CheckAnswer extends AppCompatActivity {
         AdView adView = new AdView(this);
         adView.setAdSize(AdSize.BANNER);
         adView.setAdUnitId("ca-app-pub-1493186259985891/2131541497");
+
+        MobileAds.initialize(getApplicationContext(),"ca-app-pub-1493186259985891~9080093224"); //
+
+        mAd = MobileAds.getRewardedVideoAdInstance(this);
+        mAd.setRewardedVideoAdListener(this);
+
+        loadRewardVideoAd();
     }
 
     private void exibirPropaganda(){
@@ -354,9 +427,97 @@ public class CheckAnswer extends AppCompatActivity {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE);
+    }
+
+    @Override
     public void onBackPressed() {
         // finish() is called in super: we only override method to be able to override transition
         super.onBackPressed();
         overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
+    }
+
+    private void  loadRewardVideoAd()
+    {
+        if(!mAd.isLoaded())
+        {
+            //  mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("2DB0EA37E5782F0EFA7DF542EEC99770").build());
+            mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("9FD8ED97110B2A6E9CD4264637EBDCF7").build());
+            //   mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().build()); //
+        }
+    }
+
+    public void startVideoAd(View view)
+    {
+        if(mAd.isLoaded())
+        {
+            mAd.show();
+        }
+    }
+
+    @Override
+    public void onRewardedVideoAdLoaded() {
+
+    }
+
+    @Override
+    public void onRewardedVideoAdOpened() {
+
+    }
+
+    @Override
+    public void onRewardedVideoStarted() {
+
+    }
+
+    @Override
+    public void onRewardedVideoAdClosed() {
+
+        loadRewardVideoAd();
+
+    }
+
+    @Override
+    public void onRewarded(RewardItem rewardItem) {
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putInt("qt_moedas", moeda);
+        editor.commit();
+    }
+
+    @Override
+    public void onRewardedVideoAdLeftApplication() {
+
+    }
+
+    @Override
+    public void onRewardedVideoAdFailedToLoad(int i) {
+
+    }
+
+    @Override
+    protected void onPause() {
+        mAd.pause(this);
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        mAd.resume(this);
+        super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        mAd.destroy(this);
+        super.onDestroy();
     }
 }
