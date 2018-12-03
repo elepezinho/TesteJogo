@@ -43,7 +43,6 @@ public class WelcomeActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_IMMERSIVE);
-        setContentView(R.layout.activity_main);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
@@ -90,7 +89,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 }
             }
         });
-        layouts = new int[]{R.layout.slider_1,R.layout.slider_2, R.layout.slider_3, R.layout.slider_4,R.layout.slider_5};
+        layouts = new int[]{R.layout.slider_1,R.layout.slider_4, R.layout.slider_3, R.layout.slider_2,R.layout.slider_5};
         pagerAdapter = new MyPagerAdapter(layouts,getApplicationContext());
         viewPager.setAdapter(pagerAdapter);
 

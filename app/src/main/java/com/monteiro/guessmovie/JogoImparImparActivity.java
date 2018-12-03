@@ -2015,7 +2015,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
         intent.setAction(Intent.ACTION_SEND);
         intent.setType("image/*");
         intent.putExtra(Intent.EXTRA_SUBJECT, "");
-        intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.sharing_text));
+        intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.sharing_text)+"https://play.google.com/store/apps/details?id="+ getPackageName());
         intent.putExtra(Intent.EXTRA_STREAM, uri);
         startActivity(Intent.createChooser(intent, getString(R.string.share_title)));
     }

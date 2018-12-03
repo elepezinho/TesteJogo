@@ -2,7 +2,7 @@
     <string name="app_name">Filmes Em Emoji</string>
     <string name="espaco">24dp</string>
     <string name="sem_espaco">0dp</string>
-    <string name="sharing_text">Você pode me ajudar com essa fase? Baixe o Filmes em Emoji e Jogue Também: https://www.google.com.br/</string>
+    <string name="sharing_text">Você pode me ajudar com essa fase? Baixe o Filmes em Emoji e Jogue Também: </string>
     <string name="share_title">Peça Ajuda a Seus Amigos!</string>
     <string name="screenshot_take_failed">Falha ao compartilhar!!</string>
     <string name="wait">Espere um minuto…</string>
