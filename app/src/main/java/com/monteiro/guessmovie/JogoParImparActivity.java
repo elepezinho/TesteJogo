@@ -1587,8 +1587,8 @@ public class JogoParImparActivity extends AppCompatActivity implements RewardedV
     }
 
     private void resolverFase(){
-        if(moeda>=100) {
-            txv_coins.setText("" + (moeda -= 10));
+        if(moeda>=200) {
+            txv_coins.setText("" + (moeda -= 200));
             SharedPreferences.Editor editor = pref.edit();
             editor.putInt("qt_moedas", moeda);
             editor.commit();
@@ -1805,8 +1805,8 @@ public class JogoParImparActivity extends AppCompatActivity implements RewardedV
     private void apagarLetras(String j){
 
         if ((j.equals("filme") && removeuFilme==0) || (j.equals("serie") && removeuSerie==0) || (j.equals("anime") && removeuAnime==0) || (j.equals("game") && removeuGame==0) ){
-            if(moeda>=30) {
-                txv_coins.setText("" + (moeda -= 30));
+            if(moeda>=100) {
+                txv_coins.setText("" + (moeda -= 100));
                 SharedPreferences.Editor editor = pref.edit();
                 editor.putInt("qt_moedas", moeda);
                 if(j.equals("filme")) {
