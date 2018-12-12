@@ -57,7 +57,7 @@ public class AboutActivity extends AppCompatActivity {
         questionary = (TextView) findViewById(R.id.txv_questionary);
         version = (TextView) findViewById(R.id.txv_version);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("INFORMAÇÃO");
+        toolbar.setTitle("INFORMAÇÕES");
         setSupportActionBar(toolbar);
 
         tutorial.setOnClickListener(new View.OnClickListener() {

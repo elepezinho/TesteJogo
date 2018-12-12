@@ -13,12 +13,12 @@ public class DbCargaConfig {
 
     public void inserirConfig(){
         ContentValues values = new ContentValues();
-        values.put(PostConfig.PostEntry.COLUMN_VERSAO_BANCO, 27);
+        values.put(PostConfig.PostEntry.COLUMN_VERSAO_BANCO, 92);
         values.put(PostConfig.PostEntry.COLUMN_QT_MOEDAS, 100);
         values.put(PostConfig.PostEntry.COLUMN_TOTAL_FILME, 50);
         values.put(PostConfig.PostEntry.COLUMN_TOTAL_SERIE, 50);
         values.put(PostConfig.PostEntry.COLUMN_TOTAL_ANIME, 50);
-        values.put(PostConfig.PostEntry.COLUMN_TOTAL_GAME, 10);
+        values.put(PostConfig.PostEntry.COLUMN_TOTAL_GAME, 50);
         long newRowId = db.insert(PostConfig.PostEntry.TABLE_NAME, null, values);
     }
 

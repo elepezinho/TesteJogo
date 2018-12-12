@@ -287,11 +287,11 @@ public class DbCargaAnimes {
         values.put(PostFase.PostEntry.COLUMN_NIVEL, 34);
         newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
 
-        values.put(PostFase.PostEntry.COLUMN_TITULO, "Kurushitsuji");
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Kuroshitsuji");
         values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "anime");
-        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "NXVHTCFIURFLCZSMKGUSDIJUBM");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "NXVHTCFIORFLCZSMKGUSDIJUBM");
         values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZXCCVBNMMLGFFD");
-        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "KURUSHITSUJI*************");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "KUROSHITSUJI*************");
         values.put(PostFase.PostEntry.COLUMN_NIVEL, 35);
         newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
 

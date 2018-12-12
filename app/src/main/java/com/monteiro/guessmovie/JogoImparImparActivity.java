@@ -214,19 +214,19 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
 
         //verificando a categoria e criando a fase de acordo com o nvl do usuario na categoria
         if(jogando.equals("filme")) {
-            toolbar.setTitle("FILME");
+            toolbar.setTitle("FILMES");
             criarJogo(jogando, nvlFilme);
         }
         else if(jogando.equals("serie")) {
-            toolbar.setTitle("SÉRIE");
+            toolbar.setTitle("SÉRIES");
             criarJogo(jogando, nvlSerie);
         }
         else if(jogando.equals("anime")) {
-            toolbar.setTitle("ANIME");
+            toolbar.setTitle("ANIMES");
             criarJogo(jogando, nvlAnime);
         }
         else if(jogando.equals("game")) {
-            toolbar.setTitle("GAME");
+            toolbar.setTitle("GAMES");
             criarJogo(jogando, nvlGame);
         }
         setSupportActionBar(toolbar);
@@ -1837,7 +1837,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
 
         if ((j.equals("filme") && removeuFilme==0) || (j.equals("serie") && removeuSerie==0) || (j.equals("anime") && removeuAnime==0) || (j.equals("game") && removeuGame==0) ){
             if(moeda>=100) {
-                txv_coins.setText("" + (moeda -= 100));
+                txv_coins.setText("" + (moeda -=100));
                 SharedPreferences.Editor editor = pref.edit();
                 editor.putInt("qt_moedas", moeda);
                 if(j.equals("filme")) {
@@ -2015,7 +2015,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
         intent.setAction(Intent.ACTION_SEND);
         intent.setType("image/*");
         intent.putExtra(Intent.EXTRA_SUBJECT, "");
-        intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.sharing_text)+"https://play.google.com/store/apps/details?id="+ getPackageName());
+        intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.sharing_text)+" https://play.google.com/store/apps/details?id=com.monteiro.guessmovie");
         intent.putExtra(Intent.EXTRA_STREAM, uri);
         startActivity(Intent.createChooser(intent, getString(R.string.share_title)));
     }

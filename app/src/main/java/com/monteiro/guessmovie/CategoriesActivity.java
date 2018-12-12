@@ -277,22 +277,34 @@ public class CategoriesActivity extends AppCompatActivity {
                 }
                 else if(position == 3) {
                     if (verificarAcertosGame()) {
-                        if (nvlGame == 01 || nvlGame == 03 || nvlGame == 04 || nvlGame == 9) {
+                        if (nvlGame == 1 || nvlGame == 3 || nvlGame == 4 || nvlGame == 9 || nvlGame == 16 || nvlGame == 17 || nvlGame == 23 || nvlGame ==24 || nvlGame == 25
+                                || nvlGame == 27 || nvlGame == 28 || nvlGame == 29 || nvlGame == 30 || nvlGame == 31 || nvlGame == 33 || nvlGame == 35 || nvlGame == 36
+                                || nvlGame == 37 || nvlGame == 42 || nvlGame == 43 || nvlGame == 44 || nvlGame == 45 || nvlGame == 46 || nvlGame == 47) {
                             Intent intent = new Intent(CategoriesActivity.this, JogoImparImparActivity.class);
                             jogando = "game";
                             intent.putExtra("jogando", jogando);
                             startActivity(intent);
                             overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                             onPause();
-                        } if (nvlGame == 06 || nvlGame == 8) {
+                        } if (nvlGame == 6 || nvlGame == 8 || nvlGame == 12 || nvlGame == 21 || nvlGame == 48 || nvlGame == 50) {
                             Intent intent = new Intent(CategoriesActivity.this, JogoParImparActivity.class);
                             jogando = "game";
                             intent.putExtra("jogando", jogando);
                             startActivity(intent);
                             overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                             onPause();
-                        } if (nvlGame == 02 || nvlGame == 05 || nvlGame == 07 || nvlGame == 10) {
+                        } if (nvlGame == 2 || nvlGame == 5 || nvlGame == 7 || nvlGame == 10  || nvlGame == 14 || nvlGame == 18 || nvlGame == 19 || nvlGame == 20
+                                || nvlGame == 26 || nvlGame == 32 || nvlGame == 34 || nvlGame == 38 || nvlGame == 39 || nvlGame == 40 || nvlGame == 41
+                                || nvlGame == 49) {
                             Intent intent = new Intent(CategoriesActivity.this, JogoParActivity.class);
+                            jogando = "game";
+                            intent.putExtra("jogando", jogando);
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
+                            onPause();
+                        }
+                        if (nvlGame == 11 || nvlGame == 13 || nvlGame == 15 || nvlGame == 22) {
+                            Intent intent = new Intent(CategoriesActivity.this, JogoImparParActivity.class);
                             jogando = "game";
                             intent.putExtra("jogando", jogando);
                             startActivity(intent);
