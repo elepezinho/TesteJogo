@@ -125,10 +125,11 @@ public class CheckAnswer extends AppCompatActivity implements RewardedVideoAdLis
 
         //pegando a preferencia moeda e somando +15
         moeda = pref.getInt("qt_moedas", 100);
+        moeda += recompensa;
         //inserir qt moedas do usuario na tela
         txv_coins = (TextView)findViewById(R.id.txv_coins_check);
         txv_coins.setText(""+moeda);
-        moeda += recompensa;
+
 
         //pegando as preferencias nvl de jogo
         nvlFilme = pref.getInt("nvl_filme", 01);
@@ -503,6 +504,8 @@ public class CheckAnswer extends AppCompatActivity implements RewardedVideoAdLis
         if(mAd.isLoaded())
         {
             mAd.show();
+            moeda += recompensa;
+            txv_coins.setText(""+moeda);
         }
     }
 
