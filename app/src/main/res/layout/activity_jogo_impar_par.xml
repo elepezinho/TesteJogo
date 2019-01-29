@@ -916,7 +916,7 @@
         app:srcCompat="@drawable/coin" />
 
     <TextView
-        android:id="@+id/txv_coins_par"
+        android:id="@+id/txv_coins_check"
         android:layout_width="56dp"
         android:layout_height="32dp"
         android:text="5000"
@@ -928,4 +928,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

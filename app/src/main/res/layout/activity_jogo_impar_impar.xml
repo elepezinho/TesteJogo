@@ -928,7 +928,7 @@
         app:srcCompat="@drawable/coin" />
 
     <TextView
-        android:id="@+id/txv_coins_par"
+        android:id="@+id/txv_coins_check"
         android:layout_width="56dp"
         android:layout_height="32dp"
         android:text="5000"

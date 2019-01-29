@@ -197,7 +197,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
         removeuGame = pref.getInt("removeu_game", 00);
 
         //inserir qt moedas do usuario na tela
-        txv_coins = (TextView)findViewById(R.id.txv_coins_par);
+        txv_coins = (TextView)findViewById(R.id.txv_coins_check);
         txv_coins.setText(""+moeda);
         btAddLetter = (Button) findViewById(R.id.bt_add_letter);
         btRemoveLetters = (Button) findViewById(R.id.btn_remove_letters);
@@ -214,19 +214,19 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
 
         //verificando a categoria e criando a fase de acordo com o nvl do usuario na categoria
         if(jogando.equals("filme")) {
-            toolbar.setTitle("FILMES");
+            toolbar.setTitle("FILME - "+nvlFilme);
             criarJogo(jogando, nvlFilme);
         }
         else if(jogando.equals("serie")) {
-            toolbar.setTitle("SÉRIES");
+            toolbar.setTitle("SÉRIE - "+nvlSerie);
             criarJogo(jogando, nvlSerie);
         }
         else if(jogando.equals("anime")) {
-            toolbar.setTitle("ANIMES");
+            toolbar.setTitle("ANIME - "+nvlAnime);
             criarJogo(jogando, nvlAnime);
         }
         else if(jogando.equals("game")) {
-            toolbar.setTitle("GAMES");
+            toolbar.setTitle("GAME - "+nvlGame);
             criarJogo(jogando, nvlGame);
         }
         setSupportActionBar(toolbar);
@@ -301,7 +301,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             removeuGame = pref.getInt("removeu_game", 00);
 
             //inserir qt moedas do usuario na tela
-            txv_coins = (TextView)findViewById(R.id.txv_coins_par);
+            txv_coins = (TextView)findViewById(R.id.txv_coins_check);
             txv_coins.setText(""+moeda);
             btAddLetter = (Button) findViewById(R.id.bt_add_letter);
             btRemoveLetters = (Button) findViewById(R.id.btn_remove_letters);

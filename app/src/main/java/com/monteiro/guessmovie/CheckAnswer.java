@@ -31,6 +31,7 @@ public class CheckAnswer extends AppCompatActivity implements RewardedVideoAdLis
     private Button bt_inicio;
     private Button bt_proximo;
     private TextView txv_resposta;
+    private TextView txv_coins;
     private ImageView imv_dobrar_premio;
     private RewardedVideoAd mAd;
     private String resposta;
@@ -124,6 +125,9 @@ public class CheckAnswer extends AppCompatActivity implements RewardedVideoAdLis
 
         //pegando a preferencia moeda e somando +15
         moeda = pref.getInt("qt_moedas", 100);
+        //inserir qt moedas do usuario na tela
+        txv_coins = (TextView)findViewById(R.id.txv_coins_check);
+        txv_coins.setText(""+moeda);
         moeda += recompensa;
 
         //pegando as preferencias nvl de jogo
