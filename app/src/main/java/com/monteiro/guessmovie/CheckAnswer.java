@@ -125,7 +125,7 @@ public class CheckAnswer extends AppCompatActivity implements RewardedVideoAdLis
 
         //pegando a preferencia moeda e somando +15
         moeda = pref.getInt("qt_moedas", 100);
-        moeda += recompensa;
+        //moeda += recompensa;
         //inserir qt moedas do usuario na tela
         txv_coins = (TextView)findViewById(R.id.txv_coins_check);
         txv_coins.setText(""+moeda);
@@ -142,7 +142,6 @@ public class CheckAnswer extends AppCompatActivity implements RewardedVideoAdLis
         totalGame = pref.getInt("total_game", valorGame);
 
         SharedPreferences.Editor editor = pref.edit();
-        editor.putInt("qt_moedas", moeda);
 
         //somando mais 1 no nivel de jogo
         if(jogando.equals("filme")) {
@@ -506,6 +505,9 @@ public class CheckAnswer extends AppCompatActivity implements RewardedVideoAdLis
             mAd.show();
             moeda += recompensa;
             txv_coins.setText(""+moeda);
+            SharedPreferences.Editor editor = pref.edit();
+            editor.putInt("qt_moedas", moeda);
+            editor.commit();
         }
     }
 
@@ -534,7 +536,7 @@ public class CheckAnswer extends AppCompatActivity implements RewardedVideoAdLis
     @Override
     public void onRewarded(RewardItem rewardItem) {
         SharedPreferences.Editor editor = pref.edit();
-        editor.putInt("qt_moedas", moeda+15);
+        editor.putInt("qt_moedas", moeda+recompensa);
         editor.commit();
     }
 

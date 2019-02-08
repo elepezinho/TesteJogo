@@ -1414,6 +1414,11 @@ public class JogoImparParActivity extends AppCompatActivity implements RewardedV
 
     private void verificarResposta(){
         if( compararResposta() ){
+            txv_coins.setText("" + (moeda += 15));
+            SharedPreferences.Editor editor = pref.edit();
+            editor.putInt("qt_moedas", moeda);
+            editor.commit();
+
             Intent intent;
             intent = new Intent(JogoImparParActivity.this, CheckAnswer.class);
             intent.putExtra("resposta", respostaFinal);
