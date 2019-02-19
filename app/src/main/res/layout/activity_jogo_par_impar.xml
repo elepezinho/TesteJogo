@@ -9,6 +9,16 @@
     tools:layout_editor_absoluteY="25dp">
 
     <Button
+        android:id="@+id/bt_buy_letter3"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:background="@drawable/btkeyletter"
+        app:layout_constraintBottom_toTopOf="@+id/bt_add_letter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toBottomOf="@+id/btn_remove_letters" />
+
+    <Button
         android:id="@+id/bt_lt_19"
         android:layout_width="@dimen/lt_opc_width1"
         android:layout_height="@dimen/lt_opc_height1"
