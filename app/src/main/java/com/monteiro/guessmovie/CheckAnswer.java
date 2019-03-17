@@ -503,7 +503,7 @@ public class CheckAnswer extends AppCompatActivity implements RewardedVideoAdLis
         if(mAd.isLoaded())
         {
             mAd.show();
-            moeda += recompensa;
+            //moeda += recompensa;
             txv_coins.setText(""+moeda);
             SharedPreferences.Editor editor = pref.edit();
             editor.putInt("qt_moedas", moeda);
@@ -535,9 +535,11 @@ public class CheckAnswer extends AppCompatActivity implements RewardedVideoAdLis
 
     @Override
     public void onRewarded(RewardItem rewardItem) {
+        moeda+=recompensa;
         SharedPreferences.Editor editor = pref.edit();
-        editor.putInt("qt_moedas", moeda+recompensa);
+        editor.putInt("qt_moedas", moeda);
         editor.commit();
+        txv_coins.setText(""+moeda);
     }
 
     @Override

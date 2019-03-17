@@ -1529,132 +1529,132 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
         if (!respostaUsuario[0].equals("*") && !respostaUsuario[0].equals("")){
             bt_opc_1.setText(respostaUsuario[0]);
             bt_opc_1.setClickable(false);
-            bt_opc_1.setBackgroundColor(Color.YELLOW);
+            bt_opc_1.setBackgroundColor(Color.BLUE);
         }
         if (!respostaUsuario[1].equals("*") && !respostaUsuario[1].equals("")){
             bt_opc_2.setText(respostaUsuario[1]);
             bt_opc_2.setClickable(false);
-            bt_opc_2.setBackgroundColor(Color.YELLOW);
+            bt_opc_2.setBackgroundColor(Color.BLUE);
         }
         if (!respostaUsuario[2].equals("*") && !respostaUsuario[2].equals("")){
             bt_opc_3.setText(respostaUsuario[2]);
             bt_opc_3.setClickable(false);
-            bt_opc_3.setBackgroundColor(Color.YELLOW);
+            bt_opc_3.setBackgroundColor(Color.BLUE);
         }
         if (!respostaUsuario[3].equals("*") && !respostaUsuario[3].equals("")){
             bt_opc_4.setText(respostaUsuario[3]);
             bt_opc_4.setClickable(false);
-            bt_opc_4.setBackgroundColor(Color.YELLOW);
+            bt_opc_4.setBackgroundColor(Color.BLUE);
         }
         if (!respostaUsuario[4].equals("*") && !respostaUsuario[4].equals("")){
             bt_opc_5.setText(respostaUsuario[4]);
             bt_opc_5.setClickable(false);
-            bt_opc_5.setBackgroundColor(Color.YELLOW);
+            bt_opc_5.setBackgroundColor(Color.BLUE);
         }
         if (!respostaUsuario[5].equals("*") && !respostaUsuario[5].equals("")){
             bt_opc_6.setText(respostaUsuario[5]);
             bt_opc_6.setClickable(false);
-            bt_opc_6.setBackgroundColor(Color.YELLOW);
+            bt_opc_6.setBackgroundColor(Color.BLUE);
         }
         if (!respostaUsuario[6].equals("*") && !respostaUsuario[6].equals("")){
             bt_opc_7.setText(respostaUsuario[6]);
             bt_opc_7.setClickable(false);
-            bt_opc_7.setBackgroundColor(Color.YELLOW);
+            bt_opc_7.setBackgroundColor(Color.BLUE);
         }
         if (!respostaUsuario[7].equals("*") && !respostaUsuario[7].equals("")){
             bt_opc_8.setText(respostaUsuario[7]);
             bt_opc_8.setClickable(false);
-            bt_opc_8.setBackgroundColor(Color.YELLOW);
+            bt_opc_8.setBackgroundColor(Color.BLUE);
         }
         if (!respostaUsuario[8].equals("*") && !respostaUsuario[8].equals("")){
             bt_opc_9.setText(respostaUsuario[8]);
             bt_opc_9.setClickable(false);
-            bt_opc_9.setBackgroundColor(Color.YELLOW);
+            bt_opc_9.setBackgroundColor(Color.BLUE);
         }
         if (!respostaUsuario[9].equals("*") && !respostaUsuario[9].equals("")){
             bt_opc_10.setText(respostaUsuario[9]);
             bt_opc_10.setClickable(false);
-            bt_opc_10.setBackgroundColor(Color.YELLOW);
+            bt_opc_10.setBackgroundColor(Color.BLUE);
         }
         if (!respostaUsuario[10].equals("*") && !respostaUsuario[10].equals("")){
             bt_opc_11.setText(respostaUsuario[10]);
             bt_opc_11.setClickable(false);
-            bt_opc_11.setBackgroundColor(Color.YELLOW);
+            bt_opc_11.setBackgroundColor(Color.BLUE);
         }
         if (!respostaUsuario[11].equals("*") && !respostaUsuario[11].equals("")){
             bt_opc_12.setText(respostaUsuario[11]);
             bt_opc_12.setClickable(false);
-            bt_opc_12.setBackgroundColor(Color.YELLOW);
+            bt_opc_12.setBackgroundColor(Color.BLUE);
         }
         if (!respostaUsuario[12].equals("*") && !respostaUsuario[12].equals("")){
             bt_opc_13.setText(respostaUsuario[12]);
             bt_opc_13.setClickable(false);
-            bt_opc_13.setBackgroundColor(Color.YELLOW);
+            bt_opc_13.setBackgroundColor(Color.BLUE);
         }
         if (!respostaUsuario[13].equals("*") && !respostaUsuario[13].equals("")){
             bt_opc_14.setText(respostaUsuario[13]);
             bt_opc_14.setClickable(false);
-            bt_opc_14.setBackgroundColor(Color.YELLOW);
+            bt_opc_14.setBackgroundColor(Color.BLUE);
         }
         if (!respostaUsuario[14].equals("*") && !respostaUsuario[14].equals("")){
             bt_opc_15.setText(respostaUsuario[14]);
             bt_opc_15.setClickable(false);
-            bt_opc_15.setBackgroundColor(Color.YELLOW);
+            bt_opc_15.setBackgroundColor(Color.BLUE);
         }
         if (!respostaUsuario[15].equals("*") && !respostaUsuario[15].equals("")){
             bt_opc_16.setText(respostaUsuario[15]);
             bt_opc_16.setClickable(false);
-            bt_opc_16.setBackgroundColor(Color.YELLOW);
+            bt_opc_16.setBackgroundColor(Color.BLUE);
         }
         if (!respostaUsuario[16].equals("*") && !respostaUsuario[16].equals("")){
             bt_opc_17.setText(respostaUsuario[16]);
             bt_opc_17.setClickable(false);
-            bt_opc_17.setBackgroundColor(Color.YELLOW);
+            bt_opc_17.setBackgroundColor(Color.BLUE);
         }
         if (!respostaUsuario[17].equals("*") && !respostaUsuario[17].equals("")){
             bt_opc_18.setText(respostaUsuario[17]);
             bt_opc_18.setClickable(false);
-            bt_opc_18.setBackgroundColor(Color.YELLOW);
+            bt_opc_18.setBackgroundColor(Color.BLUE);
         }
         if (!respostaUsuario[18].equals("*") && !respostaUsuario[18].equals("")){
             bt_opc_19.setText(respostaUsuario[18]);
             bt_opc_19.setClickable(false);
-            bt_opc_19.setBackgroundColor(Color.YELLOW);
+            bt_opc_19.setBackgroundColor(Color.BLUE);
         }
         if (!respostaUsuario[19].equals("*") && !respostaUsuario[19].equals("")){
             bt_opc_20.setText(respostaUsuario[19]);
             bt_opc_20.setClickable(false);
-            bt_opc_20.setBackgroundColor(Color.YELLOW);
+            bt_opc_20.setBackgroundColor(Color.BLUE);
         }
         if (!respostaUsuario[20].equals("*") && !respostaUsuario[20].equals("")){
             bt_opc_21.setText(respostaUsuario[20]);
             bt_opc_21.setClickable(false);
-            bt_opc_21.setBackgroundColor(Color.YELLOW);
+            bt_opc_21.setBackgroundColor(Color.BLUE);
         }
         if (!respostaUsuario[21].equals("*") && !respostaUsuario[21].equals("")){
             bt_opc_22.setText(respostaUsuario[21]);
             bt_opc_22.setClickable(false);
-            bt_opc_22.setBackgroundColor(Color.YELLOW);
+            bt_opc_22.setBackgroundColor(Color.BLUE);
         }
         if (!respostaUsuario[22].equals("*") && !respostaUsuario[22].equals("")){
             bt_opc_23.setText(respostaUsuario[22]);
             bt_opc_23.setClickable(false);
-            bt_opc_23.setBackgroundColor(Color.YELLOW);
+            bt_opc_23.setBackgroundColor(Color.BLUE);
         }
         if (!respostaUsuario[23].equals("*") && !respostaUsuario[23].equals("")){
             bt_opc_24.setText(respostaUsuario[23]);
             bt_opc_24.setClickable(false);
-            bt_opc_24.setBackgroundColor(Color.YELLOW);
+            bt_opc_24.setBackgroundColor(Color.BLUE);
         }
         if (!respostaUsuario[24].equals("*") && !respostaUsuario[24].equals("")){
             bt_opc_25.setText(respostaUsuario[24]);
             bt_opc_25.setClickable(false);
-            bt_opc_25.setBackgroundColor(Color.YELLOW);
+            bt_opc_25.setBackgroundColor(Color.BLUE);
         }
         if (!respostaUsuario[25].equals("*") && !respostaUsuario[25].equals("")){
             bt_opc_26.setText(respostaUsuario[25]);
             bt_opc_26.setClickable(false);
-            bt_opc_26.setBackgroundColor(Color.YELLOW);
+            bt_opc_26.setBackgroundColor(Color.BLUE);
         }
     }
 
