@@ -274,7 +274,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
                     SharedPreferences.Editor editor = pref.edit();
                     pref = getSharedPreferences("pref", MODE_PRIVATE);
 
-                    txv_coins.setText("" + (moeda +=30));
+                    txv_coins.setText("" + (moeda -=30));
                     editor.putInt("qt_moedas", moeda);
 
                     int letrasCompradas = 0;
@@ -1111,7 +1111,6 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
         } else{
             resid = this.getResources().getIdentifier(categoria + nivel, "drawable", this.getPackageName());
         }
-        Log.d("valorr ", ""+resid);
         im_principal.setImageResource(resid);
 
         db = dbHelper.getReadableDatabase();

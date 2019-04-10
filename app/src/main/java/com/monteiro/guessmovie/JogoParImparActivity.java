@@ -131,6 +131,8 @@ public class JogoParImparActivity extends AppCompatActivity implements RewardedV
     private String[] letras = new String[26];
     private String respostaFinal;
     private String[] letrasErradas = new String[25];
+    //comprar letra
+    private String[] letrasCompradas = new String[25];
 
     private RewardedVideoAd mAd;
     private TextView txv_coins;
@@ -144,6 +146,15 @@ public class JogoParImparActivity extends AppCompatActivity implements RewardedV
     private int removeuSerie;
     private int removeuAnime;
     private int removeuGame;
+    //comprar letra
+    private boolean comprouLetraFilme;
+    private boolean comprouLetraSerie;
+    private boolean comprouLetraAnime;
+    private boolean comprouLetraGame;
+    private int letrasCompradasFilme;
+    private int letrasCompradasSerie;
+    private int letrasCompradasAnime;
+    private int letrasCompradasGame;
     private String jogando;
     private AdView mAdview;
     private Button fullPageScreenshot;
@@ -152,6 +163,8 @@ public class JogoParImparActivity extends AppCompatActivity implements RewardedV
     private ImageView imageView;
     private ConstraintLayout rootContent;
     private ProgressBar pb;
+    //comprar letra
+    private Button btBuyLetter;
 
     SharedPreferences pref;
 
@@ -193,11 +206,22 @@ public class JogoParImparActivity extends AppCompatActivity implements RewardedV
         removeuSerie = pref.getInt("removeu_serie", 00);
         removeuAnime = pref.getInt("removeu_anime", 00);
         removeuGame = pref.getInt("removeu_game", 00);
+        //comprar letra
+        comprouLetraFilme = pref.getBoolean("comprou_filme", false);
+        comprouLetraSerie = pref.getBoolean("comprou_serie", false);
+        comprouLetraAnime = pref.getBoolean("comprou_anime", false);
+        comprouLetraGame = pref.getBoolean("comprou_game", false);
+        letrasCompradasFilme = pref.getInt("letras_compradas_filme", 0);
+        letrasCompradasSerie = pref.getInt("letras_compradas_serie", 0);
+        letrasCompradasAnime = pref.getInt("letras_compradas_anime", 0);
+        letrasCompradasGame = pref.getInt("letras_compradas_game", 0);
 
         //inserir qt moedas do usuario na tela
         txv_coins = (TextView)findViewById(R.id.txv_coins_check);
         txv_coins.setText(""+moeda);
         btAddLetter = (Button) findViewById(R.id.bt_add_letter);
+        //comprar letra
+        btBuyLetter = (Button) findViewById(R.id.bt_buy_letter);
         btRemoveLetters = (Button) findViewById(R.id.btn_remove_letters);
         //inserir imagem da jogada na tela
         im_principal = (ImageView) findViewById(R.id.im_principal_par);
@@ -214,18 +238,26 @@ public class JogoParImparActivity extends AppCompatActivity implements RewardedV
         if(jogando.equals("filme")) {
             toolbar.setTitle("FILMES - "+nvlFilme);
             criarJogo(jogando, nvlFilme);
+            //comprar letra
+            inserirLetrasCompradas(jogando, letrasCompradasFilme);
         }
         else if(jogando.equals("serie")) {
             toolbar.setTitle("SÉRIE - "+nvlSerie);
             criarJogo(jogando, nvlSerie);
+            //comprar letra
+            inserirLetrasCompradas(jogando, letrasCompradasSerie);
         }
         else if(jogando.equals("anime")) {
             toolbar.setTitle("ANIME - "+nvlAnime);
             criarJogo(jogando, nvlAnime);
+            //comprar letra
+            inserirLetrasCompradas(jogando, letrasCompradasAnime);
         }
         else if(jogando.equals("game")) {
             toolbar.setTitle("GAME - "+nvlGame);
             criarJogo(jogando, nvlGame);
+            //comprar letra
+            inserirLetrasCompradas(jogando, letrasCompradasGame);
         }
         setSupportActionBar(toolbar);
 
@@ -237,6 +269,49 @@ public class JogoParImparActivity extends AppCompatActivity implements RewardedV
             @Override
             public void onClick(View view) {
                 apagarLetras(jogando);
+            }
+        });
+
+        //ação ao clicar no botão de comprar letra
+        btBuyLetter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (verificarSaldoComprarLetra()) {
+                    SharedPreferences.Editor editor = pref.edit();
+                    pref = getSharedPreferences("pref", MODE_PRIVATE);
+
+                    txv_coins.setText("" + (moeda -=30));
+                    editor.putInt("qt_moedas", moeda);
+
+                    int letrasCompradas = 0;
+
+                    if(jogando.equals("filme")) {
+                        letrasCompradas = pref.getInt("letras_compradas_filme", 0);
+                        letrasCompradas +=1;
+                        editor.putInt("letras_compradas_filme", letrasCompradas);
+                    } else if(jogando.equals("serie")) {
+                        letrasCompradas = pref.getInt("letras_compradas_serie", 0);
+                        letrasCompradas +=1;
+                        editor.putInt("letras_compradas_serie", letrasCompradas);
+                    } else if(jogando.equals("anime")) {
+                        letrasCompradas = pref.getInt("letras_compradas_anime", 0);
+                        letrasCompradas +=1;
+                        editor.putInt("letras_compradas_anime", letrasCompradas);
+                    } else if(jogando.equals("game")) {
+                        letrasCompradas = pref.getInt("letras_compradas_game", 0);
+                        letrasCompradas +=1;
+                        editor.putInt("letras_compradas_game", letrasCompradas);
+                    }
+                    editor.commit();
+
+                    inserirLetrasCompradas(jogando, letrasCompradas);
+                }else {
+                    Toast.makeText(
+                            JogoParImparActivity.this,
+                            "Você não tem moedas suficientes =(\nAssista a vídeos para receber moedas =)",
+                            Toast.LENGTH_LONG
+                    ).show();
+                }
             }
         });
 
@@ -279,7 +354,7 @@ public class JogoParImparActivity extends AppCompatActivity implements RewardedV
         implementClickEvents();
     }
 
-    private class CriarFase extends AsyncTask<Void, Void, String> {
+    /*private class CriarFase extends AsyncTask<Void, Void, String> {
 
         protected void onPreExecute() {
             super.onPreExecute();
@@ -370,7 +445,7 @@ public class JogoParImparActivity extends AppCompatActivity implements RewardedV
         protected void onPostExecute(String string) {
             super.onPostExecute(string);
         }
-    }
+    }*/
 
     @Override
     public void onBackPressed() {
@@ -671,7 +746,8 @@ public class JogoParImparActivity extends AppCompatActivity implements RewardedV
             }
         });
 
-        criarBotoesOpcoes();
+        //comment because comprar letra
+        //criarBotoesOpcoes();
 
         //ação ao clicar nas letras escolhidas
         bt_opc_1.setOnClickListener(new View.OnClickListener() {
@@ -909,6 +985,20 @@ public class JogoParImparActivity extends AppCompatActivity implements RewardedV
                 verificarEspacoBranco();
             }
         });
+
+        //comprar letra
+        if(jogando.equals("filme")) {
+            inserirLetrasCompradas(jogando, letrasCompradasFilme);
+        }
+        else if(jogando.equals("serie")) {
+            inserirLetrasCompradas(jogando, letrasCompradasSerie);
+        }
+        else if(jogando.equals("anime")) {
+            inserirLetrasCompradas(jogando, letrasCompradasAnime);
+        }
+        else if(jogando.equals("game")) {
+            inserirLetrasCompradas(jogando, letrasCompradasGame);
+        }
     }
 
     private void inserirLetrasBotoes() {
@@ -1417,11 +1507,153 @@ public class JogoParImparActivity extends AppCompatActivity implements RewardedV
         }
     }
 
+    //comprar letra
+    private void prepararBotaoOpcAposComprarLt(){
+
+        pintarDeBranco();
+
+        if (!respostaUsuario[0].equals("*") && !respostaUsuario[0].equals("")){
+            bt_opc_1.setText(respostaUsuario[0]);
+            bt_opc_1.setClickable(false);
+            bt_opc_1.setBackgroundColor(Color.BLUE);
+        }
+        if (!respostaUsuario[1].equals("*") && !respostaUsuario[1].equals("")){
+            bt_opc_2.setText(respostaUsuario[1]);
+            bt_opc_2.setClickable(false);
+            bt_opc_2.setBackgroundColor(Color.BLUE);
+        }
+        if (!respostaUsuario[2].equals("*") && !respostaUsuario[2].equals("")){
+            bt_opc_3.setText(respostaUsuario[2]);
+            bt_opc_3.setClickable(false);
+            bt_opc_3.setBackgroundColor(Color.BLUE);
+        }
+        if (!respostaUsuario[3].equals("*") && !respostaUsuario[3].equals("")){
+            bt_opc_4.setText(respostaUsuario[3]);
+            bt_opc_4.setClickable(false);
+            bt_opc_4.setBackgroundColor(Color.BLUE);
+        }
+        if (!respostaUsuario[4].equals("*") && !respostaUsuario[4].equals("")){
+            bt_opc_5.setText(respostaUsuario[4]);
+            bt_opc_5.setClickable(false);
+            bt_opc_5.setBackgroundColor(Color.BLUE);
+        }
+        if (!respostaUsuario[5].equals("*") && !respostaUsuario[5].equals("")){
+            bt_opc_6.setText(respostaUsuario[5]);
+            bt_opc_6.setClickable(false);
+            bt_opc_6.setBackgroundColor(Color.BLUE);
+        }
+        if (!respostaUsuario[6].equals("*") && !respostaUsuario[6].equals("")){
+            bt_opc_7.setText(respostaUsuario[6]);
+            bt_opc_7.setClickable(false);
+            bt_opc_7.setBackgroundColor(Color.BLUE);
+        }
+        if (!respostaUsuario[7].equals("*") && !respostaUsuario[7].equals("")){
+            bt_opc_8.setText(respostaUsuario[7]);
+            bt_opc_8.setClickable(false);
+            bt_opc_8.setBackgroundColor(Color.BLUE);
+        }
+        if (!respostaUsuario[8].equals("*") && !respostaUsuario[8].equals("")){
+            bt_opc_9.setText(respostaUsuario[8]);
+            bt_opc_9.setClickable(false);
+            bt_opc_9.setBackgroundColor(Color.BLUE);
+        }
+        if (!respostaUsuario[9].equals("*") && !respostaUsuario[9].equals("")){
+            bt_opc_10.setText(respostaUsuario[9]);
+            bt_opc_10.setClickable(false);
+            bt_opc_10.setBackgroundColor(Color.BLUE);
+        }
+        if (!respostaUsuario[10].equals("*") && !respostaUsuario[10].equals("")){
+            bt_opc_11.setText(respostaUsuario[10]);
+            bt_opc_11.setClickable(false);
+            bt_opc_11.setBackgroundColor(Color.BLUE);
+        }
+        if (!respostaUsuario[11].equals("*") && !respostaUsuario[11].equals("")){
+            bt_opc_12.setText(respostaUsuario[11]);
+            bt_opc_12.setClickable(false);
+            bt_opc_12.setBackgroundColor(Color.BLUE);
+        }
+        if (!respostaUsuario[12].equals("*") && !respostaUsuario[12].equals("")){
+            bt_opc_13.setText(respostaUsuario[12]);
+            bt_opc_13.setClickable(false);
+            bt_opc_13.setBackgroundColor(Color.BLUE);
+        }
+        if (!respostaUsuario[13].equals("*") && !respostaUsuario[13].equals("")){
+            bt_opc_14.setText(respostaUsuario[13]);
+            bt_opc_14.setClickable(false);
+            bt_opc_14.setBackgroundColor(Color.BLUE);
+        }
+        if (!respostaUsuario[14].equals("*") && !respostaUsuario[14].equals("")){
+            bt_opc_15.setText(respostaUsuario[14]);
+            bt_opc_15.setClickable(false);
+            bt_opc_15.setBackgroundColor(Color.BLUE);
+        }
+        if (!respostaUsuario[15].equals("*") && !respostaUsuario[15].equals("")){
+            bt_opc_16.setText(respostaUsuario[15]);
+            bt_opc_16.setClickable(false);
+            bt_opc_16.setBackgroundColor(Color.BLUE);
+        }
+        if (!respostaUsuario[16].equals("*") && !respostaUsuario[16].equals("")){
+            bt_opc_17.setText(respostaUsuario[16]);
+            bt_opc_17.setClickable(false);
+            bt_opc_17.setBackgroundColor(Color.BLUE);
+        }
+        if (!respostaUsuario[17].equals("*") && !respostaUsuario[17].equals("")){
+            bt_opc_18.setText(respostaUsuario[17]);
+            bt_opc_18.setClickable(false);
+            bt_opc_18.setBackgroundColor(Color.BLUE);
+        }
+        if (!respostaUsuario[18].equals("*") && !respostaUsuario[18].equals("")){
+            bt_opc_19.setText(respostaUsuario[18]);
+            bt_opc_19.setClickable(false);
+            bt_opc_19.setBackgroundColor(Color.BLUE);
+        }
+        if (!respostaUsuario[19].equals("*") && !respostaUsuario[19].equals("")){
+            bt_opc_20.setText(respostaUsuario[19]);
+            bt_opc_20.setClickable(false);
+            bt_opc_20.setBackgroundColor(Color.BLUE);
+        }
+        if (!respostaUsuario[20].equals("*") && !respostaUsuario[20].equals("")){
+            bt_opc_21.setText(respostaUsuario[20]);
+            bt_opc_21.setClickable(false);
+            bt_opc_21.setBackgroundColor(Color.BLUE);
+        }
+        if (!respostaUsuario[21].equals("*") && !respostaUsuario[21].equals("")){
+            bt_opc_22.setText(respostaUsuario[21]);
+            bt_opc_22.setClickable(false);
+            bt_opc_22.setBackgroundColor(Color.BLUE);
+        }
+        if (!respostaUsuario[22].equals("*") && !respostaUsuario[22].equals("")){
+            bt_opc_23.setText(respostaUsuario[22]);
+            bt_opc_23.setClickable(false);
+            bt_opc_23.setBackgroundColor(Color.BLUE);
+        }
+        if (!respostaUsuario[23].equals("*") && !respostaUsuario[23].equals("")){
+            bt_opc_24.setText(respostaUsuario[23]);
+            bt_opc_24.setClickable(false);
+            bt_opc_24.setBackgroundColor(Color.BLUE);
+        }
+        if (!respostaUsuario[24].equals("*") && !respostaUsuario[24].equals("")){
+            bt_opc_25.setText(respostaUsuario[24]);
+            bt_opc_25.setClickable(false);
+            bt_opc_25.setBackgroundColor(Color.BLUE);
+        }
+    }
+
     private void verificarResposta(){
         if( compararResposta() ){
             txv_coins.setText("" + (moeda += 15));
             SharedPreferences.Editor editor = pref.edit();
             editor.putInt("qt_moedas", moeda);
+            //comprar moedas
+            if(jogando.equals("filme")) {
+                editor.putInt("letras_compradas_filme", 0);
+            } else if(jogando.equals("serie")) {
+                editor.putInt("letras_compradas_serie", 0);
+            } else if(jogando.equals("anime")) {
+                editor.putInt("letras_compradas_anime", 0);
+            } else if(jogando.equals("game")) {
+                editor.putInt("letras_compradas_game", 0);
+            }
             editor.commit();
 
             Intent intent;
@@ -1801,10 +2033,218 @@ public class JogoParImparActivity extends AppCompatActivity implements RewardedV
         }
     }
 
+    //comprar letra
+    private void apagarLetraComprada(){
+        for (String c: respostaUsuario) {
+            if (bt_lt_1.getText().equals(c) && bt_lt_1.getVisibility()==View.VISIBLE) {
+                bt_lt_1.setVisibility(View.INVISIBLE);
+            }
+            else if(bt_lt_2.getText().equals(c) && bt_lt_2.getVisibility()==View.VISIBLE){
+                bt_lt_2.setVisibility(View.INVISIBLE);
+            }
+            else if(bt_lt_3.getText().equals(c) && bt_lt_3.getVisibility()==View.VISIBLE){
+                bt_lt_3.setVisibility(View.INVISIBLE);
+            }
+            else if(bt_lt_4.getText().equals(c) && bt_lt_4.getVisibility()==View.VISIBLE){
+                bt_lt_4.setVisibility(View.INVISIBLE);
+            }
+            else if(bt_lt_5.getText().equals(c) && bt_lt_5.getVisibility()==View.VISIBLE){
+                bt_lt_5.setVisibility(View.INVISIBLE);
+            }
+            else if(bt_lt_6.getText().equals(c) && bt_lt_6.getVisibility()==View.VISIBLE){
+                bt_lt_6.setVisibility(View.INVISIBLE);
+            }
+            else if(bt_lt_7.getText().equals(c) && bt_lt_7.getVisibility()==View.VISIBLE){
+                bt_lt_7.setVisibility(View.INVISIBLE);
+            }
+            else if(bt_lt_8.getText().equals(c) && bt_lt_8.getVisibility()==View.VISIBLE){
+                bt_lt_8.setVisibility(View.INVISIBLE);
+            }
+            else if(bt_lt_9.getText().equals(c) && bt_lt_9.getVisibility()==View.VISIBLE){
+                bt_lt_9.setVisibility(View.INVISIBLE);
+            }
+            else if(bt_lt_10.getText().equals(c) && bt_lt_10.getVisibility()==View.VISIBLE){
+                bt_lt_10.setVisibility(View.INVISIBLE);
+            }
+            else if(bt_lt_11.getText().equals(c) && bt_lt_11.getVisibility()==View.VISIBLE){
+                bt_lt_11.setVisibility(View.INVISIBLE);
+            }
+            else if(bt_lt_12.getText().equals(c) && bt_lt_12.getVisibility()==View.VISIBLE){
+                bt_lt_12.setVisibility(View.INVISIBLE);
+            }
+            else if(bt_lt_13.getText().equals(c) && bt_lt_13.getVisibility()==View.VISIBLE){
+                bt_lt_13.setVisibility(View.INVISIBLE);
+            }
+            else if(bt_lt_14.getText().equals(c) && bt_lt_14.getVisibility()==View.VISIBLE){
+                bt_lt_14.setVisibility(View.INVISIBLE);
+            }
+            else if(bt_lt_15.getText().equals(c) && bt_lt_15.getVisibility()==View.VISIBLE){
+                bt_lt_15.setVisibility(View.INVISIBLE);
+            }
+            else if(bt_lt_16.getText().equals(c) && bt_lt_16.getVisibility()==View.VISIBLE){
+                bt_lt_16.setVisibility(View.INVISIBLE);
+            }
+            else if(bt_lt_17.getText().equals(c) && bt_lt_17.getVisibility()==View.VISIBLE){
+                bt_lt_17.setVisibility(View.INVISIBLE);
+            }
+            else if(bt_lt_18.getText().equals(c) && bt_lt_18.getVisibility()==View.VISIBLE){
+                bt_lt_18.setVisibility(View.INVISIBLE);
+            }
+            else if(bt_lt_19.getText().equals(c) && bt_lt_19.getVisibility()==View.VISIBLE){
+                bt_lt_19.setVisibility(View.INVISIBLE);
+            }
+            else if(bt_lt_20.getText().equals(c) && bt_lt_20.getVisibility()==View.VISIBLE){
+                bt_lt_20.setVisibility(View.INVISIBLE);
+            }
+            else if(bt_lt_21.getText().equals(c) && bt_lt_21.getVisibility()==View.VISIBLE){
+                bt_lt_21.setVisibility(View.INVISIBLE);
+            }
+            else if(bt_lt_22.getText().equals(c) && bt_lt_22.getVisibility()==View.VISIBLE){
+                bt_lt_22.setVisibility(View.INVISIBLE);
+            }
+            else if(bt_lt_23.getText().equals(c) && bt_lt_23.getVisibility()==View.VISIBLE){
+                bt_lt_23.setVisibility(View.INVISIBLE);
+            }
+            else if(bt_lt_24.getText().equals(c) && bt_lt_24.getVisibility()==View.VISIBLE){
+                bt_lt_24.setVisibility(View.INVISIBLE);
+            }
+            else if(bt_lt_25.getText().equals(c) && bt_lt_25.getVisibility()==View.VISIBLE){
+                bt_lt_25.setVisibility(View.INVISIBLE);
+            }
+        }
+    }
+
     private void apagarRespostaUsuario(){
         for (int i = 0; i < 25;i++){
             respostaUsuario[i] = "";
         }
+    }
+
+    //comprar letra
+    private boolean verificarSaldoComprarLetra(){
+        if(moeda>=30) {
+            return true;
+        }
+        return false;
+    }
+
+    //comprar letras
+    private void inserirLetrasCompradas(String j, int letrasCompradas) {
+
+        mostrarBotoes();
+
+        apagarRespostaUsuario();
+
+        prepararBotaoOpc();
+
+        int cont = 0;
+        if ((!resposta[0].equals("*")) && letrasCompradas > cont){
+            respostaUsuario[0] = resposta[0];
+            cont ++;
+        }
+        if (!resposta[1].equals("*") && letrasCompradas > cont){
+            respostaUsuario[1] = resposta[1];
+            cont ++;
+        }
+        if (!resposta[2].equals("*") && letrasCompradas > cont){
+            respostaUsuario[2] = resposta[2];
+            cont ++;
+        }
+        if (!resposta[3].equals("*") && letrasCompradas > cont){
+            respostaUsuario[3] = resposta[3];
+            cont ++;
+        }
+        if (!resposta[4].equals("*") && letrasCompradas > cont){
+            respostaUsuario[4] = resposta[4];
+            cont ++;
+        }
+        if (!resposta[5].equals("*") && letrasCompradas > cont){
+            respostaUsuario[5] = resposta[5];
+            cont ++;
+        }
+        if (!resposta[6].equals("*") && letrasCompradas > cont){
+            respostaUsuario[6] = resposta[6];
+            cont ++;
+        }
+        if (!resposta[7].equals("*") && letrasCompradas > cont){
+            respostaUsuario[7] = resposta[7];
+            cont ++;
+        }
+        if (!resposta[8].equals("*") && letrasCompradas > cont){
+            respostaUsuario[8] = resposta[8];
+            cont ++;
+        }
+        if (!resposta[9].equals("*") && letrasCompradas > cont){
+            respostaUsuario[9] = resposta[9];
+            cont ++;
+        }
+        if (!resposta[10].equals("*") && letrasCompradas > cont){
+            respostaUsuario[10] = resposta[10];
+            cont ++;
+        }
+        if (!resposta[11].equals("*") && letrasCompradas > cont){
+            respostaUsuario[11] = resposta[11];
+            cont ++;
+        }
+        if (!resposta[12].equals("*") && letrasCompradas > cont){
+            respostaUsuario[12] = resposta[12];
+            cont ++;
+        }
+        if (!resposta[13].equals("*") && letrasCompradas > cont){
+            respostaUsuario[13] = resposta[13];
+            cont ++;
+        }
+        if (!resposta[14].equals("*") && letrasCompradas > cont){
+            respostaUsuario[14] = resposta[14];
+            cont ++;
+        }
+        if (!resposta[15].equals("*") && letrasCompradas > cont){
+            respostaUsuario[15] = resposta[15];
+            cont ++;
+        }
+        if (!resposta[16].equals("*") && letrasCompradas > cont){
+            respostaUsuario[16] = resposta[16];
+            cont ++;
+        }
+        if (!resposta[17].equals("*") && letrasCompradas > cont){
+            respostaUsuario[17] = resposta[17];
+            cont ++;
+        }
+        if (!resposta[18].equals("*") && letrasCompradas > cont){
+            respostaUsuario[18] = resposta[18];
+            cont ++;
+        }
+        if (!resposta[19].equals("*") && letrasCompradas > cont){
+            respostaUsuario[19] = resposta[19];
+            cont ++;
+        }
+        if (!resposta[20].equals("*") && letrasCompradas > cont){
+            respostaUsuario[20] = resposta[20];
+            cont ++;
+        }
+        if (!resposta[21].equals("*") && letrasCompradas > cont){
+            respostaUsuario[21] = resposta[21];
+            cont ++;
+        }
+        if (!resposta[22].equals("*") && letrasCompradas > cont){
+            respostaUsuario[22] = resposta[22];
+            cont ++;
+        }
+        if (!resposta[23].equals("*") && letrasCompradas > cont){
+            respostaUsuario[23] = resposta[23];
+            cont ++;
+        }
+        if (!resposta[24].equals("*") && letrasCompradas > cont){
+            respostaUsuario[24] = resposta[24];
+            cont ++;
+        }
+        prepararBotaoOpcAposComprarLt();
+
+        apagarLetraComprada();
+
+        verificarEspacoBranco();
+
+        verificarResposta();
     }
 
     private void apagarLetras(String j){

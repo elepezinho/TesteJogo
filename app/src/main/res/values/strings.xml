@@ -24,4 +24,9 @@
     <string name="tutorial">Tutorial de Como Jogar</string>
     <string name="questionario">Nos Envie o Seu Feedback Sobre o Jogo</string>
     <string name="versao">Versão Alpha</string>
+    <string name="back4app_server_url">https://parseapi.back4app.com/</string>
+    <string name="back4app_app_id">oeV19uJ70PTrEp5pVzyEtjHvP3VIojn2FfBb0cPE</string>
+    <string name="back4app_client_key">DmfjkhRm8gfDu159ejbanH1q6NnHnPm8UwWhpupT</string>
+    <string name="firebase_sender">id:85245602085</string>
+    <string name="firebase_sender_number">85245602085</string>
 </resources>
