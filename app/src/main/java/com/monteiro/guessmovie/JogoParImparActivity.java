@@ -335,7 +335,7 @@ public class JogoParImparActivity extends AppCompatActivity implements RewardedV
         MobileAds.initialize(this,"ca-app-pub-1493186259985891~9080093224");
         mAdview = (AdView)findViewById(R.id.adView);
         //AdRequest adRequest = new AdRequest.Builder().build();
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice("120865D338B2B57631C70E619CB5BB9F").build();
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("12EE96461E7B7882EE7D7BA502A4809A").build();
         mAdview.loadAd(adRequest);
 
         AdView adView = new AdView(this);
@@ -2439,7 +2439,7 @@ public class JogoParImparActivity extends AppCompatActivity implements RewardedV
         if(!mAd.isLoaded())
         {
             //mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("2DB0EA37E5782F0EFA7DF542EEC99770").build());
-            mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("120865D338B2B57631C70E619CB5BB9F").build());
+            mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("12EE96461E7B7882EE7D7BA502A4809A").build());
             //   mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().build()); //
         }
     }
