@@ -419,14 +419,14 @@ public class DbCargaFilmes {
         values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "filme");
         values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "WERRTEKGOSKWJPOSYYLQ");
         values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "QWWTYYPLKKJ");
-        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "*O*REGRESSO***********");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "O*REGRESSO**********");
         values.put(PostFase.PostEntry.COLUMN_NIVEL, 51);
         newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
 
         values.put(PostFase.PostEntry.COLUMN_TITULO, "Guardiões da Galáxia.");
         values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "filme");
-        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "DTQÕAYQSKKGIEIGAUHLDÁAXARG");
-        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "QQYTGHK");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "DTQÕAYQSKKGIEIJAUHLDÁAXARG");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "QQYTHKJ");
         values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "GUARDIÕES*DA***GALÁXIA***");
         values.put(PostFase.PostEntry.COLUMN_NIVEL, 52);
         newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
@@ -443,7 +443,7 @@ public class DbCargaFilmes {
         values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "filme");
         values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "WKHYPUJQYOKLVRPFSSEGQUITDT");
         values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "QQWETTYUUYPPLKKJHGFS");
-        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "****VIDRO****************");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "****VIDRO*****************");
         values.put(PostFase.PostEntry.COLUMN_NIVEL, 54);
         newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
 
@@ -451,7 +451,7 @@ public class DbCargaFilmes {
         values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "filme");
         values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "LPEXAIMZACKNVVZERAEQBUESLK");
         values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZXCVVBMLLK");
-        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "***A*PEQUENA******SEREIA***");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "**A*PEQUENA*****SEREIA***");
         values.put(PostFase.PostEntry.COLUMN_NIVEL, 55);
         newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
 
@@ -459,31 +459,31 @@ public class DbCargaFilmes {
         values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "filme");
         values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "IWÓHQKFHFQLYSTRSYUGAWEDJPL");
         values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "QQWWEYYUPLLKJHHGFFDS");
-        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "****TRÓIA****************");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "****TRÓIA*****************");
         values.put(PostFase.PostEntry.COLUMN_NIVEL, 56);
         newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
 
         values.put(PostFase.PostEntry.COLUMN_TITULO, "As Aventuras de Pi");
         values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "filme");
-        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "ABUMEVBVATXELCNAZNLZSIPDRS");
-        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZXCVBBNML");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "ABUMEHBVATXELCHAZNLZSIPDRS");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZXChBBKML");
         values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "AS*AVENTURAS****DE*PI****");
         values.put(PostFase.PostEntry.COLUMN_NIVEL, 57);
         newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
 
         values.put(PostFase.PostEntry.COLUMN_TITULO, "A Espada Era a Lei");
         values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "filme");
-        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "WQEEPSUQRPJAAAADPLOIAEYTYJ");
-        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "QQWTYYUOPP");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "WQEEKSUQRKJAAAADPLOIAEYTYJ");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "QQWTYYUOKK");
         values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "**A*ESPADA****ERA*A*LEI**");
         values.put(PostFase.PostEntry.COLUMN_NIVEL, 58);
         newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
 
         values.put(PostFase.PostEntry.COLUMN_TITULO, "Velozes e Furiosos");
         values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "filme");
-        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "SSOBULEZEXXOMIVNCLSROKBEKF");
-        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "SXXCBBNMLK");
-        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "***VELOZES*E*****FURIOSOS**");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "HSOBUKEZEXSOMIVNCLSROKBEKF");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "HXCBBNMKK");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "**VELOZES*E****FURIOSOS**");
         values.put(PostFase.PostEntry.COLUMN_NIVEL, 59);
         newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
 
@@ -499,7 +499,7 @@ public class DbCargaFilmes {
         values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "filme");
         values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "AMOZDZXVORERATÃSIRXUOVGCNE");
         values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZXXV");
-        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "*COMO*TREINAR***SEU*DRAGÃO**");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "COMO*TREINAR**SEU*DRAGÃO*");
         values.put(PostFase.PostEntry.COLUMN_NIVEL, 61);
         newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
 
@@ -513,9 +513,9 @@ public class DbCargaFilmes {
 
         values.put(PostFase.PostEntry.COLUMN_TITULO, "Detona Ralph");
         values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "filme");
-        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "KAXTNCPVLMLBHVEKMXRAZZJODJ");
-        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZXXCVVBMMLKJJ");
-        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "***DETONA*** ****RALPH****");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "KAXTNCPVJMLBHVEKMXRAZZJODJ");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZXXCVVBMMJKJJ");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "***DETONA*******RALPH****");
         values.put(PostFase.PostEntry.COLUMN_NIVEL, 63);
         newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
 
@@ -529,8 +529,8 @@ public class DbCargaFilmes {
 
         values.put(PostFase.PostEntry.COLUMN_TITULO, "Aquaman");
         values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "filme");
-        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "APPUYMOIAZTZEQNWJAORKUKRLY");
-        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZWERRTYYUIOOPLKKJ");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "APPPYMOIAZTZEQNWJAORKUKRLY");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZWERRTYYPIOOPLKKJ");
         values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "***AQUAMAN***************");
         values.put(PostFase.PostEntry.COLUMN_NIVEL, 65);
         newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
@@ -539,14 +539,14 @@ public class DbCargaFilmes {
         values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "filme");
         values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "ZGKXJFCKUAVOGZMPXSNOBHLBDS");
         values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZXXCVBBKKJHGGFDSSPO");
-        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "****MULAN****************");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "****MULAN*****************");
         values.put(PostFase.PostEntry.COLUMN_NIVEL, 66);
         newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
 
         values.put(PostFase.PostEntry.COLUMN_TITULO, "Cavaleiro das Trevas");
         values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "filme");
-        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "SXISKCXALAODKLRZBZTVEAVERA");
-        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZXXBLK");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "SXISKCXAFAODKLRZBZTVEAVERA");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZXXBFK");
         values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "**CAVALEIRO***DAS*TREVAS*");
         values.put(PostFase.PostEntry.COLUMN_NIVEL, 67);
         newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
@@ -555,7 +555,7 @@ public class DbCargaFilmes {
         values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "filme");
         values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "ULSFFKIQTUPHQJGHOYOEPRYIWT");
         values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "QQWEUUIIPPLKJHHGF");
-        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "**TOY*STORY**************");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "**TOY*STORY***************");
         values.put(PostFase.PostEntry.COLUMN_NIVEL, 68);
         newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
 

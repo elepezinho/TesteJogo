@@ -414,5 +414,165 @@ public class DbCargaSeries {
         values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "*AMERICAN***HORROR**");
         values.put(PostFase.PostEntry.COLUMN_NIVEL, 50);
         newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Desventuras em Série");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "serie");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "BRNÉZEEUXIETSRVAEJZSKXMDSB");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZXXBBKJ");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "*DESVENTURAS***EM*SÉRIE**");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 51);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Sabrina");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "serie");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "KAJNILUBWYQWHLOTRHOAESQTYP");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "QQWWETTYYUOOPLLKJHH");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "***SABRINA****************");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 52);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "House of Cards");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "serie");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "MUHVJFMCGVKBOLOSARZKNXDZSE");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZXVVBNMMLKKJG");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "**HOUSE*OF******CARDS****");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 53);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Orange is the New Black");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "serie");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "AEBRJZPZVCWJINAEKONEHLTGSX");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZXVJJP");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "**ORANGE*IS****NEW*BLACK**");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 54);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "The Ranch");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "serie");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "IHGCGAGDIWKWRUQLYQOHNOEKPT");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "QQWWYUIIOOPLKKGGD");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "**THE*RANCH***************");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 55);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Two and Half Men");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "serie");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "JBAWGNSJAELNKMZDBVFZTKOXXH");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZXXVBBKJJGKS");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "***TWO*AND*****HALF*MEN**");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 56);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "O Mecanismo");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "serie");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "SROAKLJYOWKMPQTCNPYQRIFEMU");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "QQWRRTYYUPPLKKJF");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "*O*MECANISMO**************");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 57);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Titans");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "serie");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "SXVZIZCJXTLANBKVTBMK");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZXXCVVBBMLKKJ");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "**TITANS************");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 58);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Marco Polo");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "serie");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "POLOMOWYWAJKUQRYCHTQ");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "QQWWTYYUKJH");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "MARCO*POLO**********");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 59);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Travelers");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "serie");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "BVRJDETAHMXGZMJLBZFNXSERKC");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZXXCBBNMMKJJHGFD");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "**TRAVELERS***************");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 60);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Luke Cage");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "serie");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "JWPAWLPKQEITHEYQFTRGJIYKCU");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "QQWWRTTYYKIIPPJHJF");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "**LUKE*CAGE***************");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 61);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "This is Us");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "serie");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "BILSIUVMCXMTZSHSZNVX");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZXXCVVBNMML");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "THIS*IS*US**********");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 62);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "The Sopranos");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "serie");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "BKZHSVMJPARLXMCTKNOGSVEZPO");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZXCVVBMMLKKJPG");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "*****THE*******SOPRANOS**");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 63);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Better Call Saul");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "serie");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "OLRQAQTYETAEYBWSLUCLIWPPIK");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "QQWWYYIIOPPK");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "*BETTER*CALL*****SAUL****");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 64);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Umbrella Academy");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "serie");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "ZJRAOKLLYAXNADEVXKUBZCENMM");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZXXVNNOKKJ");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "**UMBRELLA*****ACADEMY***");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 65);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Greenleaf");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "serie");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "FJOPENEQAWIQKIYOLYUTPHERWG");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "QQWWOTYYUIIOPPKJH");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "**GREENLEAF***************");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 66);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Alexa And Katie");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "serie");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "NKVZCEAZGATXPBGLVAAUMIEGDJ");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZUPCVVBMGGJG");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "**ALEXA*AND******KATIE****");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 67);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Punho de Ferro");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "serie");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "YYGUKTWKLQGWIRQNPROEJHOEDF");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "QQWWTYYILKKJGG");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "**PUNHO*DE******FERRO****");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 68);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Perdidos no Espaço");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "serie");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "BVEEXSOPSZPDOÇVCIZOKCMARND");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZXCCVVBMK");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "*PERDIDOS*NO****ESPAÇO***");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 69);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Good Girls");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "serie");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "LGOOEWUGIYRQDTYKWPQS");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "QQWWETYYUPK");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "GOOD*GIRLS**********");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 70);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
     }
 }

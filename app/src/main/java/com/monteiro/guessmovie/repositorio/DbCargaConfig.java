@@ -13,7 +13,7 @@ public class DbCargaConfig {
 
     public void inserirConfig(){
         ContentValues values = new ContentValues();
-        values.put(PostConfig.PostEntry.COLUMN_VERSAO_BANCO, 93);
+        values.put(PostConfig.PostEntry.COLUMN_VERSAO_BANCO, 02);
         values.put(PostConfig.PostEntry.COLUMN_QT_MOEDAS, 100);
         values.put(PostConfig.PostEntry.COLUMN_TOTAL_FILME, 70);
         values.put(PostConfig.PostEntry.COLUMN_TOTAL_SERIE, 70);
