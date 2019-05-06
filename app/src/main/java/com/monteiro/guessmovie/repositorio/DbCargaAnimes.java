@@ -414,5 +414,165 @@ public class DbCargaAnimes {
         values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "***BERSERK****************");
         values.put(PostFase.PostEntry.COLUMN_NIVEL, 50);
         newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Major");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "anime");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "WMOGLRBHCNTSDFJXQVXKRZAUGX");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "XXCVBNLKHGGFDSQWRTUX");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "****MAJOR*****************");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 51);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Mirai Nikki");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "anime");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "KIFKAHCVIGDWXLINIRMJSBQZKC");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZXCVBLKJHGFDSQWC");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "*MIRAI*NIKKI**************");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 52);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Love is War");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "anime");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "WFQPUHODYSQIERJGALVPAAKYJT");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "LOVEISWARQQTYYUPPKJJHGFDAA");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "*LOVE*IS*WAR**************");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 53);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Brave 10");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "anime");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "X34ANZ91MXVCBN2Z80RE");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZXXCNNM23498");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "*BRAVE*10***********");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 54);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Cowboy Bebop");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "anime");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "RBIURUQBPQCYGBTKGLWJEOOHKO");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "QQRRTUUILKKJHGG");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "***COWBOY*******BEBOP****");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 55);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Accel World");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "anime");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "HZXJNLFJVDRZGLOMKCMWFVECAX");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZXXVVNMMKJJHGFF");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "*ACCEL*WORLD**************");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 56);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Goblyn Slayer");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "anime");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "QEGATWLLPWIYSQNRUBYO");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "QQWWTUIP");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "**GOBLYN****SLAYER**");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 57);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Fate Stay Night");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "anime");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "PFNTKTWALGQAITJOQUKYSWEHUP");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "QQWWUUOPPLKKJ");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "**FATE*STAY******NIGHT****");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 58);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Gintama");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "anime");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "LWGVIJDSÇKZNBMTZKXQQAXRAFH");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZXXVBLKKJHFDSQQWRÇ");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "***GINTAMA****************");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 59);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Hinomaru zumou");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "anime");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "KUOYMPMWJLIKQHRWUZAUTNPGQO");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "QQWWTYPKPLKJG");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "**HINOMARU******ZUMOU****");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 60);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Demon Slayer");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "anime");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "VZVJYCGGFLEMXODJREXKSHANBZ");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZXXCVVBKJJHGGF");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "****DEMON*******SLAYER***");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 61);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Tate no Yuusha");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "anime");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "GUWLKWQYJQHGITISANEKUAPORT");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "QQWWRIIPPLKKJG");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "***TATE*NO******YUUSHA***");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 62);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Dororo");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "anime");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "OVLKCXKOBVXRJDNZMZOR");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZXXCVVBNMLKKJ");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "**DORORO************");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 63);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Megalo Box");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "anime");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "GAQOEIMWYXQLRTUIOBYW");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "QQWWRTYYUII");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "MEGALO*BOX**********");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 64);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Mob Psycko 100");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "anime");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "JSCOO5JYMFXBHR1PZ2ZGX90K30");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZXX2395RJJHGF");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "*MOB*PSYCKO******100*****");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 65);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "The Promised Neverland");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "anime");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "ZHQVERNMRESOLQAXPIEXDZNEDT");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZXXQQ");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "THE*PROMISED**NEVERLAND**");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 66);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Overlord");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "anime");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "YYLORDIWQPQKTVURWOIE");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "QQWWTYYUIIPK");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "*OVERLORD***********");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 67);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Ano Natsu de Matteru");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "anime");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "NVLDAZUSUTTXOXZECNTMABREBA");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZXXCVBBL");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "**ANO*NATSU***DE*MATTERU*");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 68);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Great Teacher Onizuka");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "anime");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "ÇITOEACABEKGNUHRXTJBVERXAZ");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ÇJXXVBB");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "GREAT*TEACHER***ONIZUKA***");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 69);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
+
+        values.put(PostFase.PostEntry.COLUMN_TITULO, "Amanchu");
+        values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "anime");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "HAUVFXLKMGXGBJCJKALSZDZDVN");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZZXXKVVBLLKJJGGFDDS");
+        values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "***AMANCHU****************");
+        values.put(PostFase.PostEntry.COLUMN_NIVEL, 70);
+        newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
     }
 }

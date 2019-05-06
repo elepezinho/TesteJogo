@@ -329,7 +329,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
         MobileAds.initialize(this,"ca-app-pub-1493186259985891~9080093224");
         mAdview = (AdView)findViewById(R.id.adView);
         //AdRequest adRequest = new AdRequest.Builder().build();
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice("12EE96461E7B7882EE7D7BA502A4809A").build();
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("62CEF960E90EB0624DAE57D22F2290E8").build();
         mAdview.loadAd(adRequest);
 
         AdView adView = new AdView(this);
@@ -2279,8 +2279,8 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
     private void apagarLetras(String j){
 
         if ((j.equals("filme") && removeuFilme==0) || (j.equals("serie") && removeuSerie==0) || (j.equals("anime") && removeuAnime==0) || (j.equals("game") && removeuGame==0) ){
-            if(moeda>=100) {
-                txv_coins.setText("" + (moeda -=100));
+            if(moeda>=10) {
+                txv_coins.setText("" + (moeda -=10));
                 SharedPreferences.Editor editor = pref.edit();
                 editor.putInt("qt_moedas", moeda);
                 if(j.equals("filme")) {
@@ -2468,7 +2468,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
         if(!mAd.isLoaded())
         {
             //mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("2DB0EA37E5782F0EFA7DF542EEC99770").build());
-            mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("12EE96461E7B7882EE7D7BA502A4809A").build());
+            mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("62CEF960E90EB0624DAE57D22F2290E8").build());
                      //   mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().build()); //
         }
     }
