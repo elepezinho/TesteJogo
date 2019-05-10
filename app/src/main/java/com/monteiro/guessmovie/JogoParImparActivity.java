@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
@@ -323,13 +322,7 @@ public class JogoParImparActivity extends AppCompatActivity implements RewardedV
             }
         });
 
-        //verificar se o usuario já removeu letras
-        if (( jogando.equals("filme") && removeuFilme==1) ||
-                (jogando.equals("serie") && removeuSerie==1) ||
-                (jogando.equals("anime") && removeuAnime==1) ||
-                (jogando.equals("game") && removeuGame==1) ) {
-            jaApagouLetras();
-        }
+        verificarJaRemoveuLetras();
 
         //banner
         MobileAds.initialize(this,"ca-app-pub-1493186259985891~9080093224");
@@ -998,6 +991,18 @@ public class JogoParImparActivity extends AppCompatActivity implements RewardedV
         }
         else if(jogando.equals("game")) {
             inserirLetrasCompradas(jogando, letrasCompradasGame);
+        }
+
+        verificarJaRemoveuLetras();
+    }
+
+    private void verificarJaRemoveuLetras(){
+        //verificar se o usuario já removeu letras
+        if (( jogando.equals("filme") && removeuFilme==1) ||
+                (jogando.equals("serie") && removeuSerie==1) ||
+                (jogando.equals("anime") && removeuAnime==1) ||
+                (jogando.equals("game") && removeuGame==1) ) {
+            jaApagouLetras();
         }
     }
 
@@ -2245,6 +2250,8 @@ public class JogoParImparActivity extends AppCompatActivity implements RewardedV
         verificarEspacoBranco();
 
         verificarResposta();
+
+        verificarJaRemoveuLetras();
     }
 
     private void apagarLetras(String j){

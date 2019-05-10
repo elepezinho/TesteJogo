@@ -13,7 +13,6 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -317,13 +316,7 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             }
         });
 
-        //verificar se o usuario já removeu letras
-        if (( jogando.equals("filme") && removeuFilme==1) ||
-                (jogando.equals("serie") && removeuSerie==1) ||
-                (jogando.equals("anime") && removeuAnime==1) ||
-                (jogando.equals("game") && removeuGame==1) ) {
-            jaApagouLetras();
-        }
+        verificarJaRemoveuLetras();
 
         //banner
         MobileAds.initialize(this,"ca-app-pub-1493186259985891~9080093224");
@@ -1000,6 +993,18 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
         }
         else if(jogando.equals("game")) {
             inserirLetrasCompradas(jogando, letrasCompradasGame);
+        }
+
+        verificarJaRemoveuLetras();
+    }
+
+    private void verificarJaRemoveuLetras(){
+        //verificar se o usuario já removeu letras
+        if (( jogando.equals("filme") && removeuFilme==1) ||
+                (jogando.equals("serie") && removeuSerie==1) ||
+                (jogando.equals("anime") && removeuAnime==1) ||
+                (jogando.equals("game") && removeuGame==1) ) {
+            jaApagouLetras();
         }
     }
 
@@ -2274,6 +2279,8 @@ public class JogoImparImparActivity extends AppCompatActivity implements Rewarde
             verificarEspacoBranco();
 
             verificarResposta();
+
+            verificarJaRemoveuLetras();
     }
 
     private void apagarLetras(String j){
