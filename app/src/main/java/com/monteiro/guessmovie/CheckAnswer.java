@@ -504,9 +504,20 @@ public class CheckAnswer extends AppCompatActivity implements RewardedVideoAdLis
     {
         if(!mAd.isLoaded())
         {
+            // Teste Emulador Silas ?
             //  mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("2DB0EA37E5782F0EFA7DF542EEC99770").build());
-            mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("120865D338B2B57631C70E619CB5BB9F").build());
-            //   mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().build()); //
+
+            // Propaganda Oficial Admbob Vídeo
+            //mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("120865D338B2B57631C70E619CB5BB9F").build());
+
+            // Usar o meio abaixo para ambiente de teste das propagandas em vídeo.
+            //mAd.loadAd("ca-app-pub-3940256099942544/5224354917", new AdRequest.Builder().build()); //
+
+            // Teste J5PRO Bruno propaganda de teste do Google
+            //mAd.loadAd("ca-app-pub-3940256099942544/5224354917", new AdRequest.Builder().addTestDevice("F3678A4C70411DAE35F783415032A15A").build());
+
+            // Teste J5PRO Bruno propaganda oficial
+            mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("F3678A4C70411DAE35F783415032A15A").build());
         }
     }
 
@@ -515,12 +526,14 @@ public class CheckAnswer extends AppCompatActivity implements RewardedVideoAdLis
         if(mAd.isLoaded())
         {
             mAd.show();
-            //moeda += recompensa;
-            txv_coins.setText(""+moeda);
-            SharedPreferences.Editor editor = pref.edit();
-            editor.putInt("qt_moedas", moeda);
-            editor.commit();
+        } else {
+            loadRewardVideoAd();
+            mAd.show();
         }
+        txv_coins.setText(""+moeda);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putInt("qt_moedas", moeda);
+        editor.commit();
     }
 
     @Override
@@ -578,7 +591,7 @@ public class CheckAnswer extends AppCompatActivity implements RewardedVideoAdLis
 
     @Override
     protected void onDestroy() {
-        mAd.destroy(this);
+        //mAd.destroy(this);
         super.onDestroy();
     }
 }

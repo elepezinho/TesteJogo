@@ -135,6 +135,7 @@ public class JogoImparParActivity extends AppCompatActivity implements RewardedV
 
     private RewardedVideoAd mAd;
     private TextView txv_coins;
+    private Button bagCoin;
     private int img;
     private int moeda;
     private int nvlFilme;
@@ -220,6 +221,7 @@ public class JogoImparParActivity extends AppCompatActivity implements RewardedV
         //inserir qt moedas do usuario na tela
         txv_coins = (TextView)findViewById(R.id.txv_coins_check);
         txv_coins.setText(""+moeda);
+        bagCoin = (Button)findViewById(R.id.bt_bag_coin);
         btAddLetter = (Button) findViewById(R.id.bt_add_letter);
         //comprar letra
         btBuyLetter = (Button) findViewById(R.id.bt_buy_letter);
@@ -344,93 +346,6 @@ public class JogoImparParActivity extends AppCompatActivity implements RewardedV
         findViews();
         implementClickEvents();
     }
-
-    /*private class CriarFase extends AsyncTask<Void, Void, String> {
-
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        protected String doInBackground(Void... params) {
-            //recuperando dados de preferencia do usuario
-            pref = getSharedPreferences("pref", MODE_PRIVATE);
-            moeda = pref.getInt("qt_moedas", 100);
-            nvlFilme = pref.getInt("nvl_filme", 01);
-            nvlSerie = pref.getInt("nvl_serie", 01);
-            nvlAnime = pref.getInt("nvl_anime", 01);
-            nvlGame = pref.getInt("nvl_game", 01);
-            removeuFilme = pref.getInt("removeu_filme", 00);
-            removeuSerie = pref.getInt("removeu_serie", 00);
-            removeuAnime = pref.getInt("removeu_anime", 00);
-            removeuGame = pref.getInt("removeu_game", 00);
-
-            //inserir qt moedas do usuario na tela
-            txv_coins = (TextView)findViewById(R.id.txv_coins_check);
-            txv_coins.setText(""+moeda);
-            btAddLetter = (Button) findViewById(R.id.bt_add_letter);
-            btRemoveLetters = (Button) findViewById(R.id.btn_remove_letters);
-            btRecompensa = (Button) findViewById(R.id.bt_bag_coin);
-            //inserir imagem da jogada na tela
-            im_principal = (ImageView) findViewById(R.id.im_principal_par);
-            //im_principal.setImageResource(img);
-
-            //recuperando tipo de categoria que o usuario selecionou
-            Bundle extra = getIntent().getExtras();
-            if(extra != null){
-                jogando = extra.getString("jogando");
-            }
-            toolbar = (Toolbar) findViewById(R.id.toolbar_par);
-
-            //verificando a categoria e criando a fase de acordo com o nvl do usuario na categoria
-            if(jogando.equals("filme")) {
-                toolbar.setTitle("FILME");
-                criarJogo(jogando, nvlFilme);
-            }
-            else if(jogando.equals("serie")) {
-                toolbar.setTitle("SÉRIE");
-                criarJogo(jogando, nvlSerie);
-            }
-            else if(jogando.equals("anime")) {
-                toolbar.setTitle("ANIME");
-                criarJogo(jogando, nvlAnime);
-            }
-            else if(jogando.equals("game")) {
-                toolbar.setTitle("GAME");
-                criarJogo(jogando, nvlGame);
-            }
-            setSupportActionBar(toolbar);
-
-            //ação ao clicar no botão de remover letras
-            btRemoveLetters.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    apagarLetras(jogando);
-                }
-            });
-
-            //ação ao clicar no botão de ganhar uma letra
-            btAddLetter.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    resolverFase();
-                }
-            });
-
-            //verificar se o usuario já removeu letras
-            if (( jogando.equals("filme") && removeuFilme==1) ||
-                    (jogando.equals("serie") && removeuSerie==1) ||
-                    (jogando.equals("anime") && removeuAnime==1) ||
-                    (jogando.equals("game") && removeuGame==1) ) {
-                jaApagouLetras();
-            }
-
-            return  "";
-        }
-
-        protected void onPostExecute(String string) {
-            super.onPostExecute(string);
-        }
-    }*/
 
     @Override
     public void onBackPressed() {
@@ -986,6 +901,8 @@ public class JogoImparParActivity extends AppCompatActivity implements RewardedV
         }
 
         verificarJaRemoveuLetras();
+
+        loadRewardVideoAd();
     }
 
     private void verificarJaRemoveuLetras(){
@@ -2438,9 +2355,21 @@ public class JogoImparParActivity extends AppCompatActivity implements RewardedV
     {
         if(!mAd.isLoaded())
         {
-            //mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("2DB0EA37E5782F0EFA7DF542EEC99770").build());
-            mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("62CEF960E90EB0624DAE57D22F2290E8").build());
-            //   mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().build()); //
+            // Teste Emuladores Silas ????
+            //  mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("2DB0EA37E5782F0EFA7DF542EEC99770").build());
+            // mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("62CEF960E90EB0624DAE57D22F2290E8").build());
+
+            // Propaganda Oficial Admbob Vídeo
+            //mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("120865D338B2B57631C70E619CB5BB9F").build());
+
+            // Usar o meio abaixo para ambiente de teste das propagandas em vídeo.
+            //mAd.loadAd("ca-app-pub-3940256099942544/5224354917", new AdRequest.Builder().build()); //
+
+            // Teste J5PRO Bruno propaganda de teste do Google
+            //mAd.loadAd("ca-app-pub-3940256099942544/5224354917", new AdRequest.Builder().addTestDevice("F3678A4C70411DAE35F783415032A15A").build());
+
+            // Teste J5PRO Bruno propaganda oficial
+            mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("F3678A4C70411DAE35F783415032A15A").build());
         }
     }
 
@@ -2449,7 +2378,14 @@ public class JogoImparParActivity extends AppCompatActivity implements RewardedV
         if(mAd.isLoaded())
         {
             mAd.show();
+        } else {
+            loadRewardVideoAd();
+            mAd.show();
         }
+        txv_coins.setText(""+moeda);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putInt("qt_moedas", moeda);
+        editor.commit();
     }
 
     @Override
@@ -2503,11 +2439,26 @@ public class JogoImparParActivity extends AppCompatActivity implements RewardedV
     protected void onResume() {
         mAd.resume(this);
         super.onResume();
+
+        if(jogando.equals("filme")) {
+            inserirLetrasCompradas(jogando, letrasCompradasFilme);
+        }
+        else if(jogando.equals("serie")) {
+            inserirLetrasCompradas(jogando, letrasCompradasSerie);
+        }
+        else if(jogando.equals("anime")) {
+            inserirLetrasCompradas(jogando, letrasCompradasAnime);
+        }
+        else if(jogando.equals("game")) {
+            inserirLetrasCompradas(jogando, letrasCompradasGame);
+        }
+
+        verificarJaRemoveuLetras();
     }
 
     @Override
     protected void onDestroy() {
-        mAd.destroy(this);
+        //mAd.destroy(this);
         super.onDestroy();
     }
 

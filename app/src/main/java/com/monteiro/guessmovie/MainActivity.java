@@ -9,21 +9,15 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-//import com.google.firebase.iid.FirebaseInstanceId;
-//import com.google.firebase.iid.InstanceIdResult;
 import com.monteiro.guessmovie.about.AboutActivity;
 import com.monteiro.guessmovie.repositorio.DbCargaAnimes;
 import com.monteiro.guessmovie.repositorio.DbCargaConfig;
@@ -31,6 +25,9 @@ import com.monteiro.guessmovie.repositorio.DbCargaFilmes;
 import com.monteiro.guessmovie.repositorio.DbCargaGames;
 import com.monteiro.guessmovie.repositorio.DbCargaSeries;
 import com.monteiro.guessmovie.repositorio.DbHelper;
+
+//import com.google.firebase.iid.FirebaseInstanceId;
+//import com.google.firebase.iid.InstanceIdResult;
 
 public class MainActivity extends AppCompatActivity {
 
