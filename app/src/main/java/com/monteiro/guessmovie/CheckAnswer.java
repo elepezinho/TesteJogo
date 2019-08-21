@@ -505,7 +505,7 @@ public class CheckAnswer extends AppCompatActivity implements RewardedVideoAdLis
         if(!mAd.isLoaded())
         {
             // Teste Emulador Silas ?
-            //  mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("2DB0EA37E5782F0EFA7DF542EEC99770").build());
+            mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("2DB0EA37E5782F0EFA7DF542EEC99770").build());
 
             // Propaganda Oficial Admbob Vídeo
             //mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("120865D338B2B57631C70E619CB5BB9F").build());
@@ -517,7 +517,7 @@ public class CheckAnswer extends AppCompatActivity implements RewardedVideoAdLis
             //mAd.loadAd("ca-app-pub-3940256099942544/5224354917", new AdRequest.Builder().addTestDevice("F3678A4C70411DAE35F783415032A15A").build());
 
             // Teste J5PRO Bruno propaganda oficial
-            mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("F3678A4C70411DAE35F783415032A15A").build());
+            //mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("F3678A4C70411DAE35F783415032A15A").build());
         }
     }
 

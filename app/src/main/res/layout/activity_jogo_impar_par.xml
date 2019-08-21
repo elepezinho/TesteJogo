@@ -13,7 +13,7 @@
         android:id="@+id/bt_buy_letter"
         android:layout_width="55dp"
         android:layout_height="55dp"
-        android:background="@drawable/btkeyletter"
+        android:background="@drawable/btbuyletter"
         ads:layout_constraintBottom_toTopOf="@+id/bt_add_letter"
         ads:layout_constraintEnd_toEndOf="parent"
         ads:layout_constraintStart_toStartOf="@+id/guideline6"

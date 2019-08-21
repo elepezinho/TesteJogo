@@ -15,11 +15,13 @@
     <string name="titulo_03">Achou a fase difícil?</string>
     <string name="titulo_04">Travou?</string>
     <string name="titulo_05">Acabou o dinheiro?</string>
+    <string name="titulo_06">Uma dica barata!</string>
     <string name="description_01">Descubra o nome de Filmes, Animes, Séries e Jogos através de emojis que estão dentro do quadrado!</string>
     <string name="description_02">Use suas moedas para resolver a fase e ir para o próximo desafio!</string>
     <string name="description_03">Não consegue desembaralhar as letras? Elimine as que estão sobrando.</string>
     <string name="description_04">Peça ajuda a seus amigos através de suas redes sociais!</string>
     <string name="description_05">Assista a vídeos e fique rico novamente!</string>
+    <string name="description_06">Quando o nome da fase não vem na cabeça, use essa dica para comprar uma letra para ajudar sua memória!</string>
     <string name="informacoes">INFORMAÇÃO</string>
     <string name="tutorial">Tutorial de Como Jogar</string>
     <string name="questionario">Nos Envie o Seu Feedback Sobre o Jogo</string>

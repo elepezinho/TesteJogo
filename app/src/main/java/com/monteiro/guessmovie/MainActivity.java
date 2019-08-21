@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -123,8 +124,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         bt_start = (Button) findViewById(R.id.bt_start);
+        //final MediaPlayer mp = MediaPlayer.create(this, R.raw.bolha);
         img_star = (ImageView) findViewById(R.id.img_star);
         img_info = (ImageView) findViewById(R.id.img_info);
+
 
         bt_start.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent;
                 intent = new Intent(MainActivity.this, CategoriesActivity.class);
                 startActivity(intent);
+        //        mp.start();
                 overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                 onPause();
             }

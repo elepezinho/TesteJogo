@@ -279,7 +279,7 @@ public class JogoParImparActivity extends AppCompatActivity implements RewardedV
                     SharedPreferences.Editor editor = pref.edit();
                     pref = getSharedPreferences("pref", MODE_PRIVATE);
 
-                    txv_coins.setText("" + (moeda -=30));
+                    txv_coins.setText("" + (moeda -=15));
                     editor.putInt("qt_moedas", moeda);
 
                     int letrasCompradas = 0;
@@ -2257,8 +2257,8 @@ public class JogoParImparActivity extends AppCompatActivity implements RewardedV
     private void apagarLetras(String j){
 
         if ((j.equals("filme") && removeuFilme==0) || (j.equals("serie") && removeuSerie==0) || (j.equals("anime") && removeuAnime==0) || (j.equals("game") && removeuGame==0) ){
-            if(moeda>=10) {
-                txv_coins.setText("" + (moeda -= 10));
+            if(moeda>=100) {
+                txv_coins.setText("" + (moeda -= 100));
                 SharedPreferences.Editor editor = pref.edit();
                 editor.putInt("qt_moedas", moeda);
                 if(j.equals("filme")) {
@@ -2447,7 +2447,7 @@ public class JogoParImparActivity extends AppCompatActivity implements RewardedV
         {
             // Teste Emuladores Silas ????
             //  mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("2DB0EA37E5782F0EFA7DF542EEC99770").build());
-            // mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("62CEF960E90EB0624DAE57D22F2290E8").build());
+            mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("62CEF960E90EB0624DAE57D22F2290E8").build());
 
             // Propaganda Oficial Admbob Vídeo
             //mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("120865D338B2B57631C70E619CB5BB9F").build());
@@ -2459,7 +2459,7 @@ public class JogoParImparActivity extends AppCompatActivity implements RewardedV
             //mAd.loadAd("ca-app-pub-3940256099942544/5224354917", new AdRequest.Builder().addTestDevice("F3678A4C70411DAE35F783415032A15A").build());
 
             // Teste J5PRO Bruno propaganda oficial
-            mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("F3678A4C70411DAE35F783415032A15A").build());
+            //mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("F3678A4C70411DAE35F783415032A15A").build());
         }
     }
 
