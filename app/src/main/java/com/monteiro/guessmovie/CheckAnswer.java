@@ -396,7 +396,7 @@ public class CheckAnswer extends AppCompatActivity implements RewardedVideoAdLis
         MobileAds.initialize(this,"ca-app-pub-1493186259985891~9080093224");
         mAdview = (AdView)findViewById(R.id.adView);
         //AdRequest adRequest = new AdRequest.Builder().build();
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice("62CEF960E90EB0624DAE57D22F2290E8").build();
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("12EE96461E7B7882EE7D7BA502A4809A").build();
         mAdview.loadAd(adRequest);
 
         AdView adView = new AdView(this);
@@ -413,7 +413,7 @@ public class CheckAnswer extends AppCompatActivity implements RewardedVideoAdLis
 
     private void exibirPropaganda(){
         //propaganda interticial
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice("62CEF960E90EB0624DAE57D22F2290E8").build();
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("12EE96461E7B7882EE7D7BA502A4809A").build();
         //AdRequest adRequest = new AdRequest.Builder().build();
         interstitial = new InterstitialAd(CheckAnswer.this);
         interstitial.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
@@ -505,7 +505,7 @@ public class CheckAnswer extends AppCompatActivity implements RewardedVideoAdLis
         if(!mAd.isLoaded())
         {
             // Teste Emulador Silas ?
-            mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("2DB0EA37E5782F0EFA7DF542EEC99770").build());
+            mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("12EE96461E7B7882EE7D7BA502A4809A").build());
 
             // Propaganda Oficial Admbob Vídeo
             //mAd.loadAd("ca-app-pub-1493186259985891/7164376328", new AdRequest.Builder().addTestDevice("120865D338B2B57631C70E619CB5BB9F").build());

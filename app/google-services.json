@@ -1,0 +1,64 @@
+{
+  "project_info": {
+    "project_number": "4830547313",
+    "firebase_url": "https://filmesememojis.firebaseio.com",
+    "project_id": "filmesememojis",
+    "storage_bucket": "filmesememojis.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:4830547313:android:cbce6b7afc24400c",
+        "android_client_info": {
+          "package_name": "com.monteiro.guessmovie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "4830547313-op08cmjnjpkdd5kdtgefhabb0igsuial.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.monteiro.guessmovie",
+            "certificate_hash": "8bb96b870b40f52fe8150c6e00f31132627a5fcf"
+          }
+        },
+        {
+          "client_id": "4830547313-0ajgu4pb0hop51j6chhup5gs91fh71ks.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.monteiro.guessmovie",
+            "certificate_hash": "e22267bd2375d6ae1c51a93efb7d17e0e3c442b7"
+          }
+        },
+        {
+          "client_id": "4830547313-f9me8undha0apime26o69vkercu6u1vb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.monteiro.guessmovie",
+            "certificate_hash": "25f18f996b08ffdee88d0e01827b7236ea0cb358"
+          }
+        },
+        {
+          "client_id": "4830547313-bi1qosc2jmq810gaao1gmn7fjjv1fjch.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAF_MzXwsRR3v7ZZVH89i_T2WJampBan8k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "4830547313-bi1qosc2jmq810gaao1gmn7fjjv1fjch.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
