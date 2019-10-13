@@ -205,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
     public void showRateDialog(final Context context){
         AlertDialog.Builder builder = new AlertDialog.Builder(context)
                 .setTitle("Avaliar na Play Store")
-                .setMessage("Diga o que achou do nosso jogo na Play Store e ganhe 300 moedas para jogar ainda mais $$$")
+                .setMessage("Diga o que achou do nosso jogo na Play Store")
                 .setPositiveButton("AVALIAR", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -229,9 +229,9 @@ public class MainActivity extends AppCompatActivity {
     public void ganharMoedas(){
         SharedPreferences.Editor editor;
         editor = getSharedPreferences("pref", MODE_PRIVATE).edit();
-        editor.putInt("qt_moedas", moeda+300);
-        editor.putBoolean("ja_avaliou", true);
+        editor.putInt("qt_moedas", moeda+0);
+        editor.putBoolean("ja_avaliou", false);
         editor.commit();
-        jaAvaliou = true;
+        jaAvaliou = false;
     }
 }

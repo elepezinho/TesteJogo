@@ -417,24 +417,24 @@ public class DbCargaAnimes {
 
         values.put(PostFase.PostEntry.COLUMN_TITULO, "Major");
         values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "anime");
-        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "WMOGLRBHCNTSDFJXQVXKRZAUGX");
-        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "XXCVBNLKHGGFDSQWRTUX");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "WMOGLXBHCNTSDFJXQVXKRZAUGX");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "XXCVBNLKHGGXFDSQWZTUX");
         values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "****MAJOR*****************");
         values.put(PostFase.PostEntry.COLUMN_NIVEL, 51);
         newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
 
         values.put(PostFase.PostEntry.COLUMN_TITULO, "Mirai Nikki");
         values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "anime");
-        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "KIFKAHCVIGDWXLINIRMJSBQZKC");
-        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZXCVBLKJHGFDSQWC");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "LIFLAHCVIGDWXLINIRMJSBQZKC");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "ZXCVBLLJHGFDSQWC");
         values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "*MIRAI*NIKKI**************");
         values.put(PostFase.PostEntry.COLUMN_NIVEL, 52);
         newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
 
         values.put(PostFase.PostEntry.COLUMN_TITULO, "Love is War");
         values.put(PostFase.PostEntry.COLUMN_CATEGORIA, "anime");
-        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "WFQPUHODYSQIERJGALVPAAKYJT");
-        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "LOVEISWARQQTYYUPPKJJHGFDAA");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_EMBARALHADAS, "WFQPUHODYSQIERJGALVPPPKYJT");
+        values.put(PostFase.PostEntry.COLUMN_LETRAS_ERRADAS, "QQTYYUPPKJJHGFDPP");
         values.put(PostFase.PostEntry.COLUMN_RESPOSTA, "*LOVE*IS*WAR**************");
         values.put(PostFase.PostEntry.COLUMN_NIVEL, 53);
         newRowId = db.insert(PostFase.PostEntry.TABLE_NAME, null, values);
